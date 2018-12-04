@@ -7,7 +7,7 @@
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>JobPress HTML template</title>
+		<title><?php echo SITE_NAME.' - '; $fetch->getInformation('user_account', 'email_address'); ?></title>
 		<!-- CSS -->
 		<!-- Bootstrap -->
 		<link href="<?php echo ASSET_URL;?>assets/css/bootstrap.min.css" rel="stylesheet">
@@ -31,7 +31,7 @@
 			<div class="container clearfix">
 				<div class="header-inner has-form flex space-between items-center">
 					<div class="left flex items-center no-column no-wrap">
-						<div class="logo"><a href="index.html"><img src="<?php echo ASSET_URL;?>assets/images/logo.png" alt="JobPress" class="img-responsive"></a></div>	
+						<div class="logo"><a href=""><img src="<?php echo ASSET_URL;?>assets/images/logo.png" alt="JobPress" class="img-responsive"></a></div>	
 						<div class="job-search-form form-header">						
 							<form class="form-inline flex no-column no-wrap">
 								<div class="form-group">
@@ -54,7 +54,7 @@
 						<div class="navigation" style="visibility:hidden;">
 							<nav class="main-nav">
 								<ul class="list-unstyled">
-									<li class="active"><a href="index.html">Home</a></li>
+									<li class="active"><a href="#">Home</a></li>
 									<li><a href="index.html">Home</a></li>
 								</ul>
 							</nav> <!-- end .main-nav -->
@@ -63,7 +63,7 @@
 						<div class="account-info-top flex items-center no-column">
 							<a href="#0" class="profile-button flex space-between items-center no-column no-wrap">
 								<span>Hi! </span> John Mark 
-								<img src="<?php echo ASSET_URL;?>assets/images/avatar/j.png" alt="avatar" class="img-responsive">
+								<img src="<?php echo ASSET_URL;?>assets/images/avatar/m.png" alt="avatar" class="img-responsive">
 							</a>
 						</div> <!-- end .account-info-top -->
 					</div> <!-- end .right -->
@@ -315,7 +315,7 @@
 													</div> <!-- end .cell-label -->
 													<div class="cell-text no-column">
 														<h4>Folder cooperation</h4>
-														<p><i class="ion-ios-location-outline"></i>Cupertino, CA, USA</p>
+														<p><i class="ion-ios-location-outline"></i>Caloocan Monumento</p>
 													</div> <!-- end .cell-text -->
 												</div> <!-- end .company-name-cell -->
 								        		<div class="job-position-cell job-alert-cell flex no-column no-wrap">
@@ -744,14 +744,14 @@
 
 										<div class="profile-info profile-section flex no-column no-wrap">
 											<div class="profile-picture">
-												<img src="<?php echo ASSET_URL;?>assets/images/avatar/m.png" alt="candidate-picture" class="img-responsive">
+												<img src="<?php echo ASSET_URL;?>assets/images/avatar/j.png" alt="candidate-picture" class="img-responsive">
 											</div> <!-- end .user-picture -->
 											<div class="profile-meta">
-												<h4 class="dark">Mark anderson</h4>
-												<p>UI/UX Designer</p>
+												<h4 class="dark">JOHN MARK HUGO ALICANTE</h4>
+												<p>Frontend Developer</p>
 												<div class="profile-contact flex items-center no-wrap no-column">
-													<h6 class="contact-location">Manhattan,<span>NYC, USA</span></h6>
-													<h6 class="contact-phone">(+01)-212-322-5732</h6>
+													<h6 class="contact-location">C3 Calocan,<span>Manila, PH</span></h6>
+													<h6 class="contact-phone">(+63)-927-897-7591</h6>
 													<h6 class="contact-email"><?php $fetch->getInformation('user_account', 'email_address'); ?></h6>
 												</div> <!-- end .profile-contact -->
 												<div class="profile-contact flex items-center no-wrap no-column">
@@ -765,11 +765,19 @@
 										<div class="divider"></div>
 
 										<div class="profile-about profile-section">
-											<h3 class="dark profile-title">Career Objective<span class="btn-edit-icon btn-edit-career"><i class="ion-edit"></i></span></h3>
+											<h3 class="dark profile-title">
+												Career Objective
+												<?php if ( empty($fetch->getInformation('applicant_career_objective', 'objective_content')) ): ?>
+													<span class="btn-edit-icon btn-edit-career"><i class="ion-plus"></i></span>																								
+												<?php endif; ?>
+
+												<?php if ( !empty($fetch->getInformation('applicant_career_objective', 'objective_content')) ): ?>
+													<span class="btn-edit-icon btn-edit-career"><i class="ion-edit"></i></span>												
+												<?php endif; ?>
+											</h3>
 											<!-- <textarea name="" id="" cols="30" rows="10">Nullam semper erat arcu, ac tincidunt sem venenatis vel. Curabitur at dolor ac ligula fermentum euismod ac ullamcorper nulla. Integer blandit ultricies aliquam. Pellentesque quis dui varius, dapibus velit id, iaculis ipsum. Morbi ac eros feugiat, lacinia elit ut, elementum turpis. Curabitur justo sapien, tempus sit amet rutrum eu, commodo eu lacus. Morbi in ligula nibh. Maecenas ut mi at odio hendrerit eleif end tempor vitae augue. Fusce eget arcu et nibh dapibus maximus consectetur in est. Sed iaculis luctus nibh sed venenatis.</textarea> -->
-											<div>
-												<p>Nullam semper erat arcu, ac tincidunt sem venenatis vel. Curabitur at dolor ac ligula fermentum euismod ac ullamcorper nulla. Integer blandit ultricies aliquam. Pellentesque quis dui varius, dapibus velit id, iaculis ipsum. Morbi ac eros feugiat, lacinia elit ut, elementum turpis. Curabitur justo sapien, tempus sit amet rutrum eu, commodo eu lacus. Morbi in ligula nibh. Maecenas ut mi at odio hendrerit eleif end tempor vitae augue. Fusce eget arcu et nibh dapibus maximus consectetur in est. Sed iaculis luctus nibh sed venenatis.</p>
-											</div>
+											<!-- <p>Nullam semper erat arcu, ac tincidunt sem venenatis vel. Curabitur at dolor ac ligula fermentum euismod ac ullamcorper nulla. Integer blandit ultricies aliquam. Pellentesque quis dui varius, dapibus velit id, iaculis ipsum. Morbi ac eros feugiat, lacinia elit ut, elementum turpis. Curabitur justo sapien, tempus sit amet rutrum eu, commodo eu lacus. Morbi in ligula nibh. Maecenas ut mi at odio hendrerit eleif end tempor vitae augue. Fusce eget arcu et nibh dapibus maximus consectetur in est. Sed iaculis luctus nibh sed venenatis.</p> -->
+											<?php $fetch->getInformation('applicant_career_objective', 'objective_content'); ?>
 										</div> <!-- end .profile-about -->
 
 										<div class="divider"></div>
@@ -832,15 +840,15 @@
 											<div class="spacer-md"></div>
 											<div class="profile-experience flex space-between no-wrap no-column">
 												<div class="profile-experience-left">
-													<h5 class="profile-designation dark">UI/UX designer</h5>
-													<h5 class="profile-company dark">Banana inc.</h5>
-													<p class="small ultra-light">May 2015 - Present (1.5 years)</p>
+													<h5 class="profile-designation dark">Frontend Developer</h5>
+													<h5 class="profile-company dark">ABS-CBN Corp.</h5>
+													<p class="small ultra-light">May 2017 - Present (1.5 years)</p>
 													<p>Nulla molestie sed lorem non suscipit. Morbi imperdiet ex sit amet tortor faucibus ultricies. Fusce tincidunt elementum imperdiet.</p>
 													<h6 class="text-info show-new-experience-view">Edit &nbsp; [ <span><i class="ion-edit"></i></span> ]</h6>
 													<!-- projects-count -->
 												</div> <!-- end .profile-experience-left -->
 												<div class="profile-experience-right">
-													<img src="<?php echo ASSET_URL;?>assets/images/company-logo-big01.jpg" alt="company-logo" class="img-responsive">
+													<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/ABS-CBN_%282013%29.svg/1200px-ABS-CBN_%282013%29.svg.png" alt="company-logo" class="img-responsive" width="100">
 												</div> <!-- end .profile-experience-right -->
 											</div> <!-- end .profile-experience -->
 											<div class="spacer-md"></div>
@@ -851,14 +859,14 @@
 										<div class="profile-education-wrapper profile-section">
 											<h3 class="dark profile-title">Education<span><i class="ion-edit"></i></span></h4>											
 											<div class="profile-education">												
-												<h5 class="dark">Massachusetts Institute of Technology</h5>
+												<h5 class="dark">University of Caloocan City</h5>
 												<p>Bachelor of Computer Science</p>
 												<p class="ultra-light">2010-2014</p>
 											</div> <!-- end .profile-education -->
 											<div class="spacer-md"></div>											
 											<div class="profile-education">												
-												<h5 class="dark">School of Arts & Sciences of Stanford University</h5>
-												<p>Bachelor of Arts & Sciences</p>
+												<h5 class="dark">Navotas National High School</h5>
+												<!-- <p>Bachelor of Arts & Sciences</p> -->
 												<p class="ultra-light">2008-2012</p>
 											</div> <!-- end .profile-education -->
 										</div> <!-- end .profile-education-wrapper -->
@@ -877,7 +885,7 @@
 											</div> <!-- end .progress-wrapper -->
 											<div class="spacer-xs"></div>
 											<div class="progress-wrapper flex space-between items-center no-wrap">
-												<h6 class="progress-skill">WordPress</h6>											
+												<h6 class="progress-skill">PHP</h6>											
 												<div class="progress">													
 													<div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%;">
 													</div> <!-- end .progress-bar -->
@@ -886,7 +894,7 @@
 											</div> <!-- end .progress-wrapper -->
 											<div class="spacer-xs"></div>
 											<div class="progress-wrapper flex space-between items-center no-wrap">
-												<h6 class="progress-skill">PS</h6>											
+												<h6 class="progress-skill">NODEJS</h6>											
 												<div class="progress">													
 													<div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
 													</div> <!-- end .progress-bar -->
@@ -895,7 +903,7 @@
 											</div> <!-- end .progress-wrapper -->
 											<div class="spacer-xs"></div>
 											<div class="progress-wrapper flex space-between items-center no-wrap">
-												<h6 class="progress-skill">AI</h6>											
+												<h6 class="progress-skill">JAVASCRIPT</h6>											
 												<div class="progress">													
 													<div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width: 90%;">
 													</div> <!-- end .progress-bar -->

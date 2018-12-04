@@ -18,6 +18,12 @@
             include './pages/applicant/dashboard.php';
         });
 
+        /* (Applicant Profile Completion) route */
+        $router->get('/account/profile-completion', function () {
+            include './pages/applicant/dashboard.php';
+            // include './pages/applicant/profile-completion.php';
+        });
+
         /* (Find Job) route */ 
         $router->get('/find-job', function () {
             include './pages/find-job.php';

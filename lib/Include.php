@@ -13,7 +13,7 @@
                 $row = $result->fetch_assoc();
                 echo $row[$field];
             } else {
-                echo "null ".$sql;
+                echo null;
             }
         }
     }
