@@ -1,14 +1,13 @@
+<?php 
+    include './lib/Include.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
-	
-<!-- Mirrored from jobpress.icookcode.net/dev/candidate-dashboard.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 02 Dec 2018 14:59:27 GMT -->
 <head>
-
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>JobPress HTML template</title>
-
 		<!-- CSS -->
 		<!-- Bootstrap -->
 		<link href="<?php echo ASSET_URL;?>assets/css/bootstrap.min.css" rel="stylesheet">
@@ -25,10 +24,8 @@
 		<link href="<?php echo ASSET_URL;?>assets/css/tagsinput.css" rel="stylesheet">		
 		<!-- Style.css -->
 		<link href="<?php echo ASSET_URL;?>assets/css/style.css" rel="stylesheet">
-
 	</head>
 	<body>
-
 		<!-- Header -->
 		<header class="header">
 			<div class="container clearfix">
@@ -755,7 +752,7 @@
 												<div class="profile-contact flex items-center no-wrap no-column">
 													<h6 class="contact-location">Manhattan,<span>NYC, USA</span></h6>
 													<h6 class="contact-phone">(+01)-212-322-5732</h6>
-													<h6 class="contact-email">mark.anderson@gmail.com</h6>
+													<h6 class="contact-email"><?php $fetch->getInformation('user_account', 'email_address'); ?></h6>
 												</div> <!-- end .profile-contact -->
 												<div class="profile-contact flex items-center no-wrap no-column">
 													<h6 class="contact-location">20 yrs old,<span>June 06 1996</span></h6>
@@ -768,9 +765,9 @@
 										<div class="divider"></div>
 
 										<div class="profile-about profile-section">
-											<h3 class="dark profile-title">Career Objective<span><i class="ion-edit"></i></span></h3>
+											<h3 class="dark profile-title">Career Objective<span class="btn-edit-icon btn-edit-career"><i class="ion-edit"></i></span></h3>
 											<!-- <textarea name="" id="" cols="30" rows="10">Nullam semper erat arcu, ac tincidunt sem venenatis vel. Curabitur at dolor ac ligula fermentum euismod ac ullamcorper nulla. Integer blandit ultricies aliquam. Pellentesque quis dui varius, dapibus velit id, iaculis ipsum. Morbi ac eros feugiat, lacinia elit ut, elementum turpis. Curabitur justo sapien, tempus sit amet rutrum eu, commodo eu lacus. Morbi in ligula nibh. Maecenas ut mi at odio hendrerit eleif end tempor vitae augue. Fusce eget arcu et nibh dapibus maximus consectetur in est. Sed iaculis luctus nibh sed venenatis.</textarea> -->
-											<div contenteditable="true" style="outline:none;">
+											<div>
 												<p>Nullam semper erat arcu, ac tincidunt sem venenatis vel. Curabitur at dolor ac ligula fermentum euismod ac ullamcorper nulla. Integer blandit ultricies aliquam. Pellentesque quis dui varius, dapibus velit id, iaculis ipsum. Morbi ac eros feugiat, lacinia elit ut, elementum turpis. Curabitur justo sapien, tempus sit amet rutrum eu, commodo eu lacus. Morbi in ligula nibh. Maecenas ut mi at odio hendrerit eleif end tempor vitae augue. Fusce eget arcu et nibh dapibus maximus consectetur in est. Sed iaculis luctus nibh sed venenatis.</p>
 											</div>
 										</div> <!-- end .profile-about -->
@@ -778,32 +775,75 @@
 										<div class="divider"></div>
 
 										<div class="profile-experience-wrapper profile-section">
-											<h3 class="dark profile-title">Work experience<span><i class="ion-edit"></i></span></h3>
+											<h3 class="dark profile-title">
+													Work experience 
+													<span class="show-new-experience-view"><i class="ion-plus"></i></span>
+											</h3>
+											
+											<div class="new-experience-view hide">
+												<div class="form-fields-wrapper">
+													<h3 class="form-fields-title dark">Add new work experience</h3>
+
+													<div class="form-group-wrapper flex space-between items-center">
+														<div class="form-group">
+															<p class="label">Company Logo</p>
+															<input type="file" id="candidate-position" name="candidate-position" placeholder="">
+														</div> <!-- end .form-group -->
+														<div class="form-group">
+															<img src="<?php echo ASSET_URL;?>assets/images/company-logo-big01.jpg" alt="company-logo" class="img-responsive pull-right">															
+														</div> <!-- end .form-group -->
+													</div> <!-- end .form-group-wrapper -->
+
+
+													<div class="form-group-wrapper flex space-between items-center">
+														<div class="form-group">
+															<p class="label">Company Name</p>
+															<input type="text" id="candidate-position" name="candidate-position" placeholder="">
+														</div> <!-- end .form-group -->
+														<div class="form-group">
+															<p class="label">Position</p>
+															<input type="text" id="candidate-language" name="candidate-language" placeholder="">
+														</div> <!-- end .form-group -->
+													</div> <!-- end .form-group-wrapper -->
+													<div class="form-group-wrapper flex space-between items-center">
+														<div class="form-group">
+															<p class="label">Job Started</p>
+															<input type="date" id="candidate-job-type" name="candidate-job-type" placeholder="">
+														</div> <!-- end .form-group -->
+														<div class="form-group">
+															<p class="label">Job Ended</p>
+															<input type="date" id="candidate-job-location" name="candidate-job-location" placeholder="">
+														</div> <!-- end .form-group -->
+													</div> <!-- end .form-group-wrapper -->
+
+													<div class="form-group-wrapper">
+														<div class="form-group">
+															<p class="label">Job Description</p>
+															<textarea name="candidate-desc" id="candidate-desc" rows="6"></textarea>
+														</div> <!-- end .form-group -->
+													</div> <!-- end .form-group-wrapper -->
+
+												</div> <!-- end .form-fields-wrapper -->
+												<div class="button-wrapper text-center">
+													<button type="button" class="button g-plus-btn hide-new-experience-view">Cancel</button>
+													<button type="button" class="button">Save</button>
+												</div> <!-- end .button-wrapper -->	
+											</div>
+											<div class="spacer-md"></div>
 											<div class="profile-experience flex space-between no-wrap no-column">
 												<div class="profile-experience-left">
 													<h5 class="profile-designation dark">UI/UX designer</h5>
 													<h5 class="profile-company dark">Banana inc.</h5>
 													<p class="small ultra-light">May 2015 - Present (1.5 years)</p>
 													<p>Nulla molestie sed lorem non suscipit. Morbi imperdiet ex sit amet tortor faucibus ultricies. Fusce tincidunt elementum imperdiet.</p>
-													<h6 class="projects-count">4 projects</h6>
+													<h6 class="text-info show-new-experience-view">Edit &nbsp; [ <span><i class="ion-edit"></i></span> ]</h6>
+													<!-- projects-count -->
 												</div> <!-- end .profile-experience-left -->
 												<div class="profile-experience-right">
 													<img src="<?php echo ASSET_URL;?>assets/images/company-logo-big01.jpg" alt="company-logo" class="img-responsive">
 												</div> <!-- end .profile-experience-right -->
 											</div> <!-- end .profile-experience -->
 											<div class="spacer-md"></div>
-											<div class="profile-experience flex space-between no-wrap no-column">
-												<div class="profile-experience-left">
-													<h5 class="profile-designation dark">UI Designer</h5>
-													<h5 class="profile-company dark">Whale creative</h5>
-													<p class="small ultra-light">May 2013 - May 2015 (over 2 years)</p>
-													<p>Nulla molestie sed lorem non suscipit. Morbi imperdiet ex sit amet tortor faucibus ultricies. Fusce tincidunt elementum imperdiet.</p>
-													<h6 class="projects-count">4 projects</h6>
-												</div> <!-- end .profile-experience-left -->
-												<div class="profile-experience-right">
-													<img src="<?php echo ASSET_URL;?>assets/images/company-logo-big05.jpg" alt="company-logo" class="img-responsive">
-												</div> <!-- end .profile-experience-right -->
-											</div> <!-- end .profile-experience -->
 										</div> <!-- end .profile-experience-wrapper -->
 
 										<div class="divider"></div>
@@ -982,8 +1022,6 @@
 		<script src="<?php echo ASSET_URL;?>assets/js/jquery-3.1.1.min.js"></script>
 		<!-- Bootstrap -->
 		<script src="<?php echo ASSET_URL;?>assets/js/bootstrap.min.js"></script>
-		<!-- google maps -->
-		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAy-PboZ3O_A25CcJ9eoiSrKokTnWyAmt8"></script>
 		<!-- Owl Carousel -->
 		<script src="<?php echo ASSET_URL;?>assets/js/owl.carousel.min.js"></script>
 		<!-- Wow.js -->
@@ -1005,6 +1043,8 @@
 		<script src="<?php echo ASSET_URL;?>assets/js/jquery.magnific-popup.js"></script>
 		<!-- Scripts.js -->
 		<script src="<?php echo ASSET_URL;?>assets/js/scripts.js"></script>
+		<script src="<?php echo ASSET_URL;?>assets/js/functions.js"></script>
+		<script src="<?php echo ASSET_URL;?>assets/js/applicant.js"></script>
 
 	</body>
 

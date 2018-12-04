@@ -387,10 +387,11 @@
     // Custom 404 Handler
     $router->set404(function () {
         header($_SERVER['SERVER_PROTOCOL'] . ' 404 Not Found');
-        echo '404, page not found!';
+        // echo '<center>404, page not found! <br/><br/> <a href="'.SITE_URL.'">Back to home</a></center>';
+        echo '<script>location.href="'.SITE_URL.'";</script>';
     });
     // Before Router Middleware
     $router->before('GET', '/.*', function () {
-        header('X-Powered-By: bramus/router');
+        header('X-Powered-By: johnmark/alicante');
     });
 ?>

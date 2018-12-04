@@ -6395,3 +6395,14 @@ h2.job-post-success {
 		flex-basis: auto;
 	}
 }
+
+
+/* ==========================================================================
+  	Added CSS 
+   ========================================================================== */
+.show-new-experience-view {
+	cursor: pointer;
+}
+.show-new-experience-view:hover > .ion-edit{
+	color: #3c539a;
+}

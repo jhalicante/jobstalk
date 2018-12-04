@@ -1,7 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-	
-<!-- Mirrored from jobpress.icookcode.net/dev/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 02 Dec 2018 14:57:53 GMT -->
 <head>
 
 		<meta charset="utf-8">
@@ -67,37 +65,31 @@
 	            <div class="modal-content">
 	                <div class="popup-tabs">
 	                    <ul class="nav nav-tabs" id="myTab">
-	                        <li class=""><a data-toggle="tab" href="#login">login</a></li>
-	                        <li class="active"><a data-toggle="tab" href="#register">Register</a></li>
+	                        <li class="active"><a data-toggle="tab" href="#login">Sign In</a></li>
+	                        <li><a data-toggle="tab" href="#register">Sign Up</a></li>
 	                    </ul>
 	                </div> <!-- end .popup-tabs -->
 	                <div class="modal-body">
 	                    <div class="tab-content" id="myTabContent">
-	                        <div class="tab-pane fade" id="login">
+	                        <div class="tab-pane fade in active" id="login">
 	                            <form class="login-form">
-
+									<div class="form-group">
+										<p class="signin-error-message text-danger"></p>
+									</div>
 									<div class="form-group">
 									    <label for="InputEmail1">Your Email *</label>
-									    <input type="email" class="form-control" id="InputEmail1" placeholder="Enter your email">
+									    <input type="email" class="form-control signin-email-address" id="InputEmail1" placeholder="Enter your email">
 									</div>
 
 									<div class="form-group">
 									    <label for="InputPassword1">Password *</label>
-									    <input type="password" class="form-control" id="InputPassword1" placeholder="Password">
+									    <input type="password" class="form-control signin-password" id="InputPassword1" placeholder="Password">
 									</div>
-
-									<div class="checkbox flex space-between">
-										<div>
-											<input id="sigin-checkbox" type="checkbox">
-											<label for="sigin-checkbox">Remember me</label>
-										</div>
-									    <a href="#0">Lost password?</a>
-									</div> <!-- end .checkbox -->
-									<button type="button" class="button" data-dismiss="modal">Login</button>
+									<button type="button" class="button btn-signin">Sign In</button>
 	                            </form> <!-- end .login-form -->
 	                        </div> <!-- end login-tab-content -->
 
-	                        <div class="tab-pane fade active in" id="register">
+	                        <div class="tab-pane fade" id="register">
 	                            <form class="signup-form">
 									<div class="form-group">
 									    <label for="InputEmail1">Your Email *</label>
@@ -940,8 +932,9 @@
 		<script src="<?php echo ASSET_URL;?>assets/js/jquery.magnific-popup.js"></script>
 		<!-- Scripts.js -->
 		<script src="<?php echo ASSET_URL;?>assets/js/scripts.js"></script>
-		
+		<script src="<?php echo ASSET_URL;?>assets/js/functions.js"></script>
+		<script>
+			var api_url = '<?php echo API_URL; ?>';
+		</script>
 	</body>
-
-<!-- Mirrored from jobpress.icookcode.net/dev/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 02 Dec 2018 14:58:39 GMT -->
 </html>

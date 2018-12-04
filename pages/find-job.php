@@ -799,8 +799,6 @@
 		<script src="<?php echo ASSET_URL;?>assets/js/jquery.magnific-popup.js"></script>
 		<!-- Scripts.js -->
 		<script src="<?php echo ASSET_URL;?>assets/js/scripts.js"></script>
-
+		<script src="<?php echo ASSET_URL;?>assets/js/functions.js"></script>
 	</body>
-
-<!-- Mirrored from jobpress.icookcode.net/dev/jobs-listing.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 02 Dec 2018 14:59:22 GMT -->
 </html>
