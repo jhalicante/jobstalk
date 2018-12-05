@@ -33,16 +33,16 @@
 					<div class="left flex items-center no-column no-wrap">
 						<div class="logo"><a href=""><img src="<?php echo ASSET_URL;?>assets/images/logo.png" alt="JobPress" class="img-responsive"></a></div>	
 						<div class="job-search-form form-header">						
-							<form class="form-inline flex no-column no-wrap">
+							<form class="form-inline flex no-column no-wrap" method="GET" action="find-job">
 								<div class="form-group">
 									<div class="form-group-inner">
-										<input type="text" class="form-control" id="input-field-1" placeholder="Keywords">
+										<input type="text" class="form-control" name="query" id="input-field-1" placeholder="Keywords">
 										<i class="ion-ios-briefcase-outline"></i>
 									</div> <!-- end .form-group-inner -->
 								</div> <!-- end .form-group-inner -->
 								<div class="form-group">
 									<div class="form-group-inner">
-										<input type="text" class="form-control" id="input-field-2" placeholder="location">
+										<input type="text" class="form-control" name="location" id="input-field-2" placeholder="location">
 										<i class="ion-ios-location-outline"></i>
 									</div> <!-- end .form-group-inner -->
 								</div> <!-- end .form-group -->
@@ -791,51 +791,49 @@
 											<div class="new-experience-view hide">
 												<div class="form-fields-wrapper">
 													<h3 class="form-fields-title dark">Add new work experience</h3>
+													<form method="post" enctype="multipart/form-data" id="UploadMedia">
+														<div class="form-group-wrapper flex space-between items-center">
+															<div class="form-group">
+																<p class="label">Company Logo</p>
+																<input type="file" id="company_logo" name="company_logo" placeholder="">
+															</div> <!-- end .form-group -->
+															<div class="form-group">
+																<img src="<?php echo ASSET_URL;?>assets/images/company-logo-big01.jpg" alt="company-logo" class="img-responsive pull-right img-preview">															
+															</div> <!-- end .form-group -->
+														</div> <!-- end .form-group-wrapper -->
+														<div class="form-group-wrapper flex space-between items-center">
+															<div class="form-group">
+																<p class="label">Company Name</p>
+																<input type="text" class="company-title" name="company-title" placeholder="">
+															</div> <!-- end .form-group -->
+															<div class="form-group">
+																<p class="label">Position</p>
+																<input type="text" class="position" name="position" placeholder="">
+															</div> <!-- end .form-group -->
+														</div> <!-- end .form-group-wrapper -->
+														<div class="form-group-wrapper flex space-between items-center">
+															<div class="form-group">
+																<p class="label">Job Started</p>
+																<input type="date" class="job-started" name="job-started" placeholder="">
+															</div> <!-- end .form-group -->
+															<div class="form-group">
+																<p class="label">Job Ended</p>
+																<input type="date" class="job-ended" name="job-ended" placeholder="">
+															</div> <!-- end .form-group -->
+														</div> <!-- end .form-group-wrapper -->
 
-													<div class="form-group-wrapper flex space-between items-center">
-														<div class="form-group">
-															<p class="label">Company Logo</p>
-															<input type="file" id="candidate-position" name="candidate-position" placeholder="">
-														</div> <!-- end .form-group -->
-														<div class="form-group">
-															<img src="<?php echo ASSET_URL;?>assets/images/company-logo-big01.jpg" alt="company-logo" class="img-responsive pull-right">															
-														</div> <!-- end .form-group -->
-													</div> <!-- end .form-group-wrapper -->
-
-
-													<div class="form-group-wrapper flex space-between items-center">
-														<div class="form-group">
-															<p class="label">Company Name</p>
-															<input type="text" id="candidate-position" name="candidate-position" placeholder="">
-														</div> <!-- end .form-group -->
-														<div class="form-group">
-															<p class="label">Position</p>
-															<input type="text" id="candidate-language" name="candidate-language" placeholder="">
-														</div> <!-- end .form-group -->
-													</div> <!-- end .form-group-wrapper -->
-													<div class="form-group-wrapper flex space-between items-center">
-														<div class="form-group">
-															<p class="label">Job Started</p>
-															<input type="date" id="candidate-job-type" name="candidate-job-type" placeholder="">
-														</div> <!-- end .form-group -->
-														<div class="form-group">
-															<p class="label">Job Ended</p>
-															<input type="date" id="candidate-job-location" name="candidate-job-location" placeholder="">
-														</div> <!-- end .form-group -->
-													</div> <!-- end .form-group-wrapper -->
-
-													<div class="form-group-wrapper">
-														<div class="form-group">
-															<p class="label">Job Description</p>
-															<textarea name="candidate-desc" id="candidate-desc" rows="6"></textarea>
-														</div> <!-- end .form-group -->
-													</div> <!-- end .form-group-wrapper -->
-
-												</div> <!-- end .form-fields-wrapper -->
-												<div class="button-wrapper text-center">
-													<button type="button" class="button g-plus-btn hide-new-experience-view">Cancel</button>
-													<button type="button" class="button">Save</button>
-												</div> <!-- end .button-wrapper -->	
+														<div class="form-group-wrapper">
+															<div class="form-group">
+																<p class="label">Job Description</p>
+																<textarea name="job-desc" class="job-desc" rows="6"></textarea>
+															</div> <!-- end .form-group -->
+														</div> <!-- end .form-group-wrapper -->
+													</div> <!-- end .form-fields-wrapper -->
+													<div class="button-wrapper text-center">
+														<button type="button" class="button g-plus-btn hide-new-experience-view">Cancel</button>
+														<button type="submit" class="button btn-save-new-experiencex">Save</button>
+													</div> <!-- end .button-wrapper -->	
+												</form>
 											</div>
 											<div class="spacer-md"></div>
 											<div class="profile-experience flex space-between no-wrap no-column">
@@ -848,7 +846,7 @@
 													<!-- projects-count -->
 												</div> <!-- end .profile-experience-left -->
 												<div class="profile-experience-right">
-													<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/ABS-CBN_%282013%29.svg/1200px-ABS-CBN_%282013%29.svg.png" alt="company-logo" class="img-responsive" width="100">
+													<img src="<?php echo ASSET_URL;?>assets/images/company-logo-big01.jpg" alt="company-logo" class="img-responsive" width="100">
 												</div> <!-- end .profile-experience-right -->
 											</div> <!-- end .profile-experience -->
 											<div class="spacer-md"></div>
@@ -921,7 +919,7 @@
 			                            <form class="password-form">
 											<div class="form-group">
 											    <label for="InputEmail1">Old password<sup>*</sup></label>
-											    <input type="email" class="form-control" id="InputEmail1" placeholder="">
+											    <input type="email" class="form-control" id="InputPassword0" placeholder="">
 											</div>
 
 											<div class="form-group">
@@ -931,7 +929,7 @@
 
 											<div class="form-group">
 											    <label for="InputPassword1">Confirm New Password<sup>*</sup></label>
-											    <input type="password" class="form-control" id="InputPassword1" placeholder="">
+											    <input type="password" class="form-control" id="InputPassword2" placeholder="">
 											</div>											
 										</form> <!-- end .password-form -->
 										<div class="password-button-wrapper">
@@ -946,85 +944,7 @@
 				</div> <!-- end .container -->
 			</div> <!-- end .inner -->
 		</div> <!-- end .section -->
-
-		<!-- Footer -->
-		<div class="section footer transparent" style="background-image: url('<?php echo ASSET_URL;?>assets/images/background03.jpg');">
-			<div class="container">
-				<div class="top flex space-between items-center">
-					<img src="<?php echo ASSET_URL;?>assets/images/footer-logo.png" alt="footer-logo" class="img-responsive">
-					<ul class="list-unstyled footer-menu flex">
-						<li><a href="#0">Home</a></li>
-						<li><a href="#0">About</a></li>
-						<li><a href="#0">Browse Jobs</a></li>
-						<li><a href="#0">Browse candidates</a></li>
-						<li><a href="#0">Contact</a></li>
-					</ul> <!-- end .footer-menu -->				
-				</div> <!-- end .top -->
-				<div class="footer-widgets flex no-column space-between">					
-					<div class="widget">
-						<h6>About</h6>
-						<ul class="list-unstyled">
-							<li><a href="#0">Company</a></li>
-							<li><a href="#0">Our Partners</a></li>
-							<li><a href="#0">Blog</a></li>
-							<li><a href="#0">FAQ</a></li>
-							<li><a href="#0">Pricing</a></li>
-							<li><a href="#0">Help Center</a></li>
-							<li><a href="#0">Team</a></li>
-							<li><a href="#0">Contact Us</a></li>
-						</ul>
-					</div> <!-- end .widget -->
-					<div class="widget">
-						<h6>For candidates</h6>
-						<ul class="list-unstyled">
-							<li><a href="#0">Browse Jobs</a></li>
-							<li><a href="#0">Browse categories</a></li>
-							<li><a href="#0">Submit Resume</a></li>
-							<li><a href="#0">Candidate Dashboard</a></li>
-							<li><a href="#0">Job Alerts</a></li>
-							<li><a href="#0">My Bookmarks</a></li>
-						</ul>
-					</div> <!-- end .widget -->
-					<div class="widget">
-						<h6>For companies</h6>
-						<ul class="list-unstyled">
-							<li><a href="#0">Browse Candidates</a></li>
-							<li><a href="#0">Company Dashboard</a></li>
-							<li><a href="#0">Add A Job</a></li>
-							<li><a href="#0">Packages</a></li>
-						</ul>
-					</div> <!-- end .widget -->
-					<div class="widget">
-						<h6>Follow us</h6>
-						<ul class="list-unstyled social-icons flex no-column">
-							<li><a href="#0"><i class="ion-social-twitter"></i></a></li>
-							<li><a href="#0"><i class="ion-social-facebook"></i></a></li>
-							<li><a href="#0"><i class="ion-social-youtube"></i></a></li>
-							<li><a href="#0"><i class="ion-social-instagram"></i></a></li>
-							<li><a href="#0"><i class="ion-social-linkedin"></i></a></li>
-						</ul>				
-						<h6>Subscribe Us</h6>
-						<p>Morbi in ligula nibh. Maecenas ut mi at odio hendrerit eleifend tempor vitae augue.</p>
-	                    <form class="form-inline subscribe-form flex no-column no-wrap items-center">
-	                        <div class="form-group">
-	                        	<input type="text" class="form-control" placeholder="Your email">
-	                        </div> <!-- end .form-group -->
-	                        <button type="submit" class="button"><i class="ion-ios-arrow-thin-right"></i></button>
-	                  	</form>
-					</div> <!-- end .widget -->
-				</div> <!-- end .footer-widgets -->
-				<div class="bottom flex space-between items-center">
-					<p class="copyright-text small">&copy; 2017 <a href="#0">JobPress</a>. All Rights Reserved. Designed by <a href="#0">LeoStudo</a>.</p>
-					<ul class="list-unstyled copyright-menu flex no-column">
-						<li><a href="#0">Privacy policy</a></li>
-						<li><a href="#0">Terms of service</a></li>
-						<li><a href="#0">Conditions</a></li>
-					</ul> <!-- end .copyright-menu -->
-				</div> <!-- end .bottom -->
-			</div> <!-- end .container -->
-		</div> <!-- end .footer -->
-
-
+		<?php include './pages/footer.php'; ?>
 		<!-- Scripts -->
 		<!-- jQuery -->		
 		<script src="<?php echo ASSET_URL;?>assets/js/jquery-3.1.1.min.js"></script>
@@ -1049,11 +969,15 @@
 		<script src="<?php echo ASSET_URL;?>assets/js/imagesloaded.pkgd.min.js"></script>
 		<!-- Magnific-Popup -->
 		<script src="<?php echo ASSET_URL;?>assets/js/jquery.magnific-popup.js"></script>
+		<!-- SweetAlert -->
+		<script src="<?php echo ASSET_URL;?>assets/js/sweetalert.min.js"></script>
 		<!-- Scripts.js -->
 		<script src="<?php echo ASSET_URL;?>assets/js/scripts.js"></script>
 		<script src="<?php echo ASSET_URL;?>assets/js/functions.js"></script>
 		<script src="<?php echo ASSET_URL;?>assets/js/applicant.js"></script>
-
+		<script>
+			var api_url = '<?php echo API_URL; ?>';
+		</script>
 	</body>
 
 <!-- Mirrored from jobpress.icookcode.net/dev/candidate-dashboard.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 02 Dec 2018 14:59:28 GMT -->

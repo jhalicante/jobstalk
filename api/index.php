@@ -1,6 +1,6 @@
 <?php
 
-    header('Content-Type: application/json');
+    // header('Content-Type: application/json');
 
     // Included configs
     include '../lib/Router.php';
@@ -10,6 +10,7 @@
     include './SignIn.php';
     include './SignUp.php';
     include './ValidateData.php';
+    include './Applicant.php';
 
 
     // Included functions
@@ -31,10 +32,31 @@
         $signup->auth( $_GET['email_address'], $_GET['password'], $_GET['role'] );
     });
 
-    // Check if email is exists
+    // Check if email is exists route
     $router->get(API_VERSION.'/email-is-exists', function () {
         $validate = new ValidateData();
         $validate->emailIsExists( $_GET['email_address'] );
+    });
+
+
+    // Applicant 
+    // Add new work experience
+    $router->post(API_VERSION.'/add-work-experience', function () {
+        
+        // $applicant = new Applicant();
+        // $applicant->AddWorkExperience( 
+        //     $_FILES['file']['logo'],
+        //     $_POST['companyName'],
+        //     $_POST['position'],
+        //     $_POST['jobStarted'],
+        //     $_POST['jobEnd'],
+        //     $_POST['jobDescription']
+        // );
+        $filepath = "../assets/uploaded/ss.png";
+        $filetmp = $_FILES['company_logo']['tmp_name'];
+        move_uploaded_file($filetmp, $filepath);
+
+        echo "<pre>"; print_r($_FILES);echo "</pre>"; die; //this will show you the file transfered by form.
     });
 
     // Run router
