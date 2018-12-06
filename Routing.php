@@ -15,13 +15,11 @@
 
         /* (Applicant Dashboard) route */
         $router->get('/account', function () {
-            include './pages/applicant/dashboard.php';
-        });
-
-        /* (Applicant Profile Completion) route */
-        $router->get('/account/profile-completion', function () {
-            include './pages/applicant/dashboard.php';
-            // include './pages/applicant/profile-completion.php';
+            include './lib/Include.php';
+            if( $fetch->getInformation('applicant_personal_information', 'user_id') == null ) {
+                include './pages/applicant/profile-completion.php';
+            }
+            // include './pages/applicant/dashboard.php';
         });
 
         /* (Find Job) route */ 

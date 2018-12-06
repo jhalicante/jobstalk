@@ -52,7 +52,7 @@
         //     $_POST['jobEnd'],
         //     $_POST['jobDescription']
         // );
-        $filepath = "../assets/uploaded/ss.png";
+        $filepath = "../assets/uploaded/".GEN_UID.".png";
         $filetmp = $_FILES['company_logo']['tmp_name'];
         move_uploaded_file($filetmp, $filepath);
 

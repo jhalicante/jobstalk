@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Dec 04, 2018 at 09:22 AM
+-- Generation Time: Dec 06, 2018 at 11:08 AM
 -- Server version: 5.7.23
 -- PHP Version: 7.2.8
 
@@ -25,23 +25,6 @@ CREATE TABLE `applicant_applied_job` (
   `user_id` varchar(55) NOT NULL,
   `job_id` varchar(55) NOT NULL,
   `application_status` enum('approved','inprocess','rejected') NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `applicant_careers`
---
-
-CREATE TABLE `applicant_careers` (
-  `ID` bigint(20) UNSIGNED NOT NULL,
-  `user_id` varchar(55) NOT NULL,
-  `company_logo` text NOT NULL,
-  `company_name` varchar(150) NOT NULL,
-  `position` varchar(150) NOT NULL,
-  `job_start` varchar(30) NOT NULL,
-  `job_end` varchar(30) NOT NULL,
-  `description` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -82,6 +65,7 @@ CREATE TABLE `applicant_education` (
   `user_id` varchar(55) NOT NULL,
   `course` varchar(150) NOT NULL,
   `school_name` varchar(150) NOT NULL,
+  `school_address` text NOT NULL,
   `school_year_start` varchar(5) NOT NULL,
   `school_year_end` varchar(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -121,6 +105,24 @@ CREATE TABLE `applicant_skills` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `applicant_work_experience`
+--
+
+CREATE TABLE `applicant_work_experience` (
+  `ID` bigint(20) UNSIGNED NOT NULL,
+  `user_id` varchar(55) NOT NULL,
+  `company_logo` text NOT NULL,
+  `company_name` varchar(150) NOT NULL,
+  `position` varchar(150) NOT NULL,
+  `job_start` varchar(30) NOT NULL,
+  `job_end` varchar(30) NOT NULL,
+  `description` text NOT NULL,
+  `location` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `user_account`
 --
 
@@ -149,12 +151,6 @@ INSERT INTO `user_account` (`ID`, `user_id`, `email_address`, `password`, `role`
 -- Indexes for table `applicant_applied_job`
 --
 ALTER TABLE `applicant_applied_job`
-  ADD UNIQUE KEY `ID` (`ID`);
-
---
--- Indexes for table `applicant_careers`
---
-ALTER TABLE `applicant_careers`
   ADD UNIQUE KEY `ID` (`ID`);
 
 --
@@ -188,6 +184,12 @@ ALTER TABLE `applicant_skills`
   ADD UNIQUE KEY `ID` (`ID`);
 
 --
+-- Indexes for table `applicant_work_experience`
+--
+ALTER TABLE `applicant_work_experience`
+  ADD UNIQUE KEY `ID` (`ID`);
+
+--
 -- Indexes for table `user_account`
 --
 ALTER TABLE `user_account`
@@ -201,12 +203,6 @@ ALTER TABLE `user_account`
 -- AUTO_INCREMENT for table `applicant_applied_job`
 --
 ALTER TABLE `applicant_applied_job`
-  MODIFY `ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `applicant_careers`
---
-ALTER TABLE `applicant_careers`
   MODIFY `ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
@@ -237,6 +233,12 @@ ALTER TABLE `applicant_personal_information`
 -- AUTO_INCREMENT for table `applicant_skills`
 --
 ALTER TABLE `applicant_skills`
+  MODIFY `ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `applicant_work_experience`
+--
+ALTER TABLE `applicant_work_experience`
   MODIFY `ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --

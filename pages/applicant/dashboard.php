@@ -1,6 +1,3 @@
-<?php 
-    include './lib/Include.php';
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,50 +23,8 @@
 		<link href="<?php echo ASSET_URL;?>assets/css/style.css" rel="stylesheet">
 	</head>
 	<body>
-		<!-- Header -->
-		<header class="header">
-			<div class="container clearfix">
-				<div class="header-inner has-form flex space-between items-center">
-					<div class="left flex items-center no-column no-wrap">
-						<div class="logo"><a href=""><img src="<?php echo ASSET_URL;?>assets/images/logo.png" alt="JobPress" class="img-responsive"></a></div>	
-						<div class="job-search-form form-header">						
-							<form class="form-inline flex no-column no-wrap" method="GET" action="find-job">
-								<div class="form-group">
-									<div class="form-group-inner">
-										<input type="text" class="form-control" name="query" id="input-field-1" placeholder="Keywords">
-										<i class="ion-ios-briefcase-outline"></i>
-									</div> <!-- end .form-group-inner -->
-								</div> <!-- end .form-group-inner -->
-								<div class="form-group">
-									<div class="form-group-inner">
-										<input type="text" class="form-control" name="location" id="input-field-2" placeholder="location">
-										<i class="ion-ios-location-outline"></i>
-									</div> <!-- end .form-group-inner -->
-								</div> <!-- end .form-group -->
-								<button type="submit" class="button"><i class="ion-ios-search-strong"></i></button>
-							</form>
-						</div> <!-- end .job-search-form -->
-					</div> <!-- end .left -->				
-					<div class="right flex space-between no-column items-center">
-						<div class="navigation" style="visibility:hidden;">
-							<nav class="main-nav">
-								<ul class="list-unstyled">
-									<li class="active"><a href="#">Home</a></li>
-									<li><a href="index.html">Home</a></li>
-								</ul>
-							</nav> <!-- end .main-nav -->
-							<a href="#" class="responsive-menu-open"><i class="ion-navicon"></i></a>
-						</div> <!-- end .navigation -->
-						<div class="account-info-top flex items-center no-column">
-							<a href="#0" class="profile-button flex space-between items-center no-column no-wrap">
-								<span>Hi! </span> John Mark 
-								<img src="<?php echo ASSET_URL;?>assets/images/avatar/m.png" alt="avatar" class="img-responsive">
-							</a>
-						</div> <!-- end .account-info-top -->
-					</div> <!-- end .right -->
-				</div> <!-- end .header-inner -->
-			</div> <!-- end .container -->
-		</header> <!-- end .header -->
+
+		<?php include './pages/applicante/header.php'; ?>
 
 		<!-- Responsive Menu -->
 		<div class="responsive-menu">
@@ -945,39 +900,6 @@
 			</div> <!-- end .inner -->
 		</div> <!-- end .section -->
 		<?php include './pages/footer.php'; ?>
-		<!-- Scripts -->
-		<!-- jQuery -->		
-		<script src="<?php echo ASSET_URL;?>assets/js/jquery-3.1.1.min.js"></script>
-		<!-- Bootstrap -->
-		<script src="<?php echo ASSET_URL;?>assets/js/bootstrap.min.js"></script>
-		<!-- Owl Carousel -->
-		<script src="<?php echo ASSET_URL;?>assets/js/owl.carousel.min.js"></script>
-		<!-- Wow.js -->
-		<script src="<?php echo ASSET_URL;?>assets/js/wow.min.js"></script>
-		<!-- Typehead.js -->
-		<script src="<?php echo ASSET_URL;?>assets/js/typehead.js"></script>
-		<!-- Tagsinput.js -->
-		<script src="<?php echo ASSET_URL;?>assets/js/tagsinput.js"></script>
-		<!-- Bootstrap Select -->
-		<script src="<?php echo ASSET_URL;?>assets/js/bootstrap-select.js"></script>		
-		<!-- Waypoints -->
-		<script src="<?php echo ASSET_URL;?>assets/js/jquery.waypoints.min.js"></script>
-		<!-- CountTo -->
-		<script src="<?php echo ASSET_URL;?>assets/js/jquery.countTo.js"></script>
-		<!-- Isotope -->
-		<script src="<?php echo ASSET_URL;?>assets/js/isotope.pkgd.min.js"></script>
-		<script src="<?php echo ASSET_URL;?>assets/js/imagesloaded.pkgd.min.js"></script>
-		<!-- Magnific-Popup -->
-		<script src="<?php echo ASSET_URL;?>assets/js/jquery.magnific-popup.js"></script>
-		<!-- SweetAlert -->
-		<script src="<?php echo ASSET_URL;?>assets/js/sweetalert.min.js"></script>
-		<!-- Scripts.js -->
-		<script src="<?php echo ASSET_URL;?>assets/js/scripts.js"></script>
-		<script src="<?php echo ASSET_URL;?>assets/js/functions.js"></script>
-		<script src="<?php echo ASSET_URL;?>assets/js/applicant.js"></script>
-		<script>
-			var api_url = '<?php echo API_URL; ?>';
-		</script>
 	</body>
 
 <!-- Mirrored from jobpress.icookcode.net/dev/candidate-dashboard.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 02 Dec 2018 14:59:28 GMT -->
