@@ -1,17 +1,17 @@
 <?php
 
-    // header('Content-Type: application/json');
+    header('Content-Type: application/json');
 
     // Included configs
     include '../lib/Router.php';
     include '../lib/Validation.php';
     include '../lib/Config.php';
     include '../lib/Cipher.php';
-    include './SignIn.php';
-    include './SignUp.php';
     include './ValidateData.php';
-    include './Applicant.php';
-
+        
+    include './model/SignIn.php';
+    include './model/SignUp.php';
+    include './model/Applicant.php';
 
     // Included functions
 
@@ -23,7 +23,7 @@
     // Sign In Route
     $router->post(API_VERSION.'/signin', function () {
         $signin = new SignIn();
-        $signin->auth( $_POST['email_address'], $_POST['password'] );
+        $signin->auth($_POST);
     });
 
     // Sign Up Route
@@ -39,25 +39,31 @@
     });
 
 
-    // Applicant 
-    // Add new work experience
-    $router->post(API_VERSION.'/add-work-experience', function () {
-        
-        // $applicant = new Applicant();
-        // $applicant->AddWorkExperience( 
-        //     $_FILES['file']['logo'],
-        //     $_POST['companyName'],
-        //     $_POST['position'],
-        //     $_POST['jobStarted'],
-        //     $_POST['jobEnd'],
-        //     $_POST['jobDescription']
-        // );
-        $filepath = "../assets/uploaded/".GEN_UID.".png";
-        $filetmp = $_FILES['company_logo']['tmp_name'];
-        move_uploaded_file($filetmp, $filepath);
-
-        echo "<pre>"; print_r($_FILES);echo "</pre>"; die; //this will show you the file transfered by form.
+    /***********************************
+     * APPLICANT FUNCTIONS API
+     * *********************************/ 
+    // Add Personal Information
+    $router->post(API_VERSION.'/add-personal-information', function () {
+        $applicant = new Applicant();
+        $applicant->addPersonalInformation($_POST, $_FILES);
     });
+    // Add Educational Background
+    $router->post(API_VERSION.'/add-educational-background', function () {
+        $applicant = new Applicant();
+        $applicant->addEducationalBackground($_POST);
+    });
+    // Add Work Experience
+    $router->post(API_VERSION.'/add-work-experience', function () {
+        $applicant = new Applicant();
+        $applicant->addWorkExperience($_POST, $_FILES);
+    });
+    // Add Work Experience
+    $router->post(API_VERSION.'/add-contact-details', function () {
+        $applicant = new Applicant();
+        $applicant->addContactDetails($_POST);
+    });
+
+    
 
     // Run router
     $router->run();

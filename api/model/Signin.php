@@ -1,15 +1,15 @@
 <?php
     class SignIn
     {
-        public function auth(string $email, string $password)
+        public function auth($post)
         {
             global $conn;
             global $validation;
             global $cipher;
             
-            if( $validation->validateEmail($email) ) 
+            if( $validation->validateEmail($post['email_address']) ) 
             {
-                $sql = "SELECT `user_id`,`email_address`,`password`,`role`,`status` FROM `user_account` WHERE `email_address`='".$email."' AND `password`='".$password."' ";
+                $sql = "SELECT `user_id`,`email_address`,`password`,`role`,`status` FROM `user_account` WHERE `email_address`='".$post['email_address']."' AND `password`='".$post['password']."' ";
                 $result = $conn->query($sql);
                 
                 if ($result->num_rows > 0) {

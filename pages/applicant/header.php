@@ -34,8 +34,8 @@
 						</div> <!-- end .navigation -->
 						<div class="account-info-top flex items-center no-column">
 							<a href="#0" class="profile-button flex space-between items-center no-column no-wrap">
-								<span>Hi! </span> John Mark 
-								<img src="<?php echo ASSET_URL;?>assets/images/avatar/m.png" alt="avatar" class="img-responsive">
+								<span>Hi! </span> <?php echo $fetch->getInformation('applicant_personal_information', 'fname').' '.$fetch->getInformation('applicant_personal_information', 'lname'); ?>
+								<img src="<?php echo ASSET_URL;?>assets/uploaded/<?php echo $fetch->getInformation('applicant_personal_information', 'profile_picture'); ?>" alt="avatar" class="img-responsive">
 							</a>
 						</div> <!-- end .account-info-top -->
 					</div> <!-- end .right -->

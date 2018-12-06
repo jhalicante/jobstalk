@@ -1,8 +1,13 @@
 # JobsTalk
 An online job career for individual
 
-# Applicant
-Sign In = ok
-Sign Up = 
-Applicant Page(Resume, ) =
-Job Search =
+### To do
+*Sign Up = 
+
+*Post Job Employer
+
+*Job Search =
+
+*Apply Job =
+
+*Admin Approval of All Users =

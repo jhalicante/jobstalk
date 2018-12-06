@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 4.7.7
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:8889
--- Generation Time: Dec 06, 2018 at 11:08 AM
--- Server version: 5.7.23
--- PHP Version: 7.2.8
+-- Host: localhost
+-- Generation Time: Dec 06, 2018 at 06:47 PM
+-- Server version: 5.6.38
+-- PHP Version: 7.2.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -39,6 +39,13 @@ CREATE TABLE `applicant_career_objective` (
   `objective_content` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `applicant_career_objective`
+--
+
+INSERT INTO `applicant_career_objective` (`ID`, `user_id`, `objective_content`) VALUES
+(1, '120420181543890908', 'To build a long-term career in [specific industry] with opportunities for career growth.\r\nTo enhance my educational and professional skills in a stable and dynamic workplace.\r\nTo solve problems in a creative and effective manner in a challenging position.');
+
 -- --------------------------------------------------------
 
 --
@@ -54,6 +61,13 @@ CREATE TABLE `applicant_contact_information` (
   `brgy` varchar(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `applicant_contact_information`
+--
+
+INSERT INTO `applicant_contact_information` (`ID`, `user_id`, `email_address`, `phone_no`, `municipality`, `brgy`) VALUES
+(1, '120420181543890908', 'jma.itsprogrammer@gmail.com', '09278977591', 'Caloocan City', '28');
+
 -- --------------------------------------------------------
 
 --
@@ -63,12 +77,27 @@ CREATE TABLE `applicant_contact_information` (
 CREATE TABLE `applicant_education` (
   `ID` bigint(20) UNSIGNED NOT NULL,
   `user_id` varchar(55) NOT NULL,
-  `course` varchar(150) NOT NULL,
-  `school_name` varchar(150) NOT NULL,
-  `school_address` text NOT NULL,
-  `school_year_start` varchar(5) NOT NULL,
-  `school_year_end` varchar(5) NOT NULL
+  `ter_sname` varchar(150) NOT NULL,
+  `ter_course` varchar(150) NOT NULL,
+  `ter_ys` varchar(10) NOT NULL,
+  `ter_ye` varchar(10) NOT NULL,
+  `ter_ad` text NOT NULL,
+  `sec_sname` varchar(150) NOT NULL,
+  `sec_ys` varchar(10) NOT NULL,
+  `sec_ye` varchar(10) NOT NULL,
+  `sec_ad` text NOT NULL,
+  `pri_sname` varchar(150) NOT NULL,
+  `pri_ys` varchar(10) NOT NULL,
+  `pri_ye` varchar(10) NOT NULL,
+  `pri_ad` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `applicant_education`
+--
+
+INSERT INTO `applicant_education` (`ID`, `user_id`, `ter_sname`, `ter_course`, `ter_ys`, `ter_ye`, `ter_ad`, `sec_sname`, `sec_ys`, `sec_ye`, `sec_ad`, `pri_sname`, `pri_ys`, `pri_ye`, `pri_ad`) VALUES
+(1, '120420181543890908', 'University of Caloocan City', 'Bachelor of Science in Computer Science', '2017-06-06', '1996-06-06', 'Biglang awa st Caloocan City', 'Navotas National High School', '1996-06-06', '1996-06-06', 'Taliba st Navotas City', 'Awayon Elementary School', '1996-06-06', '1996-06-01', 'Mercedes National High School');
 
 -- --------------------------------------------------------
 
@@ -86,8 +115,16 @@ CREATE TABLE `applicant_personal_information` (
   `gender` enum('male','female') NOT NULL,
   `nationality` varchar(25) NOT NULL,
   `civil_status` varchar(25) NOT NULL,
-  `language` varchar(150) NOT NULL
+  `language` varchar(150) NOT NULL,
+  `profile_picture` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `applicant_personal_information`
+--
+
+INSERT INTO `applicant_personal_information` (`ID`, `user_id`, `fname`, `mname`, `lname`, `bday`, `gender`, `nationality`, `civil_status`, `language`, `profile_picture`) VALUES
+(1, '120420181543890908', 'Johnmark', 'Yugo', 'Alicante', '1996-06-06', 'male', 'Filipino', 'Single', 'Filipino,English', '120620181544119464.jpg');
 
 -- --------------------------------------------------------
 
@@ -119,6 +156,14 @@ CREATE TABLE `applicant_work_experience` (
   `description` text NOT NULL,
   `location` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `applicant_work_experience`
+--
+
+INSERT INTO `applicant_work_experience` (`ID`, `user_id`, `company_logo`, `company_name`, `position`, `job_start`, `job_end`, `description`, `location`) VALUES
+(1, '120420181543890908', '120620181544119770.jpg', 'ABS-CBN Corporation', 'Frontend Developer', '2017-05-29', '2018-12-07', 'tasdadas', 'Mother Ignacia '),
+(2, '120420181543890908', '120620181544119770.jpg', 'CodeEric Corporation', 'Fullstack Developer', '2017-05-29', '2018-07-29', 'tasdadas', 'Mother Ignacia ');
 
 -- --------------------------------------------------------
 
@@ -209,25 +254,25 @@ ALTER TABLE `applicant_applied_job`
 -- AUTO_INCREMENT for table `applicant_career_objective`
 --
 ALTER TABLE `applicant_career_objective`
-  MODIFY `ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `applicant_contact_information`
 --
 ALTER TABLE `applicant_contact_information`
-  MODIFY `ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `applicant_education`
 --
 ALTER TABLE `applicant_education`
-  MODIFY `ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `applicant_personal_information`
 --
 ALTER TABLE `applicant_personal_information`
-  MODIFY `ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `applicant_skills`
@@ -239,7 +284,7 @@ ALTER TABLE `applicant_skills`
 -- AUTO_INCREMENT for table `applicant_work_experience`
 --
 ALTER TABLE `applicant_work_experience`
-  MODIFY `ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `user_account`

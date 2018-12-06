@@ -11,9 +11,9 @@
 
             if ($result->num_rows > 0) {
                 $row = $result->fetch_assoc();
-                echo $row[$field];
+                return $row[$field];
             } else {
-                echo null;
+                return null;
             }
         }
     }
