@@ -27,8 +27,8 @@
 							<a href="#" class="responsive-menu-open"><i class="ion-navicon"></i></a>
 						</div> <!-- end .navigation -->
 						<div class="button-group-merged flex no-column">
-							<a href="post-job-form.html" class="button">Home</a>
-							<a href="<?php echo SITE_URL; ?>" class="button">Sign Out</a>
+							<a href="../" class="button">Home</a>
+							<a href="<?php echo SITE_URL; ?>" class="button signout">Sign Out</a>
 						</div> <!-- end .button-group-merged -->
 					</div> <!-- end .right -->
 				</div> <!-- end .header-inner -->
@@ -130,7 +130,7 @@
 									<div class="divider"></div>
 
 									<div class="button-wrapper text-center">
-										<button type="button" class="button previous">Back</button>
+										<!-- <button type="button" class="button previous">Back</button> -->
 										<button type="submit" class="button save-personal-information">Save to proceed</button>
 										<button type="button" class="button next hide"></button>
 									</div> <!-- end .button-wrapper -->			    		

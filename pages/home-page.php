@@ -78,32 +78,32 @@
 	                        </div> <!-- end login-tab-content -->
 
 	                        <div class="tab-pane fade" id="register">
-	                            <form class="signup-form">
+								<form method="post" enctype="multipart/form-data" id="signup-form" class="signup-form">
 									<div class="form-group">
-									    <label for="InputEmail1">Your Email *</label>
-									    <input type="email" class="form-control" id="InputEmail2" placeholder="Enter your email">
+										<p class="signup-error-message text-danger"></p>
 									</div>
-
+									<div class="form-group"> 
+									    <label for="InputEmail1">Your Email *</label>
+									    <input type="email" class="form-control" name="email-address" placeholder="Enter your email address" require="">
+									</div>
 									<div class="form-group">
 									    <label for="InputPassword1">Password *</label>
-									    <input type="password" class="form-control" id="InputPassword2" placeholder="Password">
+									    <input type="password" class="form-control" name="password" placeholder="Enter Password">
 									</div>
-
 									<div class="form-group">
 									    <label for="InputPassword2">Confirm Password *</label>
-									    <input type="password" class="form-control" id="InputPassword3" placeholder="Password">
+									    <input type="password" class="form-control" name="confirm-password" placeholder="Enter Confirm-Password">
 									</div>
-
 									<div class="form-group">
 									    <label for="select1">Register as:</label>
 									    <div class="select-wrapper">
-									        <select class="form-control" id="select1">
-										        <option>Candidate</option>
-										        <option>Company</option>
+									        <select class="form-control" name="role">
+										        <option value="applicant">Applicant</option>
+										        <option value="employer">Employer</option>
 										    </select>
 									    </div> <!-- end .select-wrapper -->								    
 									</div>
-									<button type="button" class="button" data-dismiss="modal">Sign Up</button>
+									<button type="type" class="button">Sign Up</button>
 	                            </form> <!-- end .signup-form -->
 	                        </div> <!-- end signup-tab-content -->
 	                    </div> <!-- end .mytabcontent -->

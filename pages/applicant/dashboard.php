@@ -50,7 +50,7 @@
 							    <li><a data-toggle="pill" href="#job-alerts">Job Alerts</a></li>
 							    <li class="nav-divider"></li>
 							    <li><a data-toggle="pill" href="#change-password">Change Password</a></li>
-							    <li><a data-toggle="pill" href="#signout">Sign Out</a></li>
+							    <li><a class="signout" href="#">Sign Out</a></li>
 							</ul>
 						</div> <!-- end .left-sidebar-menu -->
 						

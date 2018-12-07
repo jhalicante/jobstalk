@@ -18,6 +18,37 @@
                     $('.signin-error-message').html('Some fields are empty');
                 }
             });
+
+            $('#signup-form').submit(function(e){
+                e.preventDefault();
+                var formData = new FormData($(this)[0]);       
+                console.log(formData);
+                $.ajax({
+                    type : 'POST',
+                    url : api_url+'/signup',
+                    data : formData,
+                    contentType : false,
+                    cache       : false,
+                    processData : false,
+                    success : function(res) {
+                        console.log(res);
+                        if(res.errorCode ==0) {
+                            auth.setCookie('user_id', res.response.user_id, 7);
+                            auth.setCookie('role', res.response.role, 7);
+                            location.href='account';
+                        } 
+                        else {
+                            $('.signup-error-message').html(res.errorMsg);
+                        }
+                    }
+                });
+            });
+
+            $(document).on('click','.signout', function(e) {
+                auth.eraseCookie('user_id');
+                auth.eraseCookie('role');
+                location.reload();
+            });
         },
         signin : function(email_address, password) {
             $.ajax({
@@ -69,8 +100,11 @@
             }
             return null;
         },
-        eraseCookie: function(name) {   
-            document.cookie = name+'=; Max-Age=-99999999;';  
+        eraseCookie: function(name) {
+            // document.cookie = name+'=; Max-Age=-99999999;';  
+            // alert(name);
+            document.cookie = name +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+            // document.cookie = name + '=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
         }
         
     }

@@ -12,6 +12,7 @@
     include './model/SignIn.php';
     include './model/SignUp.php';
     include './model/Applicant.php';
+    include './model/Employer.php';
 
     // Included functions
 
@@ -27,9 +28,16 @@
     });
 
     // Sign Up Route
-    $router->get(API_VERSION.'/signup', function () {
+    $router->post(API_VERSION.'/signup', function () {
         $signup = new SignUp();
-        $signup->auth( $_GET['email_address'], $_GET['password'], $_GET['role'] );
+        if($_POST['password'] != $_POST['confirm-password']) 
+        {
+            echo json_encode(array('errorCode'=>304,'errorMsg'=>'Password does not match'));
+        } 
+        else {
+            $signup->auth( $_POST );
+        }
+        
     });
 
     // Check if email is exists route
@@ -62,6 +70,17 @@
         $applicant = new Applicant();
         $applicant->addContactDetails($_POST);
     });
+
+
+    /***********************************
+     * EMPLOYER FUNCTIONS API
+     * *********************************/ 
+    // Add Personal Information
+    $router->post(API_VERSION.'/employer/add-personal-information', function () {
+        $employer = new Employer();
+        $employer->addProfileInformation($_POST, $_FILES);
+    });
+    
 
     
 

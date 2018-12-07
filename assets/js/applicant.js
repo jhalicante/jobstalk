@@ -1,7 +1,7 @@
 (function ($) {
     "use strict";
 
-    var app = {
+    var applicant = {
         init : function() {
             this.eventListener();
         },
@@ -11,7 +11,7 @@
 
             // Work Experience
             $(document).on('click', '.btn-edit-career', function(e) {
-                app.updateCareerObjective(objective_content);
+                applicant.updateCareerObjective(objective_content);
             });
             $(document).on('click', '.show-new-experience-view', function(e){
                 $('.new-experience-view').removeClass('hide');
@@ -247,6 +247,6 @@
         },
     }
 
-    app.init();
+    applicant.init();
 
 })(jQuery)

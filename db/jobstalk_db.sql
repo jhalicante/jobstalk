@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.7
+-- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Dec 06, 2018 at 06:47 PM
--- Server version: 5.6.38
--- PHP Version: 7.2.1
+-- Host: localhost:8889
+-- Generation Time: Dec 07, 2018 at 10:05 AM
+-- Server version: 5.7.23
+-- PHP Version: 7.2.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -13,19 +13,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `jobstalk_db`
 --
-
--- --------------------------------------------------------
-
---
--- Table structure for table `applicant_applied_job`
---
-
-CREATE TABLE `applicant_applied_job` (
-  `ID` bigint(20) UNSIGNED NOT NULL,
-  `user_id` varchar(55) NOT NULL,
-  `job_id` varchar(55) NOT NULL,
-  `application_status` enum('approved','inprocess','rejected') NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -168,6 +155,66 @@ INSERT INTO `applicant_work_experience` (`ID`, `user_id`, `company_logo`, `compa
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `applied_job`
+--
+
+CREATE TABLE `applied_job` (
+  `ID` bigint(20) UNSIGNED NOT NULL,
+  `user_id` varchar(55) NOT NULL,
+  `job_id` varchar(55) NOT NULL,
+  `application_status` enum('for-interview','in-process','rejected','completed','hired') NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `employer_information`
+--
+
+CREATE TABLE `employer_information` (
+  `ID` bigint(20) UNSIGNED NOT NULL,
+  `user_id` varchar(55) NOT NULL,
+  `name` varchar(55) NOT NULL,
+  `short_desc` text NOT NULL,
+  `about` text NOT NULL,
+  `address` text NOT NULL,
+  `contact_no` varchar(15) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `logo` text NOT NULL,
+  `website` varchar(150) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `employer_information`
+--
+
+INSERT INTO `employer_information` (`ID`, `user_id`, `name`, `short_desc`, `about`, `address`, `contact_no`, `email`, `logo`, `website`) VALUES
+(4, '120720181544166943', 'Test Com Incorporation', 'Commission on Higher Education (CHED) - Region 4B Regional Office', 'With HTML you can create your own Website.\r\n\r\nThis tutorial teaches you everything about HTML.\r\n\r\nHTML is easy to learn - You will enjoy it.\r\n\r\n', '6th Floor, Asiatrust Bank Building, Quezon Avenue, Quezon City, 1100 Metro Manila', '09278977592', 'testcom@gmail.com', '120720181544171097.png', 'testcom.com');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `employer_job_posted`
+--
+
+CREATE TABLE `employer_job_posted` (
+  `ID` bigint(20) UNSIGNED NOT NULL,
+  `user_id` varchar(55) NOT NULL,
+  `job_id` varchar(55) NOT NULL,
+  `com_name` varchar(50) NOT NULL,
+  `com_logo` varchar(100) NOT NULL,
+  `com_address` text NOT NULL,
+  `position` text NOT NULL,
+  `type` enum('part-time','full-time','internship') NOT NULL,
+  `industry` varchar(100) NOT NULL,
+  `description` text NOT NULL,
+  `requirements` text NOT NULL,
+  `status` enum('completed','pending','canceled','approved') NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `user_account`
 --
 
@@ -186,17 +233,12 @@ CREATE TABLE `user_account` (
 
 INSERT INTO `user_account` (`ID`, `user_id`, `email_address`, `password`, `role`, `status`) VALUES
 (1, 'asd', 'tests@gmail.com', '1234567890', 'applicant', 'pending'),
-(2, '120420181543890908', 'test@gmail.com', '1234567890', 'applicant', 'pending');
+(2, '120420181543890908', 'test@gmail.com', '1234567890', 'applicant', 'pending'),
+(7, '120720181544166943', 'test12@gmail.com', '123', 'employer', 'pending');
 
 --
 -- Indexes for dumped tables
 --
-
---
--- Indexes for table `applicant_applied_job`
---
-ALTER TABLE `applicant_applied_job`
-  ADD UNIQUE KEY `ID` (`ID`);
 
 --
 -- Indexes for table `applicant_career_objective`
@@ -235,6 +277,24 @@ ALTER TABLE `applicant_work_experience`
   ADD UNIQUE KEY `ID` (`ID`);
 
 --
+-- Indexes for table `applied_job`
+--
+ALTER TABLE `applied_job`
+  ADD UNIQUE KEY `ID` (`ID`);
+
+--
+-- Indexes for table `employer_information`
+--
+ALTER TABLE `employer_information`
+  ADD UNIQUE KEY `ID` (`ID`);
+
+--
+-- Indexes for table `employer_job_posted`
+--
+ALTER TABLE `employer_job_posted`
+  ADD UNIQUE KEY `ID` (`ID`);
+
+--
 -- Indexes for table `user_account`
 --
 ALTER TABLE `user_account`
@@ -243,12 +303,6 @@ ALTER TABLE `user_account`
 --
 -- AUTO_INCREMENT for dumped tables
 --
-
---
--- AUTO_INCREMENT for table `applicant_applied_job`
---
-ALTER TABLE `applicant_applied_job`
-  MODIFY `ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `applicant_career_objective`
@@ -287,7 +341,25 @@ ALTER TABLE `applicant_work_experience`
   MODIFY `ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
+-- AUTO_INCREMENT for table `applied_job`
+--
+ALTER TABLE `applied_job`
+  MODIFY `ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `employer_information`
+--
+ALTER TABLE `employer_information`
+  MODIFY `ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `employer_job_posted`
+--
+ALTER TABLE `employer_job_posted`
+  MODIFY `ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `user_account`
 --
 ALTER TABLE `user_account`
-  MODIFY `ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;

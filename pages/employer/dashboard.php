@@ -29,71 +29,7 @@
 	</head>
 	<body>
 
-		<!-- Header -->
-		<header class="header">
-			<div class="container clearfix">
-				<div class="header-inner flex space-between items-center">
-					<div class="left">
-						<div class="logo"><a href="index.html"><img src="<?php echo ASSET_URL;?>assets/images/logo.png" alt="JobPress" class="img-responsive"></a></div>	
-					</div> <!-- end .left -->				
-					<div class="right flex space-between no-column items-center">
-						<div class="navigation">
-							<nav class="main-nav">
-								<ul class="list-unstyled">
-									<li class="active"><a href="index.html">Home</a></li>
-									<li><a href="about.html">About</a></li>
-									<li class="menu-item-has-children">
-										<a href="candidates-listing.html">Candidates</a>
-										<ul>
-											<li><a href="candidates-listing.html">Browse Candidates</a></li>
-											<li><a href="companies-listing.html">Browse Companies</a></li>
-											<li><a href="jobs-listing.html">Jobs Listing</a></li>
-											<li><a href="job-details.html">Job Details</a></li>
-											<li><a href="categories.html">Job Categories</a></li>
-											<li><a href="post-resume-form.html">Post a Resume</a></li>
-											<li><a href="candidate-dashboard.html">Candidate Dashboard</a></li>
-										</ul>									
-									</li>
-									<li class="menu-item-has-children">
-										<a href="companies-listing.html">Companies</a>
-										<ul>
-											<li><a href="companies-listing.html">Browse Companies</a></li>
-											<li><a href="post-job-form.html">Post a job</a></li>
-											<li><a href="employer-dashboard.html">Employer Dashboard</a></li>
-										</ul>
-									</li>								
-									<li class="menu-item-has-children">
-										<a href="blog-standard.html">Blog</a>
-										<ul>
-											<li><a href="blog-standard.html">Blog Standard</a></li>
-											<li><a href="blog-grid-full-width.html">Blog Grid Full Width</a></li>
-											<li><a href="blog-masonry-full-width.html">Blog Masonry Full Width</a></li>
-											<li><a href="blog-list.html">Blog List</a></li>
-											<li><a href="blog-single-fullwidth-image.html">Blog Single Image</a></li>
-											<li><a href="blog-single-fullwidth-video.html">Blog Single Video</a></li>
-											<li><a href="blog-single-with-sidebar.html">Blog Single Sidebar</a></li>
-										</ul>
-									</li>
-									<li class="menu-item-has-children">
-										<a href="#0">Pages</a>
-										<ul>
-											<li><a href="help.html">Help Tabs</a></li>
-											<li><a href="contact-us-full-width.html">Contact Us</a></li>
-											<li><a href="pricing-plans.html">Pricing plans</a></li>
-										</ul>
-									</li>
-								</ul>
-							</nav> <!-- end .main-nav -->
-							<a href="#" class="responsive-menu-open"><i class="ion-navicon"></i></a>
-						</div> <!-- end .navigation -->
-						<div class="account-info-top flex items-center no-column">
-							<a href="#0" class="notification-icon"><i class="ion-android-notifications"></i></a>
-							<a href="#0" class="profile-button flex space-between items-center no-column no-wrap"><span>Hi!</span>Mark <img src="<?php echo ASSET_URL;?>assets/images/avatar01.jpg" alt="avatar" class="img-responsive"></a>
-						</div> <!-- end .account-info-top -->
-					</div> <!-- end .right -->
-				</div> <!-- end .header-inner -->
-			</div> <!-- end .container -->
-		</header> <!-- end .header -->
+		<?php include './pages/employer/header.php'; ?>
 		
 		<!-- Responsive Menu -->
 		<div class="responsive-menu">
@@ -101,20 +37,7 @@
 			<nav class="responsive-nav"></nav> <!-- end .responsive-nav -->
 		</div> <!-- end .responsive-menu -->
 
-		<!-- Breadcrumb Bar -->
-		<div class="section breadcrumb-bar solid-blue-bg">
-			<div class="inner">
-				<div class="container">
-					<div class="breadcrumb-menu flex items-center no-column">
-						<img src="<?php echo ASSET_URL;?>assets/images/company-logo-big01.jpg" alt="company-logo" class="img-responsive">
-						<div class="breadcrumb-info-dashboard">
-							<h2>Banana inc.</h2>
-							<h4>Cupertino, CA, USA</h4>
-						</div> <!-- end .candidate-info -->
-					</div> <!-- end .breadcrumb-menu -->
-				</div> <!-- end .container -->
-			</div> <!-- end .inner -->
-		</div> <!-- end .section -->
+		<?php if($fetch->getInformation('user_account', 'status') != 'verified') { include './pages/lib/pending-notice-popup.php'; } ?>
 
 		<!-- Employer Dashboard -->
 		<div class="section employer-dashboard-content solid-light-grey-bg">
@@ -125,8 +48,8 @@
 						<div class="left-sidebar-menu">							
 							<ul class="nav nav-pills nav-stacked">
 								<li class="heading">Manage account</li>
-							    <li><a data-toggle="pill" href="#profile">My Profile</a></li>
-							    <li class="active"><a data-toggle="pill" href="#favorite-candidates">Favorite Candidates</a></li>
+							    <li class="active"><a data-toggle="pill" href="#profile">My Profile</a></li>
+							    <li><a data-toggle="pill" href="#favorite-candidates">Favorite Candidates</a></li>
 							    <li class="notification-link flex space-between items-center no-column no-wrap"><a data-toggle="pill" href="#notifications-employer">Notifications</a> <span class="notification-count">2</span></li>
 							    <li><a data-toggle="pill" href="#packages">Packages</a></li>
 							    <li class="nav-divider"></li>
@@ -142,7 +65,7 @@
 						<div class="right-side-content">
 							<div class="tab-content employer-dashboard">
 
-							    <div id="favorite-candidates" class="tab-pane fade in active">
+							    <div id="favorite-candidates" class="tab-pane fade in">
 							        <h3 class="tab-pane-title">Favorite Candidates</h3>
 							        <div class="favorite-candidates-list-wrapper">
 
@@ -393,8 +316,6 @@
 									</div> <!-- end .jobpress-custom-pager -->	
 
 							    </div> <!-- end #favorite-candidates-tab -->
-
-
 
 							    <div id="manage-applications-employer" class="tab-pane fade in">
 							        <h3 class="tab-pane-title">Manage applications</h3>
@@ -1083,26 +1004,23 @@
 									</div> <!-- end .jobpress-custom-pager -->							        
 							    </div> <!-- end #notifications-tab -->
 
-							    <div id="profile" class="tab-pane fade in">
+							    <div id="profile" class="tab-pane fade in active">
 							    	<div class="profile-badge"><h6>Profile</h6></div>
 							        <div class="profile-wrapper">
 
 										<div class="profile-info profile-section flex no-column no-wrap">
 											<div class="profile-picture">
-												<img src="<?php echo ASSET_URL;?>assets/images/company-logo-jumbo01.jpg" alt="company-logo" class="img-responsive">
+												<img src="<?php echo ASSET_URL;?>assets/uploaded/<?php echo $fetch->getInformation('employer_information', 'logo'); ?>" alt="company-logo" class="img-responsive" width="150" height="150">
 											</div> <!-- end .user-picture -->
 											<div class="profile-meta">
-												<h4 class="dark">Banana inc.</h4>
-												<p>Cupertino, CA, USA</p>
+												<h4 class="dark"><?php echo $fetch->getInformation('employer_information', 'name'); ?></h4>
+												<p><?php echo $fetch->getInformation('employer_information', 'address'); ?></p>
 												<div class="profile-contact flex items-center no-wrap no-column">													
-													<h6 class="contact-phone">(+01)-212-322-5732</h6>
-													<h6 class="contact-email">info@banana.com</h6>
+													<h6 class="contact-phone"><?php echo $fetch->getInformation('employer_information', 'contact_no'); ?></h6>
+													<h6 class="contact-email"><?php echo $fetch->getInformation('employer_information', 'email'); ?></h6>
+													<h6 class="contact-email"><?php echo '<a href="'.$fetch->getInformation('employer_information', 'website').'">Website</a>'; ?></h6>
 												</div> <!-- end .profile-contact -->
-												<ul class="list-unstyled social-icons flex no-column">
-													<li><a href="#0"><i class="ion-social-twitter"></i></a></li>
-													<li><a href="#0"><i class="ion-social-facebook"></i></a></li>
-													<li><a href="#0"><i class="ion-social-instagram"></i></a></li>
-												</ul> <!-- end .social-icons -->
+												<span><?php echo $fetch->getInformation('employer_information', 'address'); ?></span>
 											</div> <!-- end .profile-meta -->
 										</div> <!-- end .profile-info -->
 
@@ -1110,8 +1028,7 @@
 
 										<div class="profile-about profile-section">
 											<h3 class="dark profile-title">About company<span><i class="ion-edit"></i></span></h3>
-											<p>Nullam semper erat arcu, ac tincidunt sem venenatis vel. Curabitur at dolor ac ligula fermentum euismod ac ullamcorper nulla. Integer blandit ultricies aliquam. Pellentesque quis dui varius, dapibus velit id, iaculis ipsum. Morbi ac eros feugiat, lacinia elit ut, elementum turpis. Curabitur justo sapien, tempus sit amet rutrum eu, commodo eu lacus. Morbi in ligula nibh.<br><br>Donec eget nibh non nibh varius varius a vitae dolor. Ut ornare mollis lacus, non fringilla magna egestas mattis. Sed iaculis tortor magna, at tincidunt mi imperdiet in. Cras semper massa blandit quam varius, tincidunt imperdiet tellus accumsan. Vestibulum sagittis justo leo, bibendum ullamcorper arcu bibendum vitae. Integer convallis neque imperdiet orci consequat consequat.<br><br>Phasellus at feugiat diam. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Etiam eu velit cursus, tempor ipsum in, tempus lectus. Nullam tempus nisi id nisl luctus, non tempor justo molestie.					
-											</p>
+											<p><?php echo $fetch->getInformation('employer_information', 'about'); ?></p>
 										</div> <!-- end .profile-about -->
 
 										<div class="divider"></div>
@@ -1174,7 +1091,10 @@
 				</div> <!-- end .container -->
 			</div> <!-- end .inner -->
 		</div> <!-- end .section -->
+
+		
 		<?php include './pages/footer.php'; ?>
+
 		<!-- Scripts -->
 		<!-- jQuery -->		
 		<script src="<?php echo ASSET_URL;?>assets/js/jquery-3.1.1.min.js"></script>
@@ -1203,7 +1123,13 @@
 		<script src="<?php echo ASSET_URL;?>assets/js/jquery.magnific-popup.js"></script>
 		<!-- Scripts.js -->
 		<script src="<?php echo ASSET_URL;?>assets/js/scripts.js"></script>
-
+		<?php if($fetch->getInformation('user_account', 'status') == 'pending') {?>
+			<script>
+				setTimeout(() => {
+					$('#pending-notice-popup').modal('show');
+				}, 1500);
+			</script>
+		<?php } ?>
 	</body>
 
 <!-- Mirrored from jobpress.icookcode.net/dev/employer-dashboard.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 02 Dec 2018 14:59:31 GMT -->

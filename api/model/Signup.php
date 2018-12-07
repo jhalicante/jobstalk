@@ -1,28 +1,28 @@
 <?php
     class SignUp
     {
-        public function auth(string $email_address, string $password, string $role)
+        public function auth($post)
         {
             global $conn;
             global $validation;
             global $cipher;
             
-            if( $validation->validateEmail($email_address) )
+            if( $validation->validateEmail($post['email-address']) )
             {
                 $sql = "SELECT `email_address` 
                         FROM `user_account` 
-                        WHERE `email_address`='".$email_address."' ";
+                        WHERE `email_address`='".$post["email-address"]."' ";
 
                 $result = $conn->query($sql);
                 
                 // Check if email is not exists then saved form data
-                if ($result->num_rows <= 1) 
-                { 
+                if ($result->num_rows <= 0) 
+                {
                     $row = $result->fetch_assoc();
 
 
                     $sql = "INSERT INTO `user_account`(`ID`, `user_id`, `email_address`, `password`, `role`, `status`) 
-                            VALUES (null,'".GEN_UID."','".$email_address."','".$password."','".$role."','pending')";
+                            VALUES (null,'".GEN_UID."','".$post["email-address"]."','".$post["password"]."','".$post["role"]."','pending')";
 
                     if ($conn->query($sql) === TRUE) 
                     {
@@ -31,9 +31,9 @@
                             'errorCode'=>0,
                             'successMsg'=>'Successfully registered',
                             'response'=>array(
-                                'uid_token'=> $cipher->encrypt(GEN_UID),
-                                'role_token'=> $cipher->encrypt($role),
-                                'email_address'=> $email_address
+                                'user_id'=> GEN_UID,
+                                'role'=> $post['role'],
+                                'email_address'=> $post['email-address']
                             )
                         ));
                     } 
