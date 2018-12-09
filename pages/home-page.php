@@ -29,8 +29,8 @@
 						</div> <!-- end .navigation -->
 						<div class="button-group-merged flex no-column">
 							<?php if ( !empty($_COOKIE['user_id']) ) { ?>
-								<a href="find-job" class="button">Find a Job</a>
 								<a href="account" class="button">My Account</a>
+								<a href="#" class="button signout">Sign Out</a>
 							<?php } else { ?>
 								<a href="post-job-form.html" class="button">Post a Job</a>
 								<a href="#register" class="button" data-toggle="modal" data-target=".bs-modal-sm">Sign Up</a>
@@ -709,93 +709,7 @@
 				</div> <!-- end .container -->
 			</div> <!-- end .inner -->
 		</div> <!-- end .section -->
-
-		<!-- Latest News Section -->
-		<div class="section Latest-news-section">
-			<div class="inner">
-				<div class="container">
-					<div class="section-top-content flex items-center">
-						<h1>Latest News</h1>
-						<a href="blog-list.html">View all news<i class="ion-ios-arrow-thin-right"></i></a>
-					</div> <!-- end .section-top-content -->
-					<div class="news-grid">
-						<div class="news-grid-row flex space-between">
-							<div class="news-item">
-								<img src="<?php echo ASSET_URL;?>assets/images/news-grid01.jpg" alt="news-thumbnail" class="img-responsive">
-								<div class="news-content">
-									<div class="news-meta flex no-column">
-										<h6><a href="#0" class="news-author">Nancy watson</a></h6>
-										<h6 class="publish-date">20.02.2017</h6>
-										<h6><a href="#0" class="comment-count">5 comments</a></h6>
-									</div> <!-- end .news-meta -->
-									<h3 class="news-title">Tips to write an impressive resume online for beginner</h3>
-									<p class="news-excerpt">Morbi ac eros feugiat, lacinia elit ut, elementum turpis. Curabitur justo sapien tempus.</p>
-									<a href="blog-single-fullwidth-image.html" class="button">Read More</a>
-								</div> <!-- end .news-content -->
-							</div> <!-- end .news-item -->
-							<div class="news-item">
-								<img src="<?php echo ASSET_URL;?>assets/images/news-grid02.jpg" alt="news-thumbnail" class="img-responsive">
-								<div class="news-content">
-									<div class="news-meta flex no-column">
-										<h6><a href="#0" class="news-author">Nancy watson</a></h6>
-										<h6 class="publish-date">20.02.2017</h6>
-										<h6><a href="#0" class="comment-count">5 comments</a></h6>
-									</div> <!-- end .news-meta -->
-									<h3 class="news-title">Let's explore 5 cool new features in JobPress theme</h3>
-									<p class="news-excerpt">Morbi ac eros feugiat, lacinia elit ut, elementum turpis. Curabitur justo sapien tempus.</p>
-									<a href="blog-single-fullwidth-image.html" class="button">Read More</a>
-								</div> <!-- end .news-content -->
-							</div> <!-- end .news-item -->
-							<div class="news-item">
-								<img src="<?php echo ASSET_URL;?>assets/images/news-grid03.jpg" alt="news-thumbnail" class="img-responsive">
-								<div class="news-content">
-									<div class="news-meta flex no-column">
-										<h6><a href="#0" class="news-author">Nancy watson</a></h6>
-										<h6 class="publish-date">20.02.2017</h6>
-										<h6><a href="#0" class="comment-count">5 comments</a></h6>
-									</div> <!-- end .news-meta -->
-									<h3 class="news-title">How to convince recuiters and get your dream job</h3>
-									<p class="news-excerpt">Morbi ac eros feugiat, lacinia elit ut, elementum turpis. Curabitur justo sapien tempus.</p>
-									<a href="blog-single-fullwidth-image.html" class="button">Read More</a>
-								</div> <!-- end .news-content -->
-							</div> <!-- end .news-item -->
-						</div>  <!-- end .news-grid-row -->						
-					</div> <!-- end .news-grid -->
-				</div> <!-- end .container -->	
-			</div> <!-- end .inner -->
-		</div> <!-- end .section -->
-
-		<!-- Clients Section -->
-		<div class="section clients-section solid-grey-bg">
-			<div class="inner">
-				<div class="container">
-					<h1 class="section-title">Clients & Partners</h1>
-					<div class="logo-grid">
-						<div class="logo-grid-row flex space-between">
-							<div class="logo-item flex">
-								<img src="<?php echo ASSET_URL;?>assets/images/client-logo01.png" alt="client-company-logo" class="img-responsive self-center">
-							</div> <!-- end .logo-item -->
-							<div class="logo-item flex">
-								<img src="<?php echo ASSET_URL;?>assets/images/client-logo02.png" alt="client-company-logo" class="img-responsive self-center">
-							</div> <!-- end .logo-item -->
-							<div class="logo-item flex">
-								<img src="<?php echo ASSET_URL;?>assets/images/client-logo03.png" alt="client-company-logo" class="img-responsive self-center">
-							</div> <!-- end .logo-item -->							
-							<div class="logo-item flex">
-								<img src="<?php echo ASSET_URL;?>assets/images/client-logo04.png" alt="client-company-logo" class="img-responsive self-center">
-							</div> <!-- end .logo-item -->
-							<div class="logo-item flex">
-								<img src="<?php echo ASSET_URL;?>assets/images/client-logo05.png" alt="client-company-logo" class="img-responsive self-center">
-							</div> <!-- end .logo-item -->							
-							<div class="logo-item flex">
-								<img src="<?php echo ASSET_URL;?>assets/images/client-logo06.png" alt="client-company-logo" class="img-responsive self-center">
-							</div> <!-- end .logo-item -->
-						</div> <!-- end .logo-grid-row -->
-					</div> <!-- end .logo-grid -->
-				</div> <!-- end .container -->
-			</div> <!-- end .inner -->
-		</div> <!-- end .section -->
-
+ 
 		<!-- CTA App Section -->
 		<div class="section cta-app-section solid-blue-bg">
 			<div class="inner">
@@ -803,11 +717,10 @@
 					<div class="cta-app-section-inner flex space-between items-center">
 						<div class="left">
 							<h2 class="light">Don't want to miss a thing?</h2>
-							<p class="large">Just go to<span>AppStore</span>&<span>Google Play</span>to download<span>JobPress Mini</span></p>		
 						</div> <!-- end .left -->
 						<div class="button-group flex no-column">
-							<a href="#0" class="button white">Google Play</a>
-							<a href="#0" class="button white">Apple Store</a>
+							<!-- <a href="#0" class="button white">Google Play</a>
+							<a href="#0" class="button white">Apple Store</a> -->
 						</div> <!-- end .button-group -->
 					</div> <!-- end .cta-app-section-inner -->
 				</div> <!-- end .container -->

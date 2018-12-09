@@ -15,10 +15,7 @@
                 if ($result->num_rows > 0) {
                     $row = $result->fetch_assoc();
 
-                    if($row['status'] == 'blocked') {
-                        echo json_encode(array('errorCode'=>304,'errorMsg'=>'Your account has been blocked by admin. <br/>Report this to the admin for the immediate resolve for your account.'));
-                    } 
-                    else {
+                    if($row['status'] == 'approved') {
                         echo json_encode(array(
                             'errorCode'=>0,
                             'response'=>array(
@@ -27,6 +24,9 @@
                                 'email_address'=> $row['email_address']
                             )
                         ));
+                    } 
+                    else {
+                        echo json_encode(array('errorCode'=>304,'errorMsg'=>'Your account has been '.$row['status'].' by admin. <br/>Raise this to the admin for the immediate resolve for your account.'));
                     }
 
                 } else {

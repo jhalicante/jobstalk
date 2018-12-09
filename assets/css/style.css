@@ -48,8 +48,19 @@
 
 /* ============== Typography ============== */
 
-@import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700');
-@import url('https://fonts.googleapis.com/css?family=Lato:100,300,400,500');
+/* @import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700');
+@import url('https://fonts.googleapis.com/css?family=Lato:100,300,400,500'); */
+/* Montserrat Font Face */
+@font-face {
+    font-family: Montserrat;
+    src: url('../fonts/Montserrat/Montserrat-Regular.ttf');
+} 
+/* Lato Font Face */
+@font-face {
+    font-family: Lato;
+    src: url('../fonts/Lato/Lato-Regular.ttf');
+}
+
 body {
 	font-family: 'Montserrat', sans-serif;
 	font-weight: 400;
@@ -2038,7 +2049,8 @@ select::-ms-expand {
     color: #627199;
 }
 .login-signup-modal input:not([type=submit]):not([type=file]):not([type=checkbox]):not([type=radio]), select, textarea {
-    background: #f8f8f8;
+	/* background: #f8f8f8; */
+	background: rgba(248, 248, 248, 0);
     border: 1px solid #ededed;
     -webkit-box-shadow: none;
     box-shadow: none;
@@ -6405,4 +6417,80 @@ h2.job-post-success {
 }
 .show-new-experience-view:hover > .ion-edit{
 	color: #3c539a;
+}
+#print-employer-table tbody tr th,td {
+	/* background: red; */
+	font-size: 0.8em !important;
+}
+#print-employer-table tbody tr th {
+	text-align: center;
+}
+.dataTables_filter label input {
+	border: 1px solid #999;
+	border-radius: 25px;
+	height: 30px !important;
+}
+.table.dataTable.no-footer {
+	border-bottom: 1px solid #f0f3fb !important;
+}
+.dt-buttons {
+	margin-left: 20px;
+}
+.buttons-print {
+	border-radius: 25px !important;
+	margin-top: 5px !important;
+	background: #003cd4 !important;
+
+	font-size: 9px;
+    padding: 5px 9px;
+    line-height: 11px;
+
+	font-size: 0.8em !important;
+    font-weight: 700;
+    line-height: 14px;
+    display: inline-block;
+    position: relative;
+    outline: none !important;
+    color: #fff !important;
+    border: none !important;
+    text-align: center;
+    overflow: hidden;
+    padding: 9px 21px;
+    -webkit-transition: .3s;
+    -o-transition: .3s;
+    transition: .3s;
+    border-radius: 50px;
+    text-transform: capitalize;
+    -webkit-box-shadow: 0px 0.9px 0.4px 0.2px rgba(116, 135, 183, 0.8);
+    box-shadow: 0px 0.9px 0.4px 0.2px rgba(116, 135, 183, 0.8);
+    z-index: 1;
+}
+/* .paginate_button  */
+.current {
+	background: #f1f1f1 !important;
+    border: none !important;
+}
+.dt-print-view {
+	margin-left: 10px;
+	margin-right: 10px;
+}
+.dt-print-view h1 {
+	text-align: center;
+	font-size: 1em !important;
+}
+.dropdown-menu .bs-searchbox input:focus {
+	border: 1px solid #ccc !important;
+	height: 40px !important;
+	background:  hsla(0, 0%, 62%, 0.09) !important;
+}
+.dropdown-menu .bs-searchbox input {
+	height: 40px !important;
+	background:  hsla(0, 0%, 62%, 0.09) !important;
+}
+.dropdown-menu .open {
+	width: 0 !important;
+	max-height: 145px !important;
+	overflow: auto !important;
+	min-height: 50px !important;
+	min-width: 400px !important;
 }

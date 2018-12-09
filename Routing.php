@@ -46,17 +46,8 @@
         else if(USER_ROLE == 'admin'){
             /* (Admin Dashboard) route */
             $router->get('/account', function () {
-                include './lib/Include.php';
-
-                if( $fetch->getInformation('applicant_personal_information', 'user_id') == null OR
-                    $fetch->getInformation('applicant_education', 'user_id') == null OR
-                    $fetch->getInformation('applicant_work_experience', 'user_id') == null OR
-                    $fetch->getInformation('applicant_contact_information', 'user_id') == null ) {
-                    include './pages/applicant/profile-completion.php';
-                } 
-                else {
-                    include './pages/applicant/dashboard.php';
-                }
+                include './lib/Include.php'; 
+                include './pages/admin/dashboard.php';
             });
         }
 

@@ -13,6 +13,7 @@
     include './model/SignUp.php';
     include './model/Applicant.php';
     include './model/Employer.php';
+    include './model/Admin.php';
 
     // Included functions
 
@@ -79,6 +80,41 @@
     $router->post(API_VERSION.'/employer/add-personal-information', function () {
         $employer = new Employer();
         $employer->addProfileInformation($_POST, $_FILES);
+    });
+    // Add Job
+    $router->post(API_VERSION.'/employer/add-job', function () {
+        $employer = new Employer();
+        $employer->addJob($_POST, $_FILES);
+    });
+    // Get Job Information
+    $router->post(API_VERSION.'/employer/get-job-information', function () {
+        $employer = new Employer();
+        $employer->getJobInformation($_POST);
+    });
+    // Get Job Candidates Applient
+    $router->post(API_VERSION.'/employer/get-job-candidates-applied', function () {
+        $employer = new Employer();
+        $employer->getCandidatesApplied($_POST); 
+    }); 
+    // Add Placement Report
+    $router->post(API_VERSION.'/employer/add-placement-report', function () {
+        $employer = new Employer();
+        $employer->addPlacementReport($_POST);
+        // echo json_encode($_POST);
+    });
+
+    
+
+    
+
+
+    /***********************************
+     * ADMIN FUNCTIONS API
+     * *********************************/ 
+    // Add Personal Information
+    $router->post(API_VERSION.'/admin/approved-user', function () {
+        $admin = new Admin();
+        $admin->approvedUser($_POST);
     });
     
 

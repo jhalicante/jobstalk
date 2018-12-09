@@ -26,8 +26,8 @@
 						<div class="navigation" style="visibility:hidden;">
 							<nav class="main-nav">
 								<ul class="list-unstyled">
-									<li class="active"><a href="#">Home</a></li>
-									<li><a href="index.html">Home</a></li>
+									<li class="active"><a href="<?php echo SITE_URL;?>">Home</a></li>
+									<li class="active"><a href="<?php echo SITE_URL;?>account">My Account</a></li>
 								</ul>
 							</nav> <!-- end .main-nav -->
 							<a href="#" class="responsive-menu-open"><i class="ion-navicon"></i></a>

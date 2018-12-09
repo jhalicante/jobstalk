@@ -49,7 +49,6 @@
 								<li><a data-toggle="pill" href="#manage-applications">Manage Applications</a></li>
 							    <li><a data-toggle="pill" href="#job-alerts">Job Alerts</a></li>
 							    <li class="nav-divider"></li>
-							    <li><a data-toggle="pill" href="#change-password">Change Password</a></li>
 							    <li><a class="signout" href="#">Sign Out</a></li>
 							</ul>
 						</div> <!-- end .left-sidebar-menu -->
@@ -898,31 +897,6 @@
 
 							        </div> <!-- end .profile-wrapper -->						        
 							    </div> <!-- end #resume-tab -->
-
-							    <div id="change-password" class="tab-pane fade in">							    	
-							        <div class="password-form-wrapper">	
-							        	<h3 class="dark">Change Password</h3>									
-			                            <form class="password-form">
-											<div class="form-group">
-											    <label for="InputEmail1">Old password<sup>*</sup></label>
-											    <input type="email" class="form-control" id="InputPassword0" placeholder="">
-											</div>
-
-											<div class="form-group">
-											    <label for="InputPassword1">New Password<sup>*</sup></label>
-											    <input type="password" class="form-control" id="InputPassword1" placeholder="">
-											</div>
-
-											<div class="form-group">
-											    <label for="InputPassword1">Confirm New Password<sup>*</sup></label>
-											    <input type="password" class="form-control" id="InputPassword2" placeholder="">
-											</div>											
-										</form> <!-- end .password-form -->
-										<div class="password-button-wrapper">
-												<button type="submit" class="button">Save change</button>
-										</div> <!-- end .password-button-wrapper -->
-							        </div> <!-- end .password-form-wrapper -->						        
-							    </div> <!-- end #change-password-tab -->
 
 							</div> <!-- end .candidate-dashboard -->
 						</div> <!-- end .right-side-content -->

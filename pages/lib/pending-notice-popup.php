@@ -7,7 +7,10 @@
 						<h4 class="modal-title text-primary">Pending Notice</h4>
 					</div>
 	                <div class="modal-body">
-						<p>Your account is pending. <br>Please wait until the administrator verified you account.</p>
+						<p class="text-center">
+							Your account is pending. <br>Please wait until the administrator verified you account.
+							<a href="<?php echo SITE_URL; ?>" class="text-center">Back to Home</a>
+						</p>
 	                </div> <!-- end .modal-body -->
 	            </div> <!-- end .modal-content -->
 	        </div> <!-- end .modal-dialog -->
