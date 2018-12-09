@@ -164,7 +164,15 @@
 											<div class="form-group">
 												<p class="label">Course<sup>*</sup></p>
 												<!-- <textarea name="" id="" cols="30" rows="10"></textarea> -->
-												<input type="text" name="ter_course" placeholder="" required="">
+												<!-- <input type="text" name="ter_course" placeholder="" required=""> -->
+												<select name="required_course" class="form-control" required="" data-live-search="true">
+													<?php 
+														global $conn;
+														$sql = "SELECT * FROM `course_lists`";
+														$result = $conn->query($sql);
+														if ($result->num_rows > 0) { while($row = $result->fetch_assoc()) { echo '<option value="'.$row['course_id'].'">'.$row['name'].'</option>'; } }
+													?>
+												</select>
 											</div> <!-- end .form-group -->
 										</div> <!-- end .form-group-wrapper -->
 										<div class="form-group-wrapper flex space-between items-center">

@@ -1,21 +1,5 @@
 # JobsTalk
-An online job career for individual
+An online job career for individual.
 
 ### To do
-*Sign Up = 
-
-*Post Job Employer
-
-*Job Search =
-
-*Apply Job =
-
-*Admin Approval of All Users =
-
-
-### Admin
-Employers Table 
-    Active Employers
-    InActive Employers
-Applicants
-Accounts
+*Find-Job = dapat may lalabas agad na job result kahit wala pang natatype

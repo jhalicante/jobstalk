@@ -168,9 +168,9 @@
                     type : 'POST',
                     url : api_url+'/employer/add-personal-information',
                     data : formData,
-                    contentType : false,
-                    cache       : false,
-                    processData : false,
+                        contentType : false,
+                        cache       : false,
+                        processData : false,
                     success : function(res) {
                         console.log('res ',res);
                         if(res.errorCode == 0) {
@@ -212,11 +212,11 @@
                     processData : false,
                     success : function(res) {
                         console.log('res ',res);
-                        if(res.errorCode == 0) {
-                            location.href='?active-tab=jobslist-tab';
-                        } else {
-                            swal("Profile Completion", res.errorMsg, "error");                            
-                        }
+                        // if(res.errorCode == 0) {
+                        //     location.href='?active-tab=jobslist-tab';
+                        // } else {
+                        //     swal("Profile Completion", res.errorMsg, "error");                            
+                        // }
                     }
                 });
             });

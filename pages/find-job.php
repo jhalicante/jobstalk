@@ -6,7 +6,7 @@
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>JobPress HTML template</title>
+		<title><?php echo SITE_NAME; ?> - Find Job</title>
 		<!-- CSS -->
 		<!-- Bootstrap -->
 		<link href="<?php echo ASSET_URL;?>assets/css/bootstrap.min.css" rel="stylesheet">
@@ -23,6 +23,10 @@
 		<link href="<?php echo ASSET_URL;?>assets/css/tagsinput.css" rel="stylesheet">		
 		<!-- Style.css -->
 		<link href="<?php echo ASSET_URL;?>assets/css/style.css" rel="stylesheet">
+		<script>
+			var api_url = '<?php echo API_URL; ?>';
+			var asset_url = '<?php echo ASSET_URL; ?>';
+		</script>
 	</head>
 	<body>
 		<!-- Header -->
@@ -32,26 +36,26 @@
 					<div class="left flex items-center no-column no-wrap">
 						<div class="logo"><a href="index.html"><img src="<?php echo ASSET_URL;?>assets/images/logo.png" alt="JobPress" class="img-responsive"></a></div>
 						<div class="job-search-form form-header">						
-							<form class="form-inline flex no-column no-wrap" action="" method="GET">
+							<form class="form-inline flex no-column no-wrap" method="GET" id="find-job-form">
 								<div class="form-group">
 									<div class="form-group-inner">
-										<input type="text" class="form-control" id="input-field-1" placeholder="Keywords">
-										<i class="ion-ios-briefcase-outline"></i>
-									</div> <!-- end .form-group-inner -->
-								</div> <!-- end .form-group-inner -->
-								<div class="form-group">
-									<div class="form-group-inner">
-										<input type="text" class="form-control" id="input-field-2" placeholder="location">
+										<input type="text" name="location" class="form-control" id="input-field-2" placeholder="Prefered Location">
 										<i class="ion-ios-location-outline"></i>
 									</div> <!-- end .form-group-inner -->
 								</div> <!-- end .form-group -->
+								<div class="form-group">
+									<div class="form-group-inner">
+										<input type="text" name="position" class="form-control" id="input-field-1" placeholder="Position, Job Title">
+										<i class="ion-ios-briefcase-outline"></i>
+									</div> <!-- end .form-group-inner -->
+								</div>
 								<button type="submit" class="button"><i class="ion-ios-search-strong"></i></button>
 							</form>
 						</div> <!-- end .job-search-form -->
 					</div> <!-- end .left -->				
 					<div class="right flex space-between no-column items-center">
 						<div class="navigation">
-							<nav class="main-nav">
+							<nav class="main-nav" style="visibility:hidden;">
 								<ul class="list-unstyled">
 									<li class="active"><a href="index.html">Home</a></li>
 									<li><a href="about.html">About</a></li>
@@ -67,41 +71,18 @@
 											<li><a href="candidate-dashboard.html">Candidate Dashboard</a></li>
 										</ul>									
 									</li>
-									<li class="menu-item-has-children">
-										<a href="companies-listing.html">Companies</a>
-										<ul>
-											<li><a href="companies-listing.html">Browse Companies</a></li>
-											<li><a href="post-job-form.html">Post a job</a></li>
-											<li><a href="employer-dashboard.html">Employer Dashboard</a></li>
-										</ul>
-									</li>								
-									<li class="menu-item-has-children">
-										<a href="blog-standard.html">Blog</a>
-										<ul>
-											<li><a href="blog-standard.html">Blog Standard</a></li>
-											<li><a href="blog-grid-full-width.html">Blog Grid Full Width</a></li>
-											<li><a href="blog-masonry-full-width.html">Blog Masonry Full Width</a></li>
-											<li><a href="blog-list.html">Blog List</a></li>
-											<li><a href="blog-single-fullwidth-image.html">Blog Single Image</a></li>
-											<li><a href="blog-single-fullwidth-video.html">Blog Single Video</a></li>
-											<li><a href="blog-single-with-sidebar.html">Blog Single Sidebar</a></li>
-										</ul>
-									</li>
-									<li class="menu-item-has-children">
-										<a href="#0">Pages</a>
-										<ul>
-											<li><a href="help.html">Help Tabs</a></li>
-											<li><a href="contact-us-full-width.html">Contact Us</a></li>
-											<li><a href="pricing-plans.html">Pricing plans</a></li>
-										</ul>
-									</li>
 								</ul>
 							</nav> <!-- end .main-nav -->
-							<a href="#" class="responsive-menu-open"><i class="ion-navicon"></i></a>
+							<a href="#" class="responsive-menu-open" style="visibility:hidden;"><i class="ion-navicon"></i></a>
 						</div> <!-- end .navigation -->
 						<div class="button-group-merged flex no-column">
-							<a href="post-job-form.html" class="button">Post a Job</a>
-							<a href="#register" class="button" data-toggle="modal" data-target=".bs-modal-sm">Sign Up</a>
+							<?php if ( !empty($_COOKIE['user_id']) ) { ?>
+								<a href="account" class="button">My Account</a>
+								<a href="#" class="button signout">Sign Out</a>
+							<?php } else { ?>
+								<a href="post-job-form.html" class="button">Post a Job</a>
+								<a href="#register" class="button" data-toggle="modal" data-target=".bs-modal-sm">Sign Up</a>
+							<?php }?>
 						</div> <!-- end .button-group-merged -->
 					</div> <!-- end .right -->
 				</div> <!-- end .header-inner -->
@@ -113,123 +94,9 @@
 			<a href="#" class="responsive-menu-close"><i class="ion-android-close"></i></a>
 			<nav class="responsive-nav"></nav> <!-- end .responsive-nav -->
 		</div> <!-- end .responsive-menu -->
-		
-		<!-- Login/Signup Popup -->
-	    <div class="modal fade bs-modal-sm" aria-hidden="true" aria-labelledby="myTabContent"  id="login-signup-popup" role="dialog" tabindex="-1">
-	        <div class="modal-dialog modal-sm login-signup-modal">
-	            <div class="modal-content">
-	                <div class="popup-tabs">
-	                    <ul class="nav nav-tabs" id="myTab">
-	                        <li class=""><a data-toggle="tab" href="#login">login</a></li>
-	                        <li class="active"><a data-toggle="tab" href="#register">Register</a></li>
-	                    </ul>
-	                </div> <!-- end .popup-tabs -->
-	                <div class="modal-body">
-	                    <div class="tab-content" id="myTabContent">
-	                        <div class="tab-pane fade active in" id="login">
-	                            <form class="login-form">
-
-									<div class="form-group">
-									    <label for="InputEmail1">Your Email *</label>
-									    <input type="email" class="form-control" id="InputEmail1" placeholder="Enter your email">
-									</div>
-
-									<div class="form-group">
-									    <label for="InputPassword1">Password *</label>
-									    <input type="password" class="form-control" id="InputPassword1" placeholder="Password">
-									</div>
-
-									<div class="checkbox flex space-between">
-										<div>
-											<input id="sigin-checkbox" type="checkbox">
-											<label for="sigin-checkbox">Remember me</label>
-										</div>
-									    <a href="#0">Lost password?</a>
-									</div> <!-- end .checkbox -->
-
-									<button type="button" class="button" data-dismiss="modal">Login</button>
-									
-									<p class="text-center divider-text small"><span>or login using</span></p>
-									
-									<div class="social-buttons">
-										<ul class="list-unstyled flex space-between">
-											<li class="twitter-btn"><a href="#0"><i class="ion-social-twitter"></i></a></li>
-											<li class="fb-btn"><a href="#0"><i class="ion-social-facebook"></i></a></li>
-											<li class="g-plus-btn"><a href="#0"><i class="ion-social-googleplus"></i></a></li>
-										</ul>
-									</div> <!-- end .social-buttons -->
-
-	                            </form> <!-- end .login-form -->
-	                        </div> <!-- end login-tab-content -->
-
-	                        <div class="tab-pane fade" id="register">
-	                            <form class="signup-form">
-									<div class="form-group">
-									    <label for="InputEmail1">Your Email *</label>
-									    <input type="email" class="form-control" id="InputEmail2" placeholder="Enter your email">
-									</div>
-
-									<div class="form-group">
-									    <label for="InputPassword1">Password *</label>
-									    <input type="password" class="form-control" id="InputPassword2" placeholder="Password">
-									</div>
-
-									<div class="form-group">
-									    <label for="InputPassword2">Confirm Password *</label>
-									    <input type="password" class="form-control" id="InputPassword3" placeholder="Password">
-									</div>
-
-									<div class="form-group">
-									    <label for="select1">Register as:</label>
-									    <div class="select-wrapper">
-									        <select class="form-control" id="select1">
-										        <option>Candidate</option>
-										        <option>Company</option>
-										    </select>
-									    </div> <!-- end .select-wrapper -->								    
-									</div>
-
-									<div class="checkbox">
-										<input id="signup-checkbox" type="checkbox">
-										<label for="signup-checkbox">I agree with the Terms of Use</label>
-									</div> <!-- end .checkbox -->
-
-									<button type="button" class="button" data-dismiss="modal">Sign Up</button>
-									
-									<p class="text-center divider-text small"><span>or login using</span></p>
-									
-									<div class="social-buttons">
-										<ul class="list-unstyled flex space-between">
-											<li class="twitter-btn"><a href="#0"><i class="ion-social-twitter"></i></a></li>
-											<li class="fb-btn"><a href="#0"><i class="ion-social-facebook"></i></a></li>
-											<li class="g-plus-btn"><a href="#0"><i class="ion-social-googleplus"></i></a></li>
-										</ul>
-									</div> <!-- end .social-buttons -->
-
-	                            </form> <!-- end .signup-form -->
-	                        </div> <!-- end signup-tab-content -->
-	                    </div> <!-- end .mytabcontent -->
-	                </div> <!-- end .modal-body -->
-	            </div> <!-- end .modal-content -->
-	        </div> <!-- end .modal-dialog -->
-	    </div> <!-- end .modal -->
-
-		<!-- Breadcrumb Bar -->
-		<div class="section breadcrumb-bar solid-blue-bg">
-			<div class="inner">
-				<div class="container-fluid">
-					<p class="breadcrumb-menu">
-						<a href="index.html"><i class="ion-ios-home"></i></a>
-						<i class="ion-ios-arrow-right arrow-right"></i>
-						<a href="#0">Job listing - list view</a>
-					</p> <!-- end .breabdcrumb-menu -->
-					<h2 class="breadcrumb-title">Showing all jobs</h2>
-				</div> <!-- end .container-fluid -->
-			</div> <!-- end .inner -->
-		</div> <!-- end .section -->
-
+		 
 		<!-- Job Listings Section -->
-		<div class="section jobs-listing-section">
+		<div class="section jobs-listing-section" style="display:none;">
 			<div class="container-fluid">
 				<div class="jobs-listing-wrapper flex no-wrap">
 
@@ -691,6 +558,106 @@
 				</div> <!-- end .jobs-listing-wrapper -->
 			</div> <!-- end .container-fluid -->
 		</div> <!-- end .section -->
+
+		<br/>
+		<br/>
+		<div class="section blog-list-section">		
+			<div class="inner">
+				<div class="container">
+					<h3>Searched jobs: 200 results</h3>
+				</div>		
+			</div>		
+		</div>		
+		<br/>
+		<!-- Blog Section -->
+		<div class="section blog-list-section">
+			<div class="inner">
+				<div class="container">
+
+					<div class="blog-posts-wrapper flex space-between no-wrap">
+						
+						<div class="blog-left-side searched-job-lists">
+							<!-- Job searched goes here -->
+						</div>
+						
+						<div class="blog-sidebar">
+							
+							<div class="search-widget blog-widget">
+								<h6>Search this site</h6>
+				                <div class="input-group search-form">
+				                    <input type="text" class="form-control"  placeholder="Enter your keyword" >
+				                    <button type="submit"><span><i class="ion-ios-search"></i></span></button>
+	                			</div>
+							</div> <!-- end .search-widget -->
+
+							<div class="recent-posts-widget blog-widget">
+								<h6>Recent Posts</h6>
+
+								<div class="recent-post flex items-center no-column no-wrap">
+									<img src="<?php echo ASSET_URL;?>assets/images/recent-post01.jpg" alt="recent-post-img" class="img-responsive">
+									<h4><a href="#0">Tips to write an impressive resume online for beginner</a></h4>
+								</div> <!-- end .recent-post -->
+
+								<div class="recent-post flex items-center no-column no-wrap">
+									<img src="<?php echo ASSET_URL;?>assets/images/recent-post02.jpg" alt="recent-post-img" class="img-responsive">
+									<h4><a href="#0">The secret to pitching for new business</a></h4>
+								</div> <!-- end .recent-post -->
+
+								<div class="recent-post flex items-center no-column no-wrap">
+									<img src="<?php echo ASSET_URL;?>assets/images/recent-post03.jpg" alt="recent-post-img" class="img-responsive">
+									<h4><a href="#0">7 things you should never say to your boss</a></h4>
+								</div> <!-- end .recent-post -->
+
+							</div> <!-- end .recent-posts-widget -->
+							
+							<div class="blog-category-widget blog-widget">
+								<h6>Categories</h6>
+								<ul class="blog-categories list-unstyled">
+									<li><a href="#0">Announcement</a></li>
+									<li><a href="#0">Indeed events</a></li>
+									<li><a href="#0">Tips &amp; Tricks</a></li>
+									<li><a href="#0">Experiences</a></li>
+									<li><a href="#0">Case Studies</a></li>
+									<li><a href="#0">Labor Market News</a></li>
+									<li><a href="#0">HR Best practices</a></li>
+								</ul>
+							</div> <!-- end .blog-category-widget -->
+
+							<div class="blog-tags-widget blog-widget">
+								<h6>Tags</h6>
+								<ul class="blog-tags flex no-column list-unstyled">
+									<li><a href="#0" class="button button-xs grey">Jobpress</a></li>
+									<li><a href="#0" class="button button-xs grey">Recruiter</a></li>
+									<li><a href="#0" class="button button-xs grey">Interview</a></li>
+									<li><a href="#0" class="button button-xs grey">Employee</a></li>
+									<li><a href="#0" class="button button-xs grey">Labor</a></li>
+									<li><a href="#0" class="button button-xs grey">HR</a></li>
+									<li><a href="#0" class="button button-xs grey">Freelancer</a></li>
+									<li><a href="#0" class="button button-xs grey">Slaray</a></li>
+									<li><a href="#0" class="button button-xs grey">Employer</a></li>
+								</ul>
+							</div> <!-- end .blog-tags-widget -->
+
+							<div class="blog-archives-widget blog-widget">
+								<h6>Arhives</h6>
+								<ul class="blog-archives list-unstyled">
+									<li><a href="#">October 2016<span>28 posts</span></a></li>
+									<li><a href="#">September 2016<span>35 posts</span></a></li>
+									<li><a href="#">August 2016<span>19 posts</span></a></li>
+									<li><a href="#">July 2016<span>23 posts</span></a></li>
+									<li><a href="#">June 2016<span>29 posts</span></a></li>
+									<li><a href="#">May 2016<span>16 posts</span></a></li>
+									<li><a href="#">April<span>14 posts</span></a></li>
+								</ul>
+							</div> <!-- end .blog-archives-widget -->
+
+						</div> <!-- end .blog-sidebar -->
+					</div> <!-- end .blog-posts-wrapper -->
+
+				</div> <!-- end .container -->
+			</div> <!-- end .inner -->
+		</div> <!-- end .section -->
+
 		<?php include './pages/footer.php'; ?>
 		<!-- Scripts -->
 		<!-- jQuery -->		
@@ -721,5 +688,6 @@
 		<!-- Scripts.js -->
 		<script src="<?php echo ASSET_URL;?>assets/js/scripts.js"></script>
 		<script src="<?php echo ASSET_URL;?>assets/js/functions.js"></script>
+		<script src="<?php echo ASSET_URL;?>assets/js/find-job.js"></script>
 	</body>
 </html>

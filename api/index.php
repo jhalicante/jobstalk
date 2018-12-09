@@ -14,20 +14,32 @@
     include './model/Applicant.php';
     include './model/Employer.php';
     include './model/Admin.php';
+    include './model/Job.php';
+
 
     // Included functions
-
     if(isset($_COOKIE['user_id']) && isset($_COOKIE['role']))
     {
         define('USER_ID', $_COOKIE['user_id']);
     }
 
+    /***********************************
+     * ADMIN FUNCTIONS API
+     * *********************************/ 
+    // Add Personal Information
+    $router->post(API_VERSION.'/job/find-job', function () {
+        $job = new Job();
+        $job->applyJob($_POST);
+    });
+
+    /***********************************
+     * ENTRY FUNCTIONS API
+     * *********************************/ 
     // Sign In Route
     $router->post(API_VERSION.'/signin', function () {
         $signin = new SignIn();
         $signin->auth($_POST);
     });
-
     // Sign Up Route
     $router->post(API_VERSION.'/signup', function () {
         $signup = new SignUp();
@@ -40,13 +52,11 @@
         }
         
     });
-
     // Check if email is exists route
     $router->get(API_VERSION.'/email-is-exists', function () {
         $validate = new ValidateData();
         $validate->emailIsExists( $_GET['email_address'] );
     });
-
 
     /***********************************
      * APPLICANT FUNCTIONS API
@@ -71,7 +81,6 @@
         $applicant = new Applicant();
         $applicant->addContactDetails($_POST);
     });
-
 
     /***********************************
      * EMPLOYER FUNCTIONS API
@@ -102,11 +111,6 @@
         $employer->addPlacementReport($_POST);
         // echo json_encode($_POST);
     });
-
-    
-
-    
-
 
     /***********************************
      * ADMIN FUNCTIONS API

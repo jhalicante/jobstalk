@@ -29,8 +29,6 @@
 		<script src="<?php echo ASSET_URL;?>assets/js/sweetalert.min.js"></script>
 		<!-- Scripts.js -->
 		<script src="<?php echo ASSET_URL;?>assets/js/bootstrap-select.min.js"></script>
-
-		<script src="https://developer.snapappointments.com/bootstrap-select/js,_base.js+dist,_js,_bootstrap-select.min.js.pagespeed.jc.N8EQDPhGeX.js"></script>
 		<script src="<?php echo ASSET_URL;?>assets/js/scripts.js"></script>
 		<script src="<?php echo ASSET_URL;?>assets/js/functions.js"></script>
 		<script src="<?php echo ASSET_URL;?>assets/js/employer.js"></script>

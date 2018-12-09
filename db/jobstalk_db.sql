@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Dec 09, 2018 at 08:12 AM
+-- Generation Time: Dec 09, 2018 at 03:49 PM
 -- Server version: 5.6.38
 -- PHP Version: 7.2.1
 
@@ -329,7 +329,8 @@ CREATE TABLE `employer_information` (
 --
 
 INSERT INTO `employer_information` (`ID`, `user_id`, `name`, `short_desc`, `about`, `address`, `contact_no`, `email`, `logo`, `website`) VALUES
-(4, '120720181544166943', 'Test Com Incorporation', 'Commission on Higher Education (CHED) - Region 4B Regional Office', 'With HTML you can create your own Website.\r\n\r\nThis tutorial teaches you everything about HTML.\r\n\r\nHTML is easy to learn - You will enjoy it.\r\n\r\n', '6th Floor, Asiatrust Bank Building, Quezon Avenue, Quezon City, 1100 Metro Manila', '09278977592', 'testcom@gmail.com', '120720181544171097.png', 'testcom.com');
+(4, '120720181544166943', 'Test Com Incorporation', 'Commission on Higher Education (CHED) - Region 4B Regional Office', 'With HTML you can create your own Website.\r\n\r\nThis tutorial teaches you everything about HTML.\r\n\r\nHTML is easy to learn - You will enjoy it.\r\n\r\n', '6th Floor, Asiatrust Bank Building, Quezon Avenue, Quezon City, 1100 Metro Manila', '09278977592', 'testcom@gmail.com', '120720181544171097.png', 'testcom.com'),
+(16, '120920181544344118', 'Ricks Incorporation', 'ashdahsdgjhg', 'ashdjgahsjdghjasdg', 'asdhgahjsdghj', '09278977592', 'ricks@gmail.com', '120920181544344178.jpg', 'none');
 
 -- --------------------------------------------------------
 
@@ -360,8 +361,8 @@ CREATE TABLE `employer_job_posted` (
 --
 
 INSERT INTO `employer_job_posted` (`ID`, `user_id`, `job_id`, `com_logo`, `com_name`, `com_address`, `position`, `job_type`, `course_id`, `industry_id`, `years_experience`, `months_experience`, `description`, `created_date`, `status`) VALUES
-(1, '120720181544166943', '120820181544270508', '120820181544270508.png', 'ABS-CBN Corporation', '115 J.P. Rizal St, Maypajo, Caloocan, 1410 Metro Manila', 'Frontend Developer', 'part-time', '4', '5', '2', '22', 'xzczxc', '12/08/2018', 'approved'),
-(2, '120720181544166943', '120820181544281722', '120820181544281722.jpg', 'Test Inc', 'caloocan city', 'Data Analyst', 'full-time', '2', '5', '3', '3', 'data anylist description', '12/08/2018', 'pending');
+(1, '120720181544166943', '120820181544270508', '120820181544270508.png', 'ABS-CBN Corporation', '115 J.P. Rizal St, Maypajo, Caloocan, 1410 Metro Manila', 'Frontend Developer', 'part-time', '4', '5', '2', '22', 'Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Etiam eu velit cursus, tempor ipsum in, tempus lectus. Nullam tempus nisi id nisl luctus, non tempor justo molestie.', '12/08/2018', 'approved'),
+(2, '120720181544166943', '120820181544281722', '120820181544281722.jpg', 'Test Inc', 'caloocan city', 'Data Analyst', 'full-time', '2', '5', '3', '3', 'Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Etiam eu velit cursus, tempor ipsum in, tempus lectus. Nullam tempus nisi id nisl luctus, non tempor justo molestie.', '12/08/2018', 'pending');
 
 -- --------------------------------------------------------
 
@@ -386,7 +387,9 @@ CREATE TABLE `employer_placement_report` (
 INSERT INTO `employer_placement_report` (`ID`, `user_id`, `job_title`, `company_name`, `date_conducted`, `venue`, `created_date`) VALUES
 (1, '120720181544166943', 'asd', 'asd', '0123-02-13', 'adas', '12-08-2018'),
 (2, '120720181544166943', 'assss', '123123', '2321-12-31', '12312', '12-09-2018'),
-(3, '120720181544166943', '', '', '', '', '12-09-2018');
+(3, '120720181544166943', '', '', '', '', '12-09-2018'),
+(4, '120920181544344118', 'Web developer', 'IBM Corp', '2018-02-01', 'Caloocan City', '12-09-2018'),
+(5, '120920181544344118', 'JS Developer', 'test', '0021-12-12', 'test', '12-09-2018');
 
 -- --------------------------------------------------------
 
@@ -477,6 +480,39 @@ INSERT INTO `job_industry` (`ji_id`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `region`
+--
+
+CREATE TABLE `region` (
+  `region_id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `region`
+--
+
+INSERT INTO `region` (`region_id`, `name`) VALUES
+(1, 'Armm'),
+(2, 'Bicol Region'),
+(3, 'C.A.R'),
+(4, 'Cagayan Valley'),
+(5, 'Calabarzon & Mimaropa'),
+(6, 'Caraga'),
+(7, 'Central Luzon'),
+(8, 'Central Visayas'),
+(9, 'Davao'),
+(10, 'Eastern Visayas'),
+(11, 'Ilocos Region'),
+(12, 'National Capital Reg'),
+(13, 'Northern Mindanao'),
+(14, 'Soccskargen'),
+(15, 'Western Visayas'),
+(16, 'Zamboanga');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `user_account`
 --
 
@@ -496,7 +532,9 @@ CREATE TABLE `user_account` (
 INSERT INTO `user_account` (`ID`, `user_id`, `email_address`, `password`, `role`, `status`) VALUES
 (1, '122018154389090890', 'admin@gmail.com', '123', 'admin', 'approved'),
 (2, '120420181543890908', 'applicant@gmail.com', '123', 'applicant', 'approved'),
-(7, '120720181544166943', 'employer@gmail.com', '123', 'employer', 'approved');
+(7, '120720181544166943', 'employer@gmail.com', '123', 'employer', 'approved'),
+(12, '120920181544344118', 'emp@gmail.com', '123', 'employer', 'approved'),
+(13, '120920181544357586', 'test@gmail.com', '123', 'applicant', 'pending');
 
 --
 -- Indexes for dumped tables
@@ -575,6 +613,12 @@ ALTER TABLE `job_industry`
   ADD UNIQUE KEY `ji_id` (`ji_id`);
 
 --
+-- Indexes for table `region`
+--
+ALTER TABLE `region`
+  ADD UNIQUE KEY `ID` (`region_id`);
+
+--
 -- Indexes for table `user_account`
 --
 ALTER TABLE `user_account`
@@ -636,7 +680,7 @@ ALTER TABLE `course_lists`
 -- AUTO_INCREMENT for table `employer_information`
 --
 ALTER TABLE `employer_information`
-  MODIFY `ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `employer_job_posted`
@@ -648,7 +692,7 @@ ALTER TABLE `employer_job_posted`
 -- AUTO_INCREMENT for table `employer_placement_report`
 --
 ALTER TABLE `employer_placement_report`
-  MODIFY `ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `job_industry`
@@ -657,7 +701,13 @@ ALTER TABLE `job_industry`
   MODIFY `ji_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
 
 --
+-- AUTO_INCREMENT for table `region`
+--
+ALTER TABLE `region`
+  MODIFY `region_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
+--
 -- AUTO_INCREMENT for table `user_account`
 --
 ALTER TABLE `user_account`
-  MODIFY `ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;

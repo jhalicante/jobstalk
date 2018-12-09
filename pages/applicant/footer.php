@@ -3,6 +3,7 @@
 		<script src="<?php echo ASSET_URL;?>assets/js/jquery-3.1.1.min.js"></script>
 		<!-- Bootstrap -->
 		<script src="<?php echo ASSET_URL;?>assets/js/bootstrap.min.js"></script>
+		<script src="<?php echo ASSET_URL;?>assets/js/bootstrap-select.min.js"></script>
 		<!-- Owl Carousel -->
 		<script src="<?php echo ASSET_URL;?>assets/js/owl.carousel.min.js"></script>
 		<!-- Wow.js -->
