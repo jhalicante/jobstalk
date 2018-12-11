@@ -30,6 +30,7 @@
 	<body>
 
 		<?php include './pages/admin/header.php'; ?>
+		<?php //include './pages/admin/include-inc.php'; ?>
 		
 		<!-- Responsive Menu -->
 		<div class="responsive-menu">
@@ -49,13 +50,25 @@
 							<ul class="nav nav-pills nav-stacked">
 								<li class="heading">Manage account</li>
 							    <li class="active"><a data-toggle="pill" href="#employer-tab">Employer List</a></li>
-							    <li><a data-toggle="pill" href="#applicant-tab">Applicant List</a></li>
-							    <!-- <li><a data-toggle="pill" href="#job-tab">Jobs List</a></li> -->
+								<li><a data-toggle="pill" href="#applicant-tab">Applicant List</a></li>
+								<li class="nav-divider"></li>
+								<li class="heading">Manage job</li>
+								<li><a data-toggle="pill" href="#joblists-tab">All Jobs</a></li>
+								<li class="nav-divider"></li>
+								<li class="heading">Reports</li>								
+								<li><a data-toggle="pill" class="reports-list-tab" href="#reports-list-tab">General Reports</a>
+									<ul>
+										<li><a data-toggle="pill" href="#sprs-tab">SPRS</a></li>
+										<li><a data-toggle="pill" href="#lmi-tab">LMI</a></li>
+										<li><a data-toggle="pill" href="#placement-report-tab">Placement Report</a></li>
+									</ul>
+								</li>
+							    
+								<li class="nav-divider"></li>
+								<li><a data-toggle="pill" href="#spes-tab">SPES</a></li>								
+								<li class="nav-divider"></li>								
+							    <!-- <li><a data-toggle="pill" href="#manage-applications-employer">Manage Applications</a></li> -->
 							    <li class="nav-divider"></li>
-							   	<!-- <li class="heading">Manage job</li>
-								<li><a data-toggle="pill" href="#manage-jobs">Manage Jobs</a></li>
-							    <li><a data-toggle="pill" href="#manage-applications-employer">Manage Applications</a></li>
-							    <li class="nav-divider"></li> -->
 							    <li><a data-toggle="pill" href="#signout-employer" class="signout">Sign Out</a></li>
 							</ul>
 						</div> <!-- end .left-sidebar-menu -->
@@ -115,8 +128,60 @@
 												<?php }}} ?>												
 											</tbody>
 										</table>
-							        </div> <!-- end .profile-wrapper -->
-								</div> <!-- end #profile-tab -->
+							        </div>
+								</div>
+
+							    <div id="joblists-tab" class="tab-pane fade in">
+							    	<div class="profile-badge"><h6>Job Lists</h6></div>									
+							        <div class="profile-wrapper">
+										<table id="print-joblists-table" class="table table-condensed">
+											<thead>
+												<tr>
+												<th>No.</th>
+												<th>Name</th>
+												<th>Job Type</th>
+												<th>Status</th>
+												<th>Action</th>
+												</tr>
+											</thead>
+											<tbody>
+												<?php 
+												global $conn;
+												$jpSql = "SELECT * FROM `employer_job_posted` WHERE 1 ORDER BY ID ASC  ";
+												$jsResult = $conn->query($jpSql);
+												$i = 0;
+												if ($jsResult->num_rows > 0) {
+													// output data of each row
+													while($jpRow = $jsResult->fetch_assoc()) {
+														$i++;
+												?>
+												<tr>
+													<th><?php echo $i; ?></th>
+													<td><?php echo $jpRow['com_name']; ?></td>
+													<td><?php echo $jpRow['job_type']; ?></td>
+													<td><?php echo $jpRow['status']; ?></td>
+													<td><?php  
+														if($jpRow['status'] == 'pending') {
+															echo '<button class="approved-job" status="approved" job-id="'.$jpRow['job_id'].'">Approve</button>';
+															echo '<button class="approved-job" status="disapproved" job-id="'.$jpRow['job_id'].'">Disapprove</button>';
+														}
+														else if($jpRow['status'] == 'approved') {
+															// echo '<button class="approved-job" status="canceled" job-id="'.$jpRow['job_id'].'">Cancel</button>';
+															echo '<button class="approved-job" status="disapproved" job-id="'.$jpRow['job_id'].'">Disapprove</button>';
+														}
+														else if($jpRow['status'] == 'disapproved') {
+															echo '<button class="approved-job" status="approved" job-id="'.$jpRow['job_id'].'">Re-Approve</button>';
+														}
+														else {
+															echo '<b>'.ucfirst($jpRow['status']).'</b>';
+														}
+													?></td>
+												</tr> 
+												<?php }} ?>												
+											</tbody>
+										</table>
+							        </div>
+								</div>
 								
 							    <div id="applicant-tab" class="tab-pane fade in">
 							    	<div class="profile-badge"><h6>Applicant List</h6></div>									
@@ -184,8 +249,109 @@
 												<?php }}} ?>												
 											</tbody>
 										</table>
-							        </div> <!-- end .profile-wrapper -->						        
-							    </div> <!-- end #applicant-tab -->
+							        </div>						        
+								</div>
+								
+								<div id="sprs-tab" class="tab-pane fade in">
+									<div class="profile-badge"><h6>STATISTICAL PERFORMANCE REPORTING SYSTEM (SPRS) </h6></div>
+									<br/>
+									<?php include './pages/admin/reports/sprs.php'; ?>
+								</div>
+
+								<div id="reports-list-tab" class="tab-pane fade in">
+							    	<div class="profile-badge"><h6>Reports List</h6></div>									
+							        <div class="profile-wrapper">
+										<table id="print-admin_sprs_report-table" class="table table-condensed">
+											<thead>
+												<tr>
+												<th>No.</th>
+												<th>Type of Report</th>
+												<th>Created Date</th>
+												<th>Prepared By</th>
+												</tr>
+											</thead>
+											<tbody>
+												<?php
+													global $conn;
+													$sql = "SELECT * FROM `admin_sprs_report` WHERE 1 ORDER BY ID ASC  ";
+													$result = $conn->query($sql);
+													$i = 0;
+													if ($result->num_rows > 0) {
+														while($asrRow = $result->fetch_assoc()) {
+															$i++;
+													?>
+													<tr>
+														<th><?php echo $i; ?></th>
+														<td> <a href="account?admin-sprs-report-id=<?php echo $asrRow['ID']; ?>"> Statistical Performance Reporting System</td>
+														<td><?php echo $asrRow['created_date']; ?></td>
+														<td><?php echo $asrRow['sprs_name']; ?></td>
+													</tr> 
+												<?php 
+													}
+												} 
+												?>
+											</tbody>
+										</table>
+							        </div>
+								</div>
+
+								<div id="lmi-tab" class="tab-pane fade in">
+									<div class="profile-badge"><h6>LMI ANALYSIS</h6></div>
+									<br/>
+									<?php include './pages/admin/reports/lmi.php'; ?>
+								</div>
+
+								<div id="placement-report-tab" class="tab-pane fade in">
+									<div class="profile-badge"><h6>Placement Report</h6></div>
+									<div class="divider"></div>
+									<div class="profile-wrapper">
+										<table id="placement-report-table" class="table table-condensed">
+											<thead>
+												<tr>
+													<th>No.</th>
+													<th>Job Title</th>
+													<th>Company Name</th>
+													<th>Date Conducted</th>
+													<th>Venue</th>
+												</tr>
+											</thead>
+											<tbody>
+											<?php 
+												global $conn;
+												$pjsql = "SELECT * FROM `employer_placement_report` WHERE 1 ORDER BY ID DESC";
+												$pjresult = $conn->query($pjsql);
+												if ($pjresult->num_rows > 0) {
+													$i = 1;
+													while($pjrow = $pjresult->fetch_assoc()) { ?>															
+												<tr>
+													<th><?php echo $i++; ?></th>
+													<td><?php echo $pjrow['job_title']; ?></td>
+													<td><?php echo $pjrow['company_name']; ?></td>
+													<td><?php echo $pjrow['date_conducted']; ?></td>
+													<td><?php echo $pjrow['venue']; ?></td>
+												</tr> 
+												<?php
+													} 
+												}
+											?>
+											</tbody>
+										</table>
+									</div>
+
+								</div>
+
+								<div id="placement-report-tab" class="tab-pane fade in">
+									<div class="profile-badge"><h6>Placement Report</h6></div>
+									<br/>
+									<?php include './pages/admin/reports/sprs.php'; ?>
+								</div>
+
+								<div id="spes-tab" class="tab-pane fade in">
+									<div class="profile-badge"><h6>SPES</h6></div>
+									<br/>
+									<h3>No content available</h3>
+									<?php //include './pages/admin/reports/sprs.php'; ?>
+								</div>
 
 							    <div id="job-tab" class="tab-pane fade in">
 							        <h3 class="tab-pane-title">Manage applications</h3>

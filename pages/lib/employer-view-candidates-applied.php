@@ -1,9 +1,9 @@
 		<!-- Pending Notice -->
-		<div class="modal fade bs-modal-lg" aria-hidden="true" aria-labelledby="myTabContent"  id="employer-view-candidates-applied" role="dialog" tabindex="-1" data-backdrop="static">
+		<div class="modal fade bs-modal-lg" aria-hidden="true" aria-labelledby="myTabContent"  id="employer-view-candidates-applied" role="dialog" tabindex="-1">
 	        <div class="modal-dialog modal-dialog-centered modal-lg login-signup-modal">
 	            <div class="modal-content">
 					<div class="modal-header">
-						<!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
 						<h4 class="modal-title text-primary">Candidates Applied</h4>
 					</div>
 	                <div class="modal-body"> 

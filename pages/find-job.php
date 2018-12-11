@@ -39,13 +39,13 @@
 							<form class="form-inline flex no-column no-wrap" method="GET" id="find-job-form">
 								<div class="form-group">
 									<div class="form-group-inner">
-										<input type="text" name="location" class="form-control" id="input-field-2" placeholder="Prefered Location">
+										<input type="text" name="location" class="form-control location-input" id="input-field-2" placeholder="Prefered Location">
 										<i class="ion-ios-location-outline"></i>
 									</div> <!-- end .form-group-inner -->
 								</div> <!-- end .form-group -->
 								<div class="form-group">
 									<div class="form-group-inner">
-										<input type="text" name="position" class="form-control" id="input-field-1" placeholder="Position, Job Title">
+										<input type="text" name="position" class="form-control position-input" id="input-field-1" placeholder="Position, Job Title">
 										<i class="ion-ios-briefcase-outline"></i>
 									</div> <!-- end .form-group-inner -->
 								</div>
@@ -57,20 +57,7 @@
 						<div class="navigation">
 							<nav class="main-nav" style="visibility:hidden;">
 								<ul class="list-unstyled">
-									<li class="active"><a href="index.html">Home</a></li>
-									<li><a href="about.html">About</a></li>
-									<li class="menu-item-has-children">
-										<a href="candidates-listing.html">Candidates</a>
-										<ul>
-											<li><a href="candidates-listing.html">Browse Candidates</a></li>
-											<li><a href="companies-listing.html">Browse Companies</a></li>
-											<li><a href="jobs-listing.html">Jobs Listing</a></li>
-											<li><a href="job-details.html">Job Details</a></li>
-											<li><a href="categories.html">Job Categories</a></li>
-											<li><a href="post-resume-form.html">Post a Resume</a></li>
-											<li><a href="candidate-dashboard.html">Candidate Dashboard</a></li>
-										</ul>									
-									</li>
+									<li class="active"><a href="">Home</a></li>
 								</ul>
 							</nav> <!-- end .main-nav -->
 							<a href="#" class="responsive-menu-open" style="visibility:hidden;"><i class="ion-navicon"></i></a>
@@ -80,7 +67,7 @@
 								<a href="account" class="button">My Account</a>
 								<a href="#" class="button signout">Sign Out</a>
 							<?php } else { ?>
-								<a href="post-job-form.html" class="button">Post a Job</a>
+								<a href="home" class="button">Home</a>
 								<a href="#register" class="button" data-toggle="modal" data-target=".bs-modal-sm">Sign Up</a>
 							<?php }?>
 						</div> <!-- end .button-group-merged -->
@@ -94,7 +81,9 @@
 			<a href="#" class="responsive-menu-close"><i class="ion-android-close"></i></a>
 			<nav class="responsive-nav"></nav> <!-- end .responsive-nav -->
 		</div> <!-- end .responsive-menu -->
-		 
+		
+		<?php include './pages/lib/login-modal.php' ?>		 
+		
 		<!-- Job Listings Section -->
 		<div class="section jobs-listing-section" style="display:none;">
 			<div class="container-fluid">
@@ -559,16 +548,13 @@
 			</div> <!-- end .container-fluid -->
 		</div> <!-- end .section -->
 
-		<br/>
-		<br/>
 		<div class="section blog-list-section">		
 			<div class="inner">
 				<div class="container">
-					<h3>Searched jobs: 200 results</h3>
+					<h3>Searched jobs: <span class="search-results-count"></span> results found</h3>
 				</div>		
 			</div>		
 		</div>		
-		<br/>
 		<!-- Blog Section -->
 		<div class="section blog-list-section">
 			<div class="inner">
@@ -580,7 +566,7 @@
 							<!-- Job searched goes here -->
 						</div>
 						
-						<div class="blog-sidebar">
+						<div class="blog-sidebar" style="display:none;">
 							
 							<div class="search-widget blog-widget">
 								<h6>Search this site</h6>
@@ -664,8 +650,6 @@
 		<script src="<?php echo ASSET_URL;?>assets/js/jquery-3.1.1.min.js"></script>
 		<!-- Bootstrap -->
 		<script src="<?php echo ASSET_URL;?>assets/js/bootstrap.min.js"></script>
-		<!-- google maps -->
-		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAy-PboZ3O_A25CcJ9eoiSrKokTnWyAmt8"></script>
 		<!-- Owl Carousel -->
 		<script src="<?php echo ASSET_URL;?>assets/js/owl.carousel.min.js"></script>
 		<!-- Wow.js -->
@@ -683,11 +667,16 @@
 		<!-- Isotope -->
 		<script src="<?php echo ASSET_URL;?>assets/js/isotope.pkgd.min.js"></script>
 		<script src="<?php echo ASSET_URL;?>assets/js/imagesloaded.pkgd.min.js"></script>
+		<!-- SweetAlert -->
+		<script src="<?php echo ASSET_URL;?>assets/js/sweetalert.min.js"></script>
 		<!-- Magnific-Popup -->
 		<script src="<?php echo ASSET_URL;?>assets/js/jquery.magnific-popup.js"></script>
 		<!-- Scripts.js -->
 		<script src="<?php echo ASSET_URL;?>assets/js/scripts.js"></script>
-		<script src="<?php echo ASSET_URL;?>assets/js/functions.js"></script>
 		<script src="<?php echo ASSET_URL;?>assets/js/find-job.js"></script>
+		<script src="<?php echo ASSET_URL;?>assets/js/functions.js"></script>
+		<script>
+			var api_url = '<?php echo API_URL; ?>';
+		</script>
 	</body>
 </html>

@@ -5550,10 +5550,10 @@ label>sup, .label>sup {
 }
 .jobs-details-wrapper .right-side-wrapper {
     -webkit-box-flex: 0;
-    -ms-flex: 0 79%;
-    flex: 0 79%;
+    /* -ms-flex: 0 79%;
+    flex: 0 79%; */
     padding: 30px 25px;
-    max-width: 79%;
+    /* max-width: 79%; */
     background: #f0f3fa;
     overflow: hidden;	
 }
@@ -5598,10 +5598,10 @@ label>sup, .label>sup {
 		max-width: 23%;
 	}
 	.jobs-details-wrapper .right-side-wrapper {
-		-webkit-box-flex: 0;
+		/* -webkit-box-flex: 0;
 		-ms-flex: 0 77%;
-		flex: 0 77%;
-		max-width: 77%;
+		flex: 0 77%; */
+		max-width: 100%;
 	}
 	.right-side-wrapper .job-post-wrapper, .right-side-wrapper .right-side-bottom-wrapper {
 		-webkit-box-flex: 0;

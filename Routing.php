@@ -47,15 +47,21 @@
             /* (Admin Dashboard) route */
             $router->get('/account', function () {
                 include './lib/Include.php'; 
+                // include './lib/include-inc.php.php'; 
                 include './pages/admin/dashboard.php';
             });
         }
-
-        /* (Find Job) route */ 
-        $router->get('/find-job', function () {
-            include './pages/find-job.php';
-        });
     }
+
+    /* (Find Job) route */ 
+    $router->get('/find-job', function () {
+        include './pages/find-job.php';
+    });
+
+    /* (Job Details) route */ 
+    $router->get('/job-details', function () {
+        include './pages/job-details.php';
+    });
 
     /* (Homepage) route */ 
     $router->get('/', function () {

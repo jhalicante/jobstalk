@@ -88,34 +88,11 @@
 										<div class="divider"></div>
 
 										<div class="profile-about profile-section">
-											<h3 class="dark profile-title">About company<span><i class="ion-edit"></i></span></h3>
+											<h3 class="dark profile-title">About company</h3>
 											<p><?php echo $fetch->getInformation('employer_information', 'about'); ?></p>
 										</div> <!-- end .profile-about -->
 
 										<div class="divider"></div>
-
-										<div class="profile-experience-wrapper profile-section">
-											<h3 class="dark profile-title">Awards<span><i class="ion-edit"></i></span></h3>
-											<div class="profile-experience flex space-between no-wrap no-column">
-												<div class="profile-experience-left">
-													<h5 class="profile-designation dark">AWWWARDS</h5>
-													<h5 class="profile-company dark">Site of the month</h5>
-													<p class="small ultra-light">Aug 2016</p>
-													<p>Nulla molestie sed lorem non suscipit. Morbi imperdiet ex sit amet tortor faucibus ultricies. Fusce tincidunt elementum imperdiet.</p>
-													<h6 class="projects-count">http://banana.com</h6>
-												</div> <!-- end .profile-experience-left -->
-											</div> <!-- end .profile-experience -->
-											<div class="spacer-md"></div>
-											<div class="profile-experience flex space-between no-wrap no-column">
-												<div class="profile-experience-left">
-													<h5 class="profile-designation dark">Best css award</h5>
-													<h5 class="profile-company dark">Site of the day</h5>
-													<p class="small ultra-light">Aug 16th, 2016</p>
-													<p>Nulla molestie sed lorem non suscipit. Morbi imperdiet ex sit amet tortor faucibus ultricies. Fusce tincidunt elementum imperdiet.</p>
-													<h6 class="projects-count">http://banana.com</h6>
-												</div> <!-- end .profile-experience-left -->
-											</div> <!-- end .profile-experience -->
-										</div> <!-- end .profile-experience-wrapper -->
 
 							        </div> <!-- end .profile-wrapper -->						        
 								</div> <!-- end #profile-tab -->
@@ -126,7 +103,7 @@
 									<div class="password-form-wrapper">
 										<div class="posted-jobs-list-wrapper">
 											<div class="form-fields-wrapper">
-												<form method="post" enctype="multipart/form-data" id="post-new-job">
+												<form method="post" enctype="multipart/form-data" id="post-a-new-job">
 
 													<div class="form-group-wrapper">
 														<div class="form-group upload-company-logo">
@@ -135,7 +112,7 @@
 																<span class="logo-picture-name">Upload logo</span>
 																<span><i class="ion-ios-folder-outline"></i>Browse Photo</span>								    	
 															</label>
-															<input type="file" name="logo" id="logo-picture" data-label-class="logo-picture-name" data-preview-img="logo-picture-preview"> 
+															<input type="file" name="com-logo" id="logo-picture" data-label-class="logo-picture-name" data-preview-img="logo-picture-preview"> 
 															<img src="<?php echo ASSET_URL; ?>assets/images/image-placeholder.jpg" class="img-circle logo-picture-preview" width="80px" height="80px" alt="" style="right:30px;position:absolute;top:0px;">
 														</div> <!-- end .form-group -->
 													</div> <!-- end .form-group-wrapper -->
@@ -154,7 +131,7 @@
 													<div class="form-group-wrapper flex space-between items-center">
 														<div class="form-group">
 															<p class="label">Required Course<sup>*</sup></p>
-															<select name="required_course" class="form-control selectpicker" required="" data-live-search="true">
+															<select name="required_course" class="form-control" required="" data-live-search="true">
 																<?php 
 																	global $conn;
 																	$sql = "SELECT * FROM `course_lists`";
@@ -190,7 +167,7 @@
 													<div class="form-group-wrapper flex space-between items-center">
 														<div class="form-group">
 															<p class="label">Job Type<sup>*</sup></p>
-															<select name="job_type" class="form-control selectpicker" required="" data-live-search="true">
+															<select name="job_type" class="form-control" required="" data-live-search="true">
 																<option value="part-time">Part Time</option>
 																<option value="full-time">Full Time</option>
 																<option value="internship">internship</option>
@@ -210,8 +187,7 @@
 													</div> <!-- end .form-group-wrapper -->
 												</div> <!-- end .form-fields-wrapper -->
 												<div class="button-wrapper text-center">
-													<!-- <button type="button" class="button g-plus-btn hide-new-experience-view">Cancel</button> -->
-													<button type="submit" class="button">Submit Now</button>
+													<input type="submit" class="button" value="Submit Now"/>
 												</div> <!-- end .button-wrapper -->	
 												<br/>										
 											</form>

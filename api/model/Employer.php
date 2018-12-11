@@ -68,12 +68,12 @@
         {
             global $conn;
 
-            $path = $files['logo']['name'];
+            $path = $files['com-logo']['name'];
             $ext = pathinfo($path, PATHINFO_EXTENSION);
 
             $filepath = GEN_UID.".".$ext;
             $uploaded_url = '../assets/uploaded/'.$filepath;
-            $filetmp = $files['logo']['tmp_name'];
+            $filetmp = $files['com-logo']['tmp_name'];
             move_uploaded_file($filetmp, $uploaded_url);
             
             $sql = "INSERT INTO `employer_job_posted`(`ID`, `user_id`, `job_id`, `com_logo`,`com_name`, `com_address`, `position`, `job_type`, `course_id`, `industry_id`, `years_experience`, `months_experience`, `description`, `created_date`, `status`) 
@@ -99,7 +99,7 @@
             }
             else 
             {
-                echo json_encode(array('errorCode'=>304, 'errorMsg'=>'Unable to create'));                    
+                echo json_encode(array('errorCode'=>304, 'errorMsg'=>'Unable to create ',$files));                    
             } 
         }
 
@@ -208,7 +208,7 @@
             }
             else 
             {
-                echo json_encode(array('errorCode'=>304, 'errorMsg'=>'Unable to create'.$sql));
+                echo json_encode(array('errorCode'=>304, 'errorMsg'=>'Unable to create'));
             } 
         }
         

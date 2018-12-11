@@ -165,7 +165,7 @@
 												<p class="label">Course<sup>*</sup></p>
 												<!-- <textarea name="" id="" cols="30" rows="10"></textarea> -->
 												<!-- <input type="text" name="ter_course" placeholder="" required=""> -->
-												<select name="required_course" class="form-control" required="" data-live-search="true">
+												<select name="ter_course" class="form-control" required="" data-live-search="true">
 													<?php 
 														global $conn;
 														$sql = "SELECT * FROM `course_lists`";

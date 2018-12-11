@@ -1,0 +1,16 @@
+SQL Query for the SPRS Report
+
+<!DOCTYPE html>
+<html>
+<body>
+<script>
+var sql ="CREATE TABLE admin_sprs_report (ID SERIAL NOT NULL,prepared_by VARCHAR(55) NOT NULL, ";
+for(var i =1; i <= 130;i++) {
+	sql += '_'+i+"_ VARCHAR(5) NOT NULL,"
+}
+sql += "created_date VARCHAR(20) NOT NULL)";
+document.write(sql);
+</script>
+
+</body>
+</html> 

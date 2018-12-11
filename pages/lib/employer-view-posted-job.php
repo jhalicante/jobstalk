@@ -3,7 +3,7 @@
 	        <div class="modal-dialog modal-dialog-centered modal-md login-signup-modal">
 	            <div class="modal-content">
 					<div class="modal-header">
-						<!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
 						<h4 class="modal-title text-primary">Posted Job Information</h4>
 					</div>
 	                <div class="modal-body"> 
@@ -77,6 +77,8 @@
 											</div> <!-- end .form-group -->
 										</div> <!-- end .form-group-wrapper -->
 									</div> <!-- end .form-fields-wrapper -->
+									<div class="divider"></div>
+									<br/>
 									<div class="button-wrapper text-center">
 										<button type="submit" class="button" data-dismiss="modal">Close</button>
 									</div> <!-- end .button-wrapper -->	

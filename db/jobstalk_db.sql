@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.7
+-- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Dec 09, 2018 at 03:49 PM
--- Server version: 5.6.38
--- PHP Version: 7.2.1
+-- Host: localhost:8889
+-- Generation Time: Dec 11, 2018 at 12:45 AM
+-- Server version: 5.7.23
+-- PHP Version: 7.2.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -13,6 +13,187 @@ SET time_zone = "+00:00";
 --
 -- Database: `jobstalk_db`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `admin_lmi_report`
+--
+
+CREATE TABLE `admin_lmi_report` (
+  `ID` bigint(20) UNSIGNED NOT NULL,
+  `1` varchar(5) NOT NULL,
+  `2` varchar(5) NOT NULL,
+  `3` varchar(5) NOT NULL,
+  `4` varchar(5) NOT NULL,
+  `5` varchar(5) NOT NULL,
+  `6` varchar(5) NOT NULL,
+  `7` varchar(5) NOT NULL,
+  `8` varchar(5) NOT NULL,
+  `9` varchar(5) NOT NULL,
+  `10` varchar(5) NOT NULL,
+  `11` varchar(5) NOT NULL,
+  `total_1` varchar(5) NOT NULL,
+  `total_2` varchar(5) NOT NULL,
+  `total_3` varchar(5) NOT NULL,
+  `total_4` varchar(5) NOT NULL,
+  `input_1` varchar(5) NOT NULL,
+  `input_2` varchar(5) NOT NULL,
+  `input_3` varchar(5) NOT NULL,
+  `input_4` varchar(5) NOT NULL,
+  `input_5` varchar(5) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `admin_sprs_report`
+--
+
+CREATE TABLE `admin_sprs_report` (
+  `ID` bigint(20) UNSIGNED NOT NULL,
+  `_1_` varchar(5) NOT NULL,
+  `_2_` varchar(5) NOT NULL,
+  `_3_` varchar(5) NOT NULL,
+  `_4_` varchar(5) NOT NULL,
+  `_5_` varchar(5) NOT NULL,
+  `_6_` varchar(5) NOT NULL,
+  `_7_` varchar(5) NOT NULL,
+  `_8_` varchar(5) NOT NULL,
+  `_9_` varchar(5) NOT NULL,
+  `_10_` varchar(5) NOT NULL,
+  `_11_` varchar(5) NOT NULL,
+  `_12_` varchar(5) NOT NULL,
+  `_13_` varchar(5) NOT NULL,
+  `_14_` varchar(5) NOT NULL,
+  `_15_` varchar(5) NOT NULL,
+  `_16_` varchar(5) NOT NULL,
+  `_17_` varchar(5) NOT NULL,
+  `_18_` varchar(5) NOT NULL,
+  `_19_` varchar(5) NOT NULL,
+  `_20_` varchar(5) NOT NULL,
+  `_21_` varchar(5) NOT NULL,
+  `_22_` varchar(5) NOT NULL,
+  `_23_` varchar(5) NOT NULL,
+  `_24_` varchar(5) NOT NULL,
+  `_25_` varchar(5) NOT NULL,
+  `_26_` varchar(5) NOT NULL,
+  `_27_` varchar(5) NOT NULL,
+  `_28_` varchar(5) NOT NULL,
+  `_29_` varchar(5) NOT NULL,
+  `_30_` varchar(5) NOT NULL,
+  `_31_` varchar(5) NOT NULL,
+  `_32_` varchar(5) NOT NULL,
+  `_33_` varchar(5) NOT NULL,
+  `_34_` varchar(5) NOT NULL,
+  `_35_` varchar(5) NOT NULL,
+  `_36_` varchar(5) NOT NULL,
+  `_37_` varchar(5) NOT NULL,
+  `_38_` varchar(5) NOT NULL,
+  `_39_` varchar(5) NOT NULL,
+  `_40_` varchar(5) NOT NULL,
+  `_41_` varchar(5) NOT NULL,
+  `_42_` varchar(5) NOT NULL,
+  `_43_` varchar(5) NOT NULL,
+  `_44_` varchar(5) NOT NULL,
+  `_45_` varchar(5) NOT NULL,
+  `_46_` varchar(5) NOT NULL,
+  `_47_` varchar(5) NOT NULL,
+  `_48_` varchar(5) NOT NULL,
+  `_49_` varchar(5) NOT NULL,
+  `_50_` varchar(5) NOT NULL,
+  `_51_` varchar(5) NOT NULL,
+  `_52_` varchar(5) NOT NULL,
+  `_53_` varchar(5) NOT NULL,
+  `_54_` varchar(5) NOT NULL,
+  `_55_` varchar(5) NOT NULL,
+  `_56_` varchar(5) NOT NULL,
+  `_57_` varchar(5) NOT NULL,
+  `_58_` varchar(5) NOT NULL,
+  `_59_` varchar(5) NOT NULL,
+  `_60_` varchar(5) NOT NULL,
+  `_61_` varchar(5) NOT NULL,
+  `_62_` varchar(5) NOT NULL,
+  `_63_` varchar(5) NOT NULL,
+  `_64_` varchar(5) NOT NULL,
+  `_65_` varchar(5) NOT NULL,
+  `_66_` varchar(5) NOT NULL,
+  `_67_` varchar(5) NOT NULL,
+  `_68_` varchar(5) NOT NULL,
+  `_69_` varchar(5) NOT NULL,
+  `_70_` varchar(5) NOT NULL,
+  `_71_` varchar(5) NOT NULL,
+  `_72_` varchar(5) NOT NULL,
+  `_73_` varchar(5) NOT NULL,
+  `_74_` varchar(5) NOT NULL,
+  `_75_` varchar(5) NOT NULL,
+  `_76_` varchar(5) NOT NULL,
+  `_77_` varchar(5) NOT NULL,
+  `_78_` varchar(5) NOT NULL,
+  `_79_` varchar(5) NOT NULL,
+  `_80_` varchar(5) NOT NULL,
+  `_81_` varchar(5) NOT NULL,
+  `_82_` varchar(5) NOT NULL,
+  `_83_` varchar(5) NOT NULL,
+  `_84_` varchar(5) NOT NULL,
+  `_85_` varchar(5) NOT NULL,
+  `_86_` varchar(5) NOT NULL,
+  `_87_` varchar(5) NOT NULL,
+  `_88_` varchar(5) NOT NULL,
+  `_89_` varchar(5) NOT NULL,
+  `_90_` varchar(5) NOT NULL,
+  `_91_` varchar(5) NOT NULL,
+  `_92_` varchar(5) NOT NULL,
+  `_93_` varchar(5) NOT NULL,
+  `_94_` varchar(5) NOT NULL,
+  `_95_` varchar(5) NOT NULL,
+  `_96_` varchar(5) NOT NULL,
+  `_97_` varchar(5) NOT NULL,
+  `_98_` varchar(5) NOT NULL,
+  `_99_` varchar(5) NOT NULL,
+  `_100_` varchar(5) NOT NULL,
+  `_101_` varchar(5) NOT NULL,
+  `_102_` varchar(5) NOT NULL,
+  `_103_` varchar(5) NOT NULL,
+  `_104_` varchar(5) NOT NULL,
+  `_105_` varchar(5) NOT NULL,
+  `_106_` varchar(5) NOT NULL,
+  `_107_` varchar(5) NOT NULL,
+  `_108_` varchar(5) NOT NULL,
+  `_109_` varchar(5) NOT NULL,
+  `_110_` varchar(5) NOT NULL,
+  `_111_` varchar(5) NOT NULL,
+  `_112_` varchar(5) NOT NULL,
+  `_113_` varchar(5) NOT NULL,
+  `_114_` varchar(5) NOT NULL,
+  `_115_` varchar(5) NOT NULL,
+  `_116_` varchar(5) NOT NULL,
+  `_117_` varchar(5) NOT NULL,
+  `_118_` varchar(5) NOT NULL,
+  `_119_` varchar(5) NOT NULL,
+  `_120_` varchar(5) NOT NULL,
+  `_121_` varchar(5) NOT NULL,
+  `_122_` varchar(5) NOT NULL,
+  `_123_` varchar(5) NOT NULL,
+  `_124_` varchar(5) NOT NULL,
+  `_125_` varchar(5) NOT NULL,
+  `_126_` varchar(5) NOT NULL,
+  `_127_` varchar(5) NOT NULL,
+  `_128_` varchar(5) NOT NULL,
+  `_129_` varchar(5) NOT NULL,
+  `_130_` varchar(5) NOT NULL,
+  `other_activities` varchar(150) NOT NULL,
+  `sprs_name` varchar(50) NOT NULL,
+  `sprs_designation` varchar(50) NOT NULL,
+  `created_date` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `admin_sprs_report`
+--
+
+INSERT INTO `admin_sprs_report` (`ID`, `_1_`, `_2_`, `_3_`, `_4_`, `_5_`, `_6_`, `_7_`, `_8_`, `_9_`, `_10_`, `_11_`, `_12_`, `_13_`, `_14_`, `_15_`, `_16_`, `_17_`, `_18_`, `_19_`, `_20_`, `_21_`, `_22_`, `_23_`, `_24_`, `_25_`, `_26_`, `_27_`, `_28_`, `_29_`, `_30_`, `_31_`, `_32_`, `_33_`, `_34_`, `_35_`, `_36_`, `_37_`, `_38_`, `_39_`, `_40_`, `_41_`, `_42_`, `_43_`, `_44_`, `_45_`, `_46_`, `_47_`, `_48_`, `_49_`, `_50_`, `_51_`, `_52_`, `_53_`, `_54_`, `_55_`, `_56_`, `_57_`, `_58_`, `_59_`, `_60_`, `_61_`, `_62_`, `_63_`, `_64_`, `_65_`, `_66_`, `_67_`, `_68_`, `_69_`, `_70_`, `_71_`, `_72_`, `_73_`, `_74_`, `_75_`, `_76_`, `_77_`, `_78_`, `_79_`, `_80_`, `_81_`, `_82_`, `_83_`, `_84_`, `_85_`, `_86_`, `_87_`, `_88_`, `_89_`, `_90_`, `_91_`, `_92_`, `_93_`, `_94_`, `_95_`, `_96_`, `_97_`, `_98_`, `_99_`, `_100_`, `_101_`, `_102_`, `_103_`, `_104_`, `_105_`, `_106_`, `_107_`, `_108_`, `_109_`, `_110_`, `_111_`, `_112_`, `_113_`, `_114_`, `_115_`, `_116_`, `_117_`, `_118_`, `_119_`, `_120_`, `_121_`, `_122_`, `_123_`, `_124_`, `_125_`, `_126_`, `_127_`, `_128_`, `_129_`, `_130_`, `other_activities`, `sprs_name`, `sprs_designation`, `created_date`) VALUES
+(7, '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', 'l', 'l', 'l', 'l', 'l', 'l', 'l', 'l', 'l', 'l', 'l', 'l', 'l', 'l', 'l', 'l', 'l', 'l', 'l', 'l', 'l', 'l', 'l', 'l', 'l', 'l', 'l', 'l', 'l', '1', 'l', 'l', 'l', 'l', 'l', 'l', 'l', 'l', 'l', 'l', 'l', 'l', 'l', 'l', 'l', 'l', 'l', 'l', 'l', 'l', 'l', 'l', 'l', 'l', 'l', 'l', 'l', 'l', 'l', 'l', 'l', 'l', 'l', 'l', 'l', 'l', 'l', 'l', 'l', 'l', 'l', 'l', 'l', 'l', '1', 'l', 'l', 'l', 'l', 'l', 'l', 'l', 'l', 'l', '1', 'l', 'l', 'll', 'll', '1', 'l', 'l', 'l', 'l', 'l', 'l', 'l', 'l', 'l', 'll', 'l', 'l', 'l', 'l', 'l', 'l', 'll', 'l', 'l', 'l', 'l', 'l', 'l', 'l', 'l', '1', 'l', 'l', 'l', 'adsasd', 'Marky', 'dis', '11/11/2018');
 
 -- --------------------------------------------------------
 
@@ -31,7 +212,8 @@ CREATE TABLE `applicant_career_objective` (
 --
 
 INSERT INTO `applicant_career_objective` (`ID`, `user_id`, `objective_content`) VALUES
-(1, '120420181543890908', 'To build a long-term career in [specific industry] with opportunities for career growth.\r\nTo enhance my educational and professional skills in a stable and dynamic workplace.\r\nTo solve problems in a creative and effective manner in a challenging position.');
+(1, '120420181543890908', 'To build a long-term career in [specific industry] with opportunities for career growth.\r\nTo enhance my educational and professional skills in a stable and dynamic workplace.\r\nTo solve problems in a creative and effective manner in a challenging position.'),
+(2, '121120181544487753', 'adasasd');
 
 -- --------------------------------------------------------
 
@@ -53,7 +235,8 @@ CREATE TABLE `applicant_contact_information` (
 --
 
 INSERT INTO `applicant_contact_information` (`ID`, `user_id`, `email_address`, `phone_no`, `municipality`, `brgy`) VALUES
-(1, '120420181543890908', 'jma.itsprogrammer@gmail.com', '09278977591', 'Caloocan City', '28');
+(1, '120420181543890908', 'jma.itsprogrammer@gmail.com', '09278977591', 'Caloocan City', '28'),
+(2, '121120181544487753', 'ako@gmail.com', '09278977591', 'asdas', 'ad');
 
 -- --------------------------------------------------------
 
@@ -84,7 +267,8 @@ CREATE TABLE `applicant_education` (
 --
 
 INSERT INTO `applicant_education` (`ID`, `user_id`, `ter_sname`, `ter_course`, `ter_ys`, `ter_ye`, `ter_ad`, `sec_sname`, `sec_ys`, `sec_ye`, `sec_ad`, `pri_sname`, `pri_ys`, `pri_ye`, `pri_ad`) VALUES
-(1, '120420181543890908', 'University of Caloocan City', 'Bachelor of Science in Computer Science', '2017-06-06', '1996-06-06', 'Biglang awa st Caloocan City', 'Navotas National High School', '1996-06-06', '1996-06-06', 'Taliba st Navotas City', 'Awayon Elementary School', '1996-06-06', '1996-06-01', 'Mercedes National High School');
+(1, '120420181543890908', 'University of Caloocan City', 'Bachelor of Science in Computer Science', '2017-06-06', '1996-06-06', 'Biglang awa st Caloocan City', 'Navotas National High School', '1996-06-06', '1996-06-06', 'Taliba st Navotas City', 'Awayon Elementary School', '1996-06-06', '1996-06-01', 'Mercedes National High School'),
+(10, '121120181544487753', 'asdasdasd', '1', '0311-03-12', '0123-03-12', 'asdasd', 'sdas', '1212-11-12', '1212-12-12', 'asdd', 'df', '0001-02-12', '0012-12-12', 'fdfd');
 
 -- --------------------------------------------------------
 
@@ -111,7 +295,8 @@ CREATE TABLE `applicant_personal_information` (
 --
 
 INSERT INTO `applicant_personal_information` (`ID`, `user_id`, `fname`, `mname`, `lname`, `bday`, `gender`, `nationality`, `civil_status`, `language`, `profile_picture`) VALUES
-(1, '120420181543890908', 'Johnmark', 'Yugo', 'Alicante', '1996-06-06', 'male', 'Filipino', 'Single', 'Filipino,English', '120620181544119464.jpg');
+(1, '120420181543890908', 'Johnmark', 'Yugo', 'Alicante', '1996-06-06', 'male', 'Filipino', 'Single', 'Filipino,English', '120620181544119464.jpg'),
+(2, '121120181544487753', 'Ako', 'Ako', 'Ako', '0012-12-12', 'male', 'FilAm', 'Single', 'tagalog', '121120181544487808.png');
 
 -- --------------------------------------------------------
 
@@ -150,7 +335,8 @@ CREATE TABLE `applicant_work_experience` (
 
 INSERT INTO `applicant_work_experience` (`ID`, `user_id`, `company_logo`, `company_name`, `position`, `job_start`, `job_end`, `description`, `location`) VALUES
 (1, '120420181543890908', '120620181544119770.jpg', 'ABS-CBN Corporation', 'Frontend Developer', '2010-01-01', '2018-01-01', 'tasdadas', 'Mother Ignacia '),
-(2, '120420181543890908', '120620181544119770.jpg', 'CodeEric Corporation', 'Fullstack Developer', '2010-01-01', '2020-01-01', 'tasdadas', 'Mother Ignacia ');
+(2, '120420181543890908', '120620181544119770.jpg', 'CodeEric Corporation', 'Fullstack Developer', '2010-01-01', '2020-01-01', 'tasdadas', 'Mother Ignacia '),
+(3, '121120181544487753', '121120181544488607.', 'adsasd', 'asdasd', '0112-02-12', '0012-12-12', 'asdasdsa', 'sdfasd');
 
 -- --------------------------------------------------------
 
@@ -174,7 +360,9 @@ CREATE TABLE `applied_job` (
 INSERT INTO `applied_job` (`ID`, `applicant_id`, `employer_id`, `job_id`, `application_status`, `date_applied`) VALUES
 (1, '120420181543890908', '120720181544166943', '120820181544270508s', 'in-process', '2018-12-09'),
 (2, '120420181543890908', '120720181544166943', '120820181544281722', 'in-process', '2018-12-09'),
-(3, '120420181543890908', '120720181544166943', '120820181544281722', 'in-process', '2018-12-09');
+(3, '120420181543890908', '120720181544166943', '120820181544281722', 'in-process', '2018-12-09'),
+(6, '120420181543890908', '120720181544166943', '120820181544270508', 'in-process', '12-10-2018'),
+(8, '121120181544487753', '120720181544166943', '120820181544270508', 'in-process', '12-11-2018');
 
 -- --------------------------------------------------------
 
@@ -353,7 +541,7 @@ CREATE TABLE `employer_job_posted` (
   `months_experience` varchar(2) NOT NULL,
   `description` text NOT NULL,
   `created_date` varchar(25) NOT NULL,
-  `status` enum('completed','pending','canceled','approved') NOT NULL
+  `status` enum('completed','pending','canceled','approved','disapproved') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -361,8 +549,9 @@ CREATE TABLE `employer_job_posted` (
 --
 
 INSERT INTO `employer_job_posted` (`ID`, `user_id`, `job_id`, `com_logo`, `com_name`, `com_address`, `position`, `job_type`, `course_id`, `industry_id`, `years_experience`, `months_experience`, `description`, `created_date`, `status`) VALUES
-(1, '120720181544166943', '120820181544270508', '120820181544270508.png', 'ABS-CBN Corporation', '115 J.P. Rizal St, Maypajo, Caloocan, 1410 Metro Manila', 'Frontend Developer', 'part-time', '4', '5', '2', '22', 'Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Etiam eu velit cursus, tempor ipsum in, tempus lectus. Nullam tempus nisi id nisl luctus, non tempor justo molestie.', '12/08/2018', 'approved'),
-(2, '120720181544166943', '120820181544281722', '120820181544281722.jpg', 'Test Inc', 'caloocan city', 'Data Analyst', 'full-time', '2', '5', '3', '3', 'Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Etiam eu velit cursus, tempor ipsum in, tempus lectus. Nullam tempus nisi id nisl luctus, non tempor justo molestie.', '12/08/2018', 'pending');
+(1, '120720181544166943', '120820181544270508', '120820181544270508.png', 'PAJO Corporation', '115 J.P. Rizal St, Maypajo, Caloocan, 1410 Metro Manila', 'Water Bender', 'part-time', '4', '5', '2', '7', 'Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Etiam eu velit cursus, tempor ipsum in, tempus lectus. Nullam tempus nisi id nisl luctus, non tempor justo molestie.', '12/08/2018', 'approved'),
+(2, '120720181544166943', '120820181544281722', '120820181544281722.jpg', 'Test Inc', '234, 236 Tomas Morato Ave, Diliman, Quezon City, 1103 Metro Manila', 'Data Analyst', 'full-time', '2', '5', '3', '3', 'Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Etiam eu velit cursus, tempor ipsum in, tempus lectus. Nullam tempus nisi id nisl luctus, non tempor justo molestie.', '12/08/2018', 'approved'),
+(3, '120720181544166943', '121020181544432317', '121020181544432317.', 'as21', '3asda', '3123', 'internship', '11', '8', '2', '2', 'asdasd', '12/10/2018', 'approved');
 
 -- --------------------------------------------------------
 
@@ -387,7 +576,6 @@ CREATE TABLE `employer_placement_report` (
 INSERT INTO `employer_placement_report` (`ID`, `user_id`, `job_title`, `company_name`, `date_conducted`, `venue`, `created_date`) VALUES
 (1, '120720181544166943', 'asd', 'asd', '0123-02-13', 'adas', '12-08-2018'),
 (2, '120720181544166943', 'assss', '123123', '2321-12-31', '12312', '12-09-2018'),
-(3, '120720181544166943', '', '', '', '', '12-09-2018'),
 (4, '120920181544344118', 'Web developer', 'IBM Corp', '2018-02-01', 'Caloocan City', '12-09-2018'),
 (5, '120920181544344118', 'JS Developer', 'test', '0021-12-12', 'test', '12-09-2018');
 
@@ -534,11 +722,24 @@ INSERT INTO `user_account` (`ID`, `user_id`, `email_address`, `password`, `role`
 (2, '120420181543890908', 'applicant@gmail.com', '123', 'applicant', 'approved'),
 (7, '120720181544166943', 'employer@gmail.com', '123', 'employer', 'approved'),
 (12, '120920181544344118', 'emp@gmail.com', '123', 'employer', 'approved'),
-(13, '120920181544357586', 'test@gmail.com', '123', 'applicant', 'pending');
+(13, '120920181544357586', 'test@gmail.com', '123', 'applicant', 'pending'),
+(14, '121120181544487753', 'ako@gmail.com', '123', 'applicant', 'pending');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `admin_lmi_report`
+--
+ALTER TABLE `admin_lmi_report`
+  ADD UNIQUE KEY `ID` (`ID`);
+
+--
+-- Indexes for table `admin_sprs_report`
+--
+ALTER TABLE `admin_sprs_report`
+  ADD UNIQUE KEY `ID` (`ID`);
 
 --
 -- Indexes for table `applicant_career_objective`
@@ -629,28 +830,40 @@ ALTER TABLE `user_account`
 --
 
 --
+-- AUTO_INCREMENT for table `admin_lmi_report`
+--
+ALTER TABLE `admin_lmi_report`
+  MODIFY `ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `admin_sprs_report`
+--
+ALTER TABLE `admin_sprs_report`
+  MODIFY `ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
 -- AUTO_INCREMENT for table `applicant_career_objective`
 --
 ALTER TABLE `applicant_career_objective`
-  MODIFY `ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `applicant_contact_information`
 --
 ALTER TABLE `applicant_contact_information`
-  MODIFY `ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `applicant_education`
 --
 ALTER TABLE `applicant_education`
-  MODIFY `ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `applicant_personal_information`
 --
 ALTER TABLE `applicant_personal_information`
-  MODIFY `ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `applicant_skills`
@@ -662,13 +875,13 @@ ALTER TABLE `applicant_skills`
 -- AUTO_INCREMENT for table `applicant_work_experience`
 --
 ALTER TABLE `applicant_work_experience`
-  MODIFY `ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `applied_job`
 --
 ALTER TABLE `applied_job`
-  MODIFY `ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `course_lists`
@@ -686,7 +899,7 @@ ALTER TABLE `employer_information`
 -- AUTO_INCREMENT for table `employer_job_posted`
 --
 ALTER TABLE `employer_job_posted`
-  MODIFY `ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `employer_placement_report`
@@ -710,4 +923,4 @@ ALTER TABLE `region`
 -- AUTO_INCREMENT for table `user_account`
 --
 ALTER TABLE `user_account`
-  MODIFY `ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;

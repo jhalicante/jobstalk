@@ -18,7 +18,7 @@
 						<div class="logo"><a href="index.html"><img src="<?php echo ASSET_URL;?>assets/images/logo.png" alt="JobPress" class="img-responsive"></a></div>	
 					</div> <!-- end .left -->				
 					<div class="right flex space-between no-column items-center">
-						<div class="navigation" style="visibility:hiden;">
+						<div class="navigation" style="visibility:hidden;">
 							<nav class="main-nav">
 								<ul class="list-unstyled">
 									<li class="active"><a href="">Home</a></li>
@@ -32,7 +32,7 @@
 								<a href="account" class="button">My Account</a>
 								<a href="#" class="button signout">Sign Out</a>
 							<?php } else { ?>
-								<a href="post-job-form.html" class="button">Post a Job</a>
+								<a href="find-job" class="button">Find Job</a>
 								<a href="#register" class="button" data-toggle="modal" data-target=".bs-modal-sm">Sign Up</a>
 							<?php }?>
 						</div> <!-- end .button-group-merged -->
@@ -47,70 +47,7 @@
 			<nav class="responsive-nav"></nav> <!-- end .responsive-nav -->
 		</div> <!-- end .responsive-menu -->
 
-		<!-- Login/Signup Popup -->
-	    <div class="modal fade bs-modal-sm" aria-hidden="true" aria-labelledby="myTabContent"  id="login-signup-popup" role="dialog" tabindex="-1">
-	        <div class="modal-dialog modal-sm login-signup-modal">
-	            <div class="modal-content">
-	                <div class="popup-tabs">
-	                    <ul class="nav nav-tabs" id="myTab">
-	                        <li class="active"><a data-toggle="tab" href="#login">Sign In</a></li>
-	                        <li><a data-toggle="tab" href="#register">Sign Up</a></li>
-	                    </ul>
-	                </div> <!-- end .popup-tabs -->
-	                <div class="modal-body">
-	                    <div class="tab-content" id="myTabContent">
-	                        <div class="tab-pane fade in active" id="login">
-	                            <form class="login-form">
-									<div class="form-group">
-										<p class="signin-error-message text-danger"></p>
-									</div>
-									<div class="form-group">
-									    <label for="InputEmail1">Your Email *</label>
-									    <input type="email" class="form-control signin-email-address" id="InputEmail1" placeholder="Enter your email">
-									</div>
-
-									<div class="form-group">
-									    <label for="InputPassword1">Password *</label>
-									    <input type="password" class="form-control signin-password" id="InputPassword1" placeholder="Password">
-									</div>
-									<button type="button" class="button btn-signin">Sign In</button>
-	                            </form> <!-- end .login-form -->
-	                        </div> <!-- end login-tab-content -->
-
-	                        <div class="tab-pane fade" id="register">
-								<form method="post" enctype="multipart/form-data" id="signup-form" class="signup-form">
-									<div class="form-group">
-										<p class="signup-error-message text-danger"></p>
-									</div>
-									<div class="form-group"> 
-									    <label for="InputEmail1">Your Email *</label>
-									    <input type="email" class="form-control" name="email-address" placeholder="Enter your email address" require="">
-									</div>
-									<div class="form-group">
-									    <label for="InputPassword1">Password *</label>
-									    <input type="password" class="form-control" name="password" placeholder="Enter Password">
-									</div>
-									<div class="form-group">
-									    <label for="InputPassword2">Confirm Password *</label>
-									    <input type="password" class="form-control" name="confirm-password" placeholder="Enter Confirm-Password">
-									</div>
-									<div class="form-group">
-									    <label for="select1">Register as:</label>
-									    <div class="select-wrapper">
-									        <select class="form-control" name="role">
-										        <option value="applicant">Applicant</option>
-										        <option value="employer">Employer</option>
-										    </select>
-									    </div> <!-- end .select-wrapper -->								    
-									</div>
-									<button type="type" class="button">Sign Up</button>
-	                            </form> <!-- end .signup-form -->
-	                        </div> <!-- end signup-tab-content -->
-	                    </div> <!-- end .mytabcontent -->
-	                </div> <!-- end .modal-body -->
-	            </div> <!-- end .modal-content -->
-	        </div> <!-- end .modal-dialog -->
-	    </div> <!-- end .modal -->
+		<?php include './pages/lib/login-modal.php' ?>
 
 		<!-- Hero Section -->
 		<div class="section hero-section transparent" style="background-image: url('<?php echo ASSET_URL;?>assets/images/background01.jpg');">
@@ -118,15 +55,15 @@
 				<div class="container">
 					<div class="job-search-form">
 						<h2>Over<span>100,000<sup>+</sup></span>jobs are waiting for you</h2>
-						<form class="form-inline flex">
+						<form class="form-inline flex" method="GET" action="find-job">
 							<div class="form-group">
 								<div class="form-group-inner">
-									<input type="text" class="form-control" id="input-field-1" placeholder="job title / Keywords / company name">
+									<input type="text" class="form-control" name="position" id="input-field-1" placeholder="job title / Keywords / company name">
 									<i class="ion-ios-briefcase-outline"></i>
 								</div>
 							</div>
 							<div class="form-group">							
-								<input type="text" class="form-control" id="input-field-2" placeholder="city / province / zip code">
+								<input type="text" class="form-control" name="location" id="input-field-2" placeholder="city / province / zip code">
 								<i class="ion-ios-location-outline"></i>
 							</div>
 							<button type="submit" class="button"><i class="ion-ios-search-strong"></i></button>

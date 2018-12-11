@@ -41,3 +41,8 @@
 		<script>
 			var api_url = '<?php echo API_URL; ?>';
 		</script>
+		<?php if(isset($_GET['active-tab'])) { ?>
+			<script> setTimeout(() => {
+				//$('.<?php echo $_GET['active-tab']; ?>').click();
+			}, 100);  </script>
+		<?php } ?>

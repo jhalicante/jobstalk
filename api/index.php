@@ -24,13 +24,18 @@
     }
 
     /***********************************
-     * ADMIN FUNCTIONS API
+     * JOBS FUNCTIONS API
      * *********************************/ 
     // Add Personal Information
     $router->post(API_VERSION.'/job/find-job', function () {
         $job = new Job();
+        $job->findJob($_POST);
+    });
+    $router->post(API_VERSION.'/job/apply-job', function () {
+        $job = new Job();
         $job->applyJob($_POST);
     });
+    
 
     /***********************************
      * ENTRY FUNCTIONS API
@@ -119,6 +124,15 @@
     $router->post(API_VERSION.'/admin/approved-user', function () {
         $admin = new Admin();
         $admin->approvedUser($_POST);
+    });
+    // Add SPRS
+    $router->post(API_VERSION.'/admin/add-sprs', function () {
+        $admin = new Admin();
+        $admin->addSPRS($_POST['sql']);
+    });
+    $router->post(API_VERSION.'/admin/approved-job', function () {
+        $admin = new Admin();
+        $admin->approvedJob($_POST);
     });
     
 
