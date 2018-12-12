@@ -135,6 +135,12 @@
         $admin = new Admin();
         $admin->addSPRS($_POST['sql']);
     });
+    // Get SPRS
+    $router->post(API_VERSION.'/admin/get-sprs', function () {
+        $admin = new Admin();
+        $admin->getSPRS($_POST);
+    });
+    
     // Add SPES
     $router->post(API_VERSION.'/admin/add-spes', function () {
         $admin = new Admin();
@@ -144,6 +150,11 @@
     $router->post(API_VERSION.'/admin/add-reminders', function () {
         $admin = new Admin();
         $admin->addReminders($_POST);
+    });
+    // Get Reminders
+    $router->post(API_VERSION.'/admin/get-reminders', function () {
+        $admin = new Admin();
+        $admin->getReminders();
     });
     
     // Run router

@@ -58,9 +58,13 @@ var employer = {
 
 
         $(document).on('click','.candidates-show-modal', function(e){
-            var job_id = $(this).attr('job_id');
+            var job_id = $(this).attr('job_id'),
+                years_exp = $(this).attr('years-exp'),
+                months_exp = $(this).attr('months-exp');
             $('#employer-view-candidates-applied').modal('show');
             $('.employer-view-candidates-loading').css('display','block');
+            $('.employer-view-candidates-lists').html('');
+            
             console.log('jobid ', job_id);
             $.ajax({
                 type : 'POST',
@@ -74,37 +78,68 @@ var employer = {
                         var res = res.response;
                         var experience_count = '';
                         for (let i = 0; i < res.length; i++) { 
-                            
-                            for (let y = 0; y < 2; y++) { 
 
-                                var fromDate = '2010-01-01';
-                                var toDate = '2018-01-01';
-                                try {
+                            var year_count = 0,
+                            month_count =0;
+
+                            console.log('res ',res[i][0]);
+                            
+                            var explen = res[i][0].length;
+
+                            for (let x = 0; x <= explen; x++) {
+
+                                 
+                                 try {
+                                    console.log('year = ', res[i][0][x]["year"]); 
+                                    var years = JSON.parse(res[i][0][x].year),
+                                        months = JSON.parse(res[i][0][x].months),
+                                        addedMonths = month_count + months;
+
+                                    year_count = year_count + years;
+                                    month_count = month_count + months;
+                                    // if( addedMonths >= 12  ) {
+                                    //     var sliced = res[i][0][x]["month"]
+                                    //     year_count = 
+                                    //     month_count = month_count + res[i][0][x]["month"];                                        
+                                    // }
+                                 } catch (error) {
+                                    break;
+                                 }
+
+                                // var fromDate = '2010-01-01';
+                                // var toDate = '2018-01-01';
+                                // try {
                                 
-                                    var result = employer.getDateDifference(new Date(fromDate), new Date(toDate));
-                                    console.log('results ', result);
+                                //     var result = employer.getDateDifference(new Date(fromDate), new Date(toDate));
+                                //     console.log('results ', result);
                                 
-                                    if (result && !isNaN(result.years)) {
-                                        experience_count =
-                                            result.years + ' year' + (result.years == 1 ? ' ' : 's ') +
-                                            result.months + ' month' + (result.months == 1 ? ' ' : 's ') + 'and ' +
-                                            result.days + ' day' + (result.days == 1 ? '' : 's');
-                                    }
-                                } catch (e) {
-                                    console.error(e);
-                                }
+                                //     if (result && !isNaN(result.years)) {
+                                //         experience_count =
+                                //             result.years + ' year' + (result.years == 1 ? ' ' : 's ') +
+                                //             result.months + ' month' + (result.months == 1 ? ' ' : 's ') + 'and ' +
+                                //             result.days + ' day' + (result.days == 1 ? '' : 's');
+                                //     }
+                                // } catch (e) {
+                                //     console.error(e);
+                                // }
                                 
                             }
                             var markup = '<tr>';
                                     markup += '<td>'+(i+1)+'</td>';                                
                                     markup += '<td>'+res[i].fname+' '+res[i].mname+' '+res[i].lname+'</td>';
                                     markup += '<td>'+res[i].date_applied+'</td>';
-                                    markup += '<td>'+experience_count+'</td>';
+                                    markup += '<td>'+year_count+'yrs & '+month_count+'mons</td>';
                                     markup += '<td>'+res[i].date_applied+'</td>';
-                                    markup += '<td>Qualified | Not Qualified</td>';													
+                                    if(years_exp <  year_count) {
+                                        markup += '<td><mark>Qualified</mark></td>';
+                                    } else {
+                                        markup += '<td><mark>Not Qualified</mark></td>';
+                                    }
                                     markup += '<td>'+res[i].application_status+'</td>';
-                                    markup += '<td>'+res[i].application_status+'</td>';
+                                    markup += '<td><a href="?applicant-profile='+res[i].user_id+'">View Profile</a></td>';
                                 markup += '</tr>';
+                                year_count=0;
+                                month_count=0;
                             $('.employer-view-candidates-lists').append(markup);
                         }
                     } 

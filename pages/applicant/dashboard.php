@@ -82,7 +82,7 @@
 										<div class="profile-about profile-section">
 											<h3 class="dark profile-title">
 												Career Objective
-												<span class="btn-edit-icon btn-edit-career"><i class="ion-edit"></i></span>												
+												<!-- <span class="btn-edit-icon btn-edit-career"><i class="ion-edit"></i></span>												 -->
 											</h3>
 											<p><?php echo $fetch->getInformation('applicant_career_objective', 'objective_content'); ?></p>
 										</div> <!-- end .profile-about -->
@@ -92,57 +92,8 @@
 										<div class="profile-experience-wrapper profile-section">
 											<h3 class="dark profile-title">
 													Work experience 
-													<span class="show-new-experience-view"><i class="ion-plus"></i></span>
+													<!-- <span class="show-new-experience-view"><i class="ion-plus"></i></span> -->
 											</h3>
-											
-											<div class="new-experience-view hide">
-												<div class="form-fields-wrapper">
-													<h3 class="form-fields-title dark">Add new work experience</h3>
-													<form method="post" enctype="multipart/form-data" id="UploadMedia">
-														<div class="form-group-wrapper flex space-between items-center">
-															<div class="form-group">
-																<p class="label">Company Logo</p>
-																<input type="file" id="company_logo" name="company_logo" placeholder="">
-															</div> <!-- end .form-group -->
-															<div class="form-group">
-																<img src="<?php echo ASSET_URL;?>assets/images/company-logo-big01.jpg" alt="company-logo" class="img-responsive pull-right img-preview">															
-															</div> <!-- end .form-group -->
-														</div> <!-- end .form-group-wrapper -->
-														<div class="form-group-wrapper flex space-between items-center">
-															<div class="form-group">
-																<p class="label">Company Name</p>
-																<input type="text" class="company-title" name="company-title" placeholder="">
-															</div> <!-- end .form-group -->
-															<div class="form-group">
-																<p class="label">Position</p>
-																<input type="text" class="position" name="position" placeholder="">
-															</div> <!-- end .form-group -->
-														</div> <!-- end .form-group-wrapper -->
-														<div class="form-group-wrapper flex space-between items-center">
-															<div class="form-group">
-																<p class="label">Job Started</p>
-																<input type="date" class="job-started" name="job-started" placeholder="">
-															</div> <!-- end .form-group -->
-															<div class="form-group">
-																<p class="label">Job Ended</p>
-																<input type="date" class="job-ended" name="job-ended" placeholder="">
-															</div> <!-- end .form-group -->
-														</div> <!-- end .form-group-wrapper -->
-
-														<div class="form-group-wrapper">
-															<div class="form-group">
-																<p class="label">Job Description</p>
-																<textarea name="job-desc" class="job-desc" rows="6"></textarea>
-															</div> <!-- end .form-group -->
-														</div> <!-- end .form-group-wrapper -->
-													</div> <!-- end .form-fields-wrapper -->
-													<div class="button-wrapper text-center">
-														<button type="button" class="button g-plus-btn hide-new-experience-view">Cancel</button>
-														<button type="submit" class="button btn-save-new-experiencex">Save</button>
-													</div> <!-- end .button-wrapper -->	
-												</form>
-											</div>
-											<div class="spacer-md"></div>
 											<?php 
 												global $conn;											
 												$sql = "SELECT * FROM `applicant_work_experience` WHERE `user_id`='".$_COOKIE['user_id']."'";
@@ -163,7 +114,7 @@
 														<p class="small ultra-light"><?php echo $row['job_start']; ?> - <?php echo $row['job_end']; ?> (<?php echo $interval->format('%y year %m months');?>)</p>
 														<p class="small ultra-light"><i class="ion-location" style="font-size:13px;"></i> <?php echo $row['location']; ?></p>
 														<p><?php echo $row['description']; ?></p>
-														<h6 class="text-info show-new-experience-view">Edit &nbsp; [ <span><i class="ion-edit"></i></span> ]</h6>
+														<!-- <h6 class="text-info show-new-experience-view">Edit &nbsp; [ <span><i class="ion-edit"></i></span> ]</h6> -->
 														<!-- projects-count -->
 													</div> <!-- end .profile-experience-left -->
 													<div class="profile-experience-right">
@@ -181,7 +132,9 @@
 										<div class="divider"></div>
 
 										<div class="profile-education-wrapper profile-section">
-											<h3 class="dark profile-title">Education<span><i class="ion-edit"></i></span></h4>											
+											<h3 class="dark profile-title">Education
+												<!-- <span><i class="ion-edit"></i></span> -->
+											</h4>											
 											<?php 
 												global $conn;											
 												$sql = "SELECT * FROM `applicant_education` WHERE `user_id`='".$_COOKIE['user_id']."' ";
@@ -214,47 +167,6 @@
 											}
 											?>
 										</div> <!-- end .profile-education-wrapper -->
-
-										<div class="divider"></div>
-
-										<div class="profile-skills-wrapper profile-section">
-											<h3 class="dark profile-title">Summary skill<span><i class="ion-edit"></i></span></h3>
-											<div class="progress-wrapper flex space-between items-center no-wrap">
-												<h6 class="progress-skill">HTML</h6>											
-												<div class="progress">													
-													<div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width: 90%;">
-													</div> <!-- end .progress-bar -->
-												</div> <!-- end .progress -->
-												<h6 class="percentage"><span class="countTo" data-from="0" data-to="90">90</span>%</h6>
-											</div> <!-- end .progress-wrapper -->
-											<div class="spacer-xs"></div>
-											<div class="progress-wrapper flex space-between items-center no-wrap">
-												<h6 class="progress-skill">PHP</h6>											
-												<div class="progress">													
-													<div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%;">
-													</div> <!-- end .progress-bar -->
-												</div> <!-- end .progress -->
-												<h6 class="percentage"><span class="countTo" data-from="0" data-to="80">80</span>%</h6>
-											</div> <!-- end .progress-wrapper -->
-											<div class="spacer-xs"></div>
-											<div class="progress-wrapper flex space-between items-center no-wrap">
-												<h6 class="progress-skill">NODEJS</h6>											
-												<div class="progress">													
-													<div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
-													</div> <!-- end .progress-bar -->
-												</div> <!-- end .progress -->
-												<h6 class="percentage"><span class="countTo" data-from="0" data-to="60">60</span>%</h6>
-											</div> <!-- end .progress-wrapper -->
-											<div class="spacer-xs"></div>
-											<div class="progress-wrapper flex space-between items-center no-wrap">
-												<h6 class="progress-skill">JAVASCRIPT</h6>											
-												<div class="progress">													
-													<div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width: 90%;">
-													</div> <!-- end .progress-bar -->
-												</div> <!-- end .progress -->
-												<h6 class="percentage"><span class="countTo" data-from="0" data-to="90">90</span>%</h6>
-											</div> <!-- end .progress-wrapper -->
-										</div> <!-- end .profile-skills-wrapper -->
 
 							        </div> <!-- end .profile-wrapper -->						        
 								</div> <!-- end #resume-tab -->

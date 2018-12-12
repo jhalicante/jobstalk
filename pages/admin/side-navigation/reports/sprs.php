@@ -158,6 +158,7 @@
          solid windowtext .5pt;mso-background-themecolor:background1;
          mso-background-themeshade:191;padding:0in 5.4pt 0in 5.4pt;height:23.25pt; text-align: center;background-color: #e0e0e0; '
          contenteditable="true">
+         <?php echo $repInc->employerApplicantCount('user_account','role','applicant'); ?>
       </td>
       <td class="td" width=191 style='width:140.9pt;border:solid windowtext 1.0pt;mso-border-alt:
          solid windowtext .5pt;mso-background-themecolor:background1;
@@ -255,12 +256,13 @@
          solid windowtext .5pt;mso-background-themecolor:background1;
          mso-background-themeshade:191;padding:0in 5.4pt 0in 5.4pt;height:23.25pt; text-align: center;background-color: #e0e0e0;'
          contenteditable="true">
-         <?php echo 200; ?>
+         <?php echo $repInc->spesCount(); ?>
       </td>
       <td class="td" width=191 style='width:140.9pt;border:solid windowtext 1.0pt;mso-border-alt:
          solid windowtext .5pt;mso-background-themecolor:background1;
          mso-background-themeshade:191;padding:0in 5.4pt 0in 5.4pt;height:23.25pt; text-align: center;background-color: #e0e0e0;'
          contenteditable="true">
+         <?php echo $repInc->spesCount(); ?>
       </td>
    </tr>
    <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes;height:23.25pt'>
@@ -428,6 +430,7 @@
          solid windowtext .5pt;mso-background-themecolor:background1;
          mso-background-themeshade:191;padding:0in 5.4pt 0in 5.4pt;height:23.25pt; text-align: center;background-color: #e0e0e0;'
          contenteditable="true">
+         <?php echo $repInc->spesCount(); ?>
       </td>
       <td class="td" width=191 style='width:140.9pt;border:solid windowtext 1.0pt;mso-border-alt:
          solid windowtext .5pt;mso-background-themecolor:background1;
@@ -473,6 +476,7 @@
          solid windowtext .5pt;mso-background-themecolor:background1;
          mso-background-themeshade:191;padding:0in 5.4pt 0in 5.4pt;height:23.25pt; text-align: center;background-color: #e0e0e0;'
          contenteditable="true">
+         <?php echo $repInc->spesCount() + $repInc->employerApplicantCount('user_account','role','applicant'); ?>         
       </td>
       <td class="td" width=191 style='width:140.9pt;border:solid windowtext 1.0pt;mso-border-alt:
          solid windowtext .5pt;mso-background-themecolor:background1;
@@ -518,6 +522,7 @@
          solid windowtext .5pt;mso-background-themecolor:background1;
          mso-background-themeshade:191;padding:0in 5.4pt 0in 5.4pt;height:23.25pt; text-align: center;background-color: #e0e0e0;'
          contenteditable="true">
+         <?php echo $repInc->spesCount() + $repInc->employerApplicantCount('user_account','role','employer'); ?>         
       </td>
       <td class="td4" width=191 style='width:140.9pt;border:solid windowtext 1.0pt;mso-border-alt:
          solid windowtext .5pt;mso-background-themecolor:background1;
@@ -1471,11 +1476,19 @@
    </tr>
 </table>
 </div>
+
 <br/>
 <br/>
 <center>
-   <button class="button save-sprs"> Save Changes </button>
+   <?php 
+      if(isset($_GET['admin-sprs-report-id'])){
+            echo '<button class="button print-sprs"> Print </button>';
+      }
+      else {
+            echo '<button class="button save-sprs"> Save Changes </button>';
+      }
+   ?>
 </center>
+
 <br/>
 <br/>
-<div class="divider"></div>

@@ -158,6 +158,7 @@
 
             if ($result->num_rows > 0) {
                 $data = array();
+                $experience_count = array();
                 while($row = $result->fetch_assoc()) {
                     
                 
@@ -173,13 +174,21 @@
                             $datetime1 = new DateTime($row1['job_start']);
                             $datetime2 = new DateTime($row1['job_end']);
                             $interval = $datetime1->diff($datetime2);
-                            
-                            $year = $interval->format('%y year %m months');
-                            $months = $interval->format('%y year %m months');
-                            $experience = array('year'=>$year,'months'=>$months/12);
+                            $yr = $interval->format('%y');
+                            $mon = $interval->format('%m');
 
-                            array_push($row, $experience);
+                            for ($m=0; $m <= $mon; $m++) { 
+                                if($m == 12) {
+                                    $mon/12;
+                                    $yr + 1;
+                                }
+                            }
+
+                            $exp = array('year'=>$yr,'months'=>$mon,'company'=>$row1['company_name']);
+                            array_push($experience_count, $exp);
                         }
+                        array_push($row, $experience_count);
+                        $experience_count = [];                        
                     }
                     array_push($data, $row);
                 }

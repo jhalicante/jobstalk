@@ -45,7 +45,6 @@
 			<div class="inner">
 				<div class="container">
 					<div class="employer-dashboard-wrapper flex space-between no-wrap">
-
 						<div class="left-sidebar-menu">							
 							<ul class="nav nav-pills nav-stacked">
 								<li class="heading">Manage All Jobs, Applicant & Employer </li>
@@ -58,10 +57,15 @@
 							    <li><a data-toggle="pill" href="#reminders-add-tab"> &nbsp;&nbsp;&nbsp; Add Remiders</a></li>
 								<li class="nav-divider"></li>
 								<li class="heading">Manage Reports</li>								
-								<li><a data-toggle="pill" class="reports-list-tab" href="#reports-list-tab">Key performance indicator</a></li>
+								<li><a data-toggle="pill" class="kpi-tab" href="#kpi-tab">Key performance indicator</a></li>
 								<li><a data-toggle="pill" class="reports-list-tab" href="#reports-list-tab">General Reports</a></li>
-								<li><a data-toggle="pill" href="#sprs-tab"> &nbsp;&nbsp;&nbsp; SPRS</a></li>
-								<li><a data-toggle="pill" href="#lmi-tab"> &nbsp;&nbsp;&nbsp; LMI</a></li>
+								<?php if(isset($_GET['admin-sprs-report-id'])) {  ?>
+									<li><a href="account" class="sprs-tab"> &nbsp;&nbsp;&nbsp; SPRS</a></li>
+									<li><a data-toggle="pill" href="#sprs-tab" class="sprs-tab hide"> &nbsp;&nbsp;&nbsp; SPRS</a></li>									
+								<?php } else {  ?>
+									<li><a data-toggle="pill" href="#sprs-tab" class="sprs-tab"> &nbsp;&nbsp;&nbsp; SPRS</a></li>								
+								<?php }  ?>
+								<li><a data-toggle="pill" href="#lmi-tab" class="lmi-tab"> &nbsp;&nbsp;&nbsp; LMI</a></li>
 								<li><a data-toggle="pill" href="#placement-report-tab"> &nbsp;&nbsp;&nbsp; Placement Report</a></li>
 								<li class="nav-divider"></li>
 								<li class="heading">Manage SPES</li>
@@ -95,6 +99,13 @@
 							    	<div class="profile-badge"><h6>Applicant List</h6></div>									
 							        <div class="profile-wrapper">
 										<?php include './pages/admin/side-navigation/applicant.php'; ?>
+							        </div>						        
+								</div>
+
+								<div id="kpi-tab" class="tab-pane fade in">
+							    	<div class="profile-badge"><h6>Key performance indicator</h6></div>									
+							        <div class="profile-wrapper">
+										<?php include './pages/admin/side-navigation/kpi.php'; ?>										
 							        </div>						        
 								</div>
 								
@@ -136,20 +147,36 @@
 													}
 												} 
 												?>
+												<?php
+													$lmisql = "SELECT * FROM `admin_lmi_report` WHERE 1 ORDER BY ID ASC  ";
+													$lmiresult = $conn->query($lmisql);
+													if ($lmiresult->num_rows > 0) {
+														while($lmirRow = $lmiresult->fetch_assoc()) {
+															$i++;
+													?>
+													<tr>
+														<th><?php echo $i; ?></th>
+														<td> <a href="account?admin-lmi-report-id=<?php echo $lmirRow['ID']; ?>"> Labor Market Information Analysis</td>
+														<td><?php echo $lmirRow['created_date']; ?></td>
+														<td><?php echo $lmirRow['17']; ?></td>
+													</tr> 
+												<?php 
+													}
+												} 
+												?>
 											</tbody>
 										</table>
 							        </div>
 								</div>
 
 								<div id="lmi-tab" class="tab-pane fade in">
-									<div class="profile-badge"><h6>LMI ANALYSIS</h6></div>
+									<div class="profile-badge"><h6>Labor Market Information Analysis ANALYSIS</h6></div>
 									<br/>
 									<?php include './pages/admin/side-navigation/reports/lmi.php'; ?>
 								</div>
 
 								<div id="placement-report-tab" class="tab-pane fade in">
 									<div class="profile-badge"><h6>Placement Report</h6></div>
-									<div class="divider"></div>
 									<div class="profile-wrapper">
 										<table id="placement-report-table" class="table table-condensed">
 											<thead>
@@ -219,30 +246,48 @@
 			</div> <!-- end .inner -->
 		</div> <!-- end .section -->
 		
-		<div class="toast toast--yellow add-margin" style="display:none;">
-			<div class="toast__icon">
-				<svg version="1.1" class="toast__svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 301.691 301.691" style="enable-background:new 0 0 301.691 301.691;" xml:space="preserve">
-					<g>
-						<polygon points="119.151,0 129.6,218.406 172.06,218.406 182.54,0  "></polygon>
-						<rect x="130.563" y="261.168" width="40.525" height="40.523"></rect>
-					</g>
-				</svg>
-			</div> 
-			<div class="toast__content">
-				<p class="toast__type">Reminder Title</p>
-				<p class="toast__message">
-				Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
-				Enim illo odit ipsam ullam obcaecati, in quia officiis animi 
-				quidem accusamus voluptas pariatur ab maxime excepturi, 
-				recusandae eos iste delectus suscipit.
-				...Anyone with access can view your invited visitors.</p>
-			</div>
-			<div class="toast__close">
-				<svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.642 15.642" xmlns:xlink="http://www.w3.org/1999/xlink" enable-background="new 0 0 15.642 15.642">
-					<path fill-rule="evenodd" d="M8.882,7.821l6.541-6.541c0.293-0.293,0.293-0.768,0-1.061  c-0.293-0.293-0.768-0.293-1.061,0L7.821,6.76L1.28,0.22c-0.293-0.293-0.768-0.293-1.061,0c-0.293,0.293-0.293,0.768,0,1.061  l6.541,6.541L0.22,14.362c-0.293,0.293-0.293,0.768,0,1.061c0.147,0.146,0.338,0.22,0.53,0.22s0.384-0.073,0.53-0.22l6.541-6.541  l6.541,6.541c0.147,0.146,0.338,0.22,0.53,0.22c0.192,0,0.384-0.073,0.53-0.22c0.293-0.293,0.293-0.768,0-1.061L8.882,7.821z"></path>
-				</svg>
-			</div>
-		</div>
+		<?php 
+			date_default_timezone_set('Asia/Manila');		
+			$date = new DateTime('19:24:15 06/13/2013');
+			echo $date->format('h:i:s a m/d/Y').' - ' ;
+			echo date("Y/m/d").' - '.date("h:i:sa").' - '.date("A"); 
+			
+
+			global $conn;
+			$alrm = $conn->query("SELECT * FROM `admin_reminders` WHERE 1 ORDER BY ID DESC");
+			if ($alrm->num_rows > 0) {
+				while($alrow = $alrm->fetch_assoc()) {
+					echo '  = '.$alrow['date'] .' = '. date("Y-m-d");
+				if( $alrow['date'] == date("Y-m-d")) { 
+					if(date("h") == $alrow['hour'] && date("A") == $alrow['am_pm']) {
+
+					?>
+						<audio src="./assets/sound/Store_Door_Chime-Mike_Koenig-570742973.mp3" loop controls autoplay />
+						<div class="toast toast--yellow add-margin">
+							<div class="toast__icon">
+								<svg version="1.1" class="toast__svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 301.691 301.691" style="enable-background:new 0 0 301.691 301.691;" xml:space="preserve">
+									<g>
+										<polygon points="119.151,0 129.6,218.406 172.06,218.406 182.54,0  "></polygon>
+										<rect x="130.563" y="261.168" width="40.525" height="40.523"></rect>
+									</g>
+								</svg>
+							</div> 
+							<div class="toast__content">
+								<p class="toast__type"><?php echo $alrow['title']; ?></p>
+								<p class="toast__message">
+								<?php echo $alrow['description']; ?></p>
+							</div>
+							<div class="toast__close">
+								<svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.642 15.642" xmlns:xlink="http://www.w3.org/1999/xlink" enable-background="new 0 0 15.642 15.642">
+									<path fill-rule="evenodd" d="M8.882,7.821l6.541-6.541c0.293-0.293,0.293-0.768,0-1.061  c-0.293-0.293-0.768-0.293-1.061,0L7.821,6.76L1.28,0.22c-0.293-0.293-0.768-0.293-1.061,0c-0.293,0.293-0.293,0.768,0,1.061  l6.541,6.541L0.22,14.362c-0.293,0.293-0.293,0.768,0,1.061c0.147,0.146,0.338,0.22,0.53,0.22s0.384-0.073,0.53-0.22l6.541-6.541  l6.541,6.541c0.147,0.146,0.338,0.22,0.53,0.22c0.192,0,0.384-0.073,0.53-0.22c0.293-0.293,0.293-0.768,0-1.061L8.882,7.821z"></path>
+								</svg>
+							</div>
+						</div>
+		<?php 
+					}		
+				}
+			}
+		} ?>
 
 		<?php include './pages/footer.php'; ?>
 		<?php include './pages/admin/footer.php'; ?> 

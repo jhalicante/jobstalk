@@ -77,7 +77,6 @@
 											</div> <!-- end .form-group -->
 										</div> <!-- end .form-group-wrapper -->
 									</div> <!-- end .form-fields-wrapper -->
-									<div class="divider"></div>
 									<br/>
 									<div class="button-wrapper text-center">
 										<button type="submit" class="button" data-dismiss="modal">Close</button>

@@ -63,16 +63,46 @@
             }
         }
 
+        // Get SPRS
+        public function getSPRS($post)
+        {
+            global $conn; 
+            $table = $post['table_name'];
+            $sql = "SELECT * FROM `$table` WHERE ID ='".$post['id']."' ";
+            $result = $conn->query($sql);
+            if ($result->num_rows > 0) {
+                $row = $result->fetch_assoc();
+                echo json_encode(array('errorCode'=>0, 'successMsg'=>'Successfully fetch','response'=>$row));
+            } else {
+                echo json_encode(array('errorCode'=>304, 'errorMsg'=>'Unable to fetch'));                
+            }
+        }
         // Add Reminders
         public function addReminders($post)
         {
             global $conn;
-            $sql = "INSERT INTO `admin_reminders`(`ID`, `title`, `description`, `time`) 
-                    VALUES (null,'".$post["title"]."','".$post["description-content"]."','".$post["time"]."')";
+            $sql = "INSERT INTO `admin_reminders`(`ID`, `title`, `date`, `hour`, `minute`, `am_pm`, `description`) 
+                    VALUES (null,'".$post["title"]."','".$post["date"]."','".$post["hour"]."','".$post["minute"]."','".$post["am_pm"]."','".$post["description-content"]."')";
             if ($conn->query($sql) === TRUE) {
                 echo json_encode(array('errorCode'=>0, 'successMsg'=>'Successfully saved'));
             } else {
                 echo json_encode(array('errorCode'=>304, 'errorMsg'=>'Unable to saved'));
+            }
+        }
+
+        // Get Reminders
+        public function getReminders()
+        {
+            global $conn; 
+            $sql = "SELECT * FROM `admin_reminders` WHERE 1 ORDER BY ID DESC";
+            $result = $conn->query($sql);
+            if ($result->num_rows > 0) {
+                while($row = $result->fetch_assoc()) {
+                    $data[] = $row;
+                }
+                echo json_encode(array('errorCode'=>0, 'successMsg'=>'Successfully fetch','response'=>$data));                
+            } else {
+                echo json_encode(array('errorCode'=>304, 'errorMsg'=>'Unable to fetch'));                
             }
         }
         

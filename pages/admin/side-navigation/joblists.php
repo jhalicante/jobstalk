@@ -9,7 +9,7 @@
 		</tr>
 	</thead>
 	<tbody>
-		<?php 
+		<?php 		
 		global $conn;
 		$jpSql = "SELECT * FROM `employer_job_posted` WHERE 1 ORDER BY ID ASC  ";
 		$jsResult = $conn->query($jpSql);

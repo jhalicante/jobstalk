@@ -54,3 +54,11 @@
 				$('.<?php echo $_GET['active-tab']; ?>').click();
 			}, 100);  </script>
 		<?php } ?>
+
+		<?php if(isset($_GET['applicant-profile'])) { ?>
+			<script> setTimeout(() => {
+				$('.applicant-profile-tab').click();
+			}, 100);  </script>
+		<?php } ?>
+
+		

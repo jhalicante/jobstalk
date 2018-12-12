@@ -54,9 +54,10 @@
 							    <li class="active"><a data-toggle="pill" href="#profile" class="myprofile-tab">My Profile</a></li>
 							    <li class="nav-divider"></li>
 							   	<li class="heading">Manage job</li>
+								<li><a data-toggle="pill" href="#applicant-profile-tab" class="applicant-profile-tab">View Applicant Profile</a></li>
 								<li><a data-toggle="pill" href="#post-jobs" class="postjob-tab">Post A Job</a></li>
 								<li><a data-toggle="pill" href="#jobslist" class="jobslist-tab">Jobs List</a></li>
-							    <li><a data-toggle="pill" href="#placement-report" class="placement-report-tab">Placement Report</a></li>
+							    <li><a data-toggle="pill" href="#placement-report-tab" class="placement-report-tab">Placement Report</a></li>
 							    <li class="nav-divider"></li>
 							    <li><a href="#" class="signout">Sign Out</a></li>
 							</ul>
@@ -218,6 +219,8 @@
 															employer_job_posted.`com_address`,
 															employer_job_posted.`position`,
 															employer_job_posted.`status`,  
+															employer_job_posted.`years_experience`,
+															employer_job_posted.`months_experience`,
 															employer_job_posted.`created_date`,
 															COUNT(applied_job.`ID`) AS applicant_applied
 														FROM `employer_job_posted`
@@ -236,7 +239,7 @@
 													<td><?php echo $pjrow['created_date']; ?></td>
 													<td><?php 
 														if( $pjrow['applicant_applied'] >= 1 ) {
-															echo '<a href="#" class="candidates-show-modal" job_id="'.$pjrow['job_id'].'"> <b>'.$pjrow['applicant_applied'].' Candidate(s)';
+															echo '<a href="#" class="candidates-show-modal" years-exp="'.$pjrow['years_experience'].'" months-exp="'.$pjrow['months_experience'].'" job_id="'.$pjrow['job_id'].'"> <b>'.$pjrow['applicant_applied'].' Candidate(s)';
 														} 
 														else {
 															echo '0 Candidate';
@@ -253,7 +256,7 @@
 									</div>
 								</div> <!-- end #manage-applications-tab -->
 
-							    <div id="placement-report" class="tab-pane fade in">
+							    <div id="placement-report-tab" class="tab-pane fade in">
 									<div class="profile-badge"><h6>Placement Report</h6></div>
 									<div class="password-form-wrapper">
 										<div class="posted-jobs-list-wrapper">
@@ -304,18 +307,17 @@
 											</thead>
 											<tbody>
 											<?php 
-												global $conn;
-												$pjsql = "SELECT * FROM `employer_placement_report` WHERE `user_id`='".$_COOKIE['user_id']."' ORDER BY ID DESC";
-												$pjresult = $conn->query($pjsql);
-												if ($pjresult->num_rows > 0) {
+												$prsql = "SELECT * FROM `employer_placement_report` WHERE `user_id`='".$_COOKIE['user_id']."' ORDER BY ID DESC";
+												$prresult = $conn->query($prsql);
+												if ($prresult->num_rows > 0) {
 													$i = 1;
-													while($pjrow = $pjresult->fetch_assoc()) { ?>															
+													while($prrow = $prresult->fetch_assoc()) { ?>															
 												<tr>
 													<th><?php echo $i++; ?></th>
-													<td><?php echo $pjrow['job_title']; ?></td>
-													<td><?php echo $pjrow['company_name']; ?></td>
-													<td><?php echo $pjrow['date_conducted']; ?></td>
-													<td><?php echo $pjrow['venue']; ?></td>
+													<td><?php echo $prrow['job_title']; ?></td>
+													<td><?php echo $prrow['company_name']; ?></td>
+													<td><?php echo $prrow['date_conducted']; ?></td>
+													<td><?php echo $prrow['venue']; ?></td>
 												</tr> 
 												<?php
 													} 
@@ -326,6 +328,12 @@
 									</div>
 
 								</div>
+
+								<div id="applicant-profile-tab" class="tab-pane fade in">
+							    	<div class="profile-badge"><h6>Applicant Profile Resume</h6></div>
+									<?php include './pages/employer/view-applicant-profile.php'; ?>
+								</div> <!-- end #resume-tab -->
+
 							</div> <!-- end .employer-dashboard -->
 						</div> <!-- end .right-side-content -->
 

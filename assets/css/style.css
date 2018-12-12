@@ -6612,3 +6612,8 @@ h2.job-post-success {
 .toast--yellow:before{
 	background-color:#222329;
 }
+.kpi-list {
+	background: rgba(42, 42, 42, 0.04);
+    padding: 20px;
+    color: #555;
+}

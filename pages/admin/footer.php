@@ -50,3 +50,66 @@
 				}, 10);
 			</script>
 		<?php } ?>
+
+		<?php if(isset($_GET['admin-sprs-report-id'])) { ?>
+			<script> 
+				// $('.sprs-tab').click();
+				setTimeout(() => {
+					$('.sprs-tab').click();	
+					$.ajax({
+						type : 'POST',
+						url : api_url+'/admin/get-sprs',
+						data : { id : <?php echo $_GET['admin-sprs-report-id']; ?>, table_name: 'admin_sprs_report'},
+						success : function(res) {
+							console.log('res ',res.response);
+							$('.other-activities').attr({'disabled':'true','placeholder':res.response.other_activities});
+							$('.sprs-name').attr({'disabled':'true','placeholder':res.response.sprs_name});
+							$('.sprs-designation').attr({'disabled':'true','placeholder':res.response.sprs_designation});
+							var i = 0;
+							$('#sprs-div table tr td[contenteditable="true"]').each(function(e) {
+								i++;
+								$(this).html(res.response["_"+i+"_"]);
+								console.log(res.response["_"+i+"_"]);
+							});
+						}
+					});   
+				}, 100);
+			</script>
+		<?php } ?>
+
+		<?php if(isset($_GET['admin-lmi-report-id'])) { ?>
+			<script> 
+				// $('.sprs-tab').click();
+				setTimeout(() => {
+					$('.lmi-tab').click();	
+					$.ajax({
+						type : 'POST',
+						url : api_url+'/admin/get-sprs',
+						data : { id : <?php echo $_GET['admin-lmi-report-id']; ?>, table_name: 'admin_lmi_report'},
+						success : function(res) {
+							// console.log('res ',res.response);
+							// $('.other-activities').attr({'disabled':'true','placeholder':res.response.other_activities});
+							// $('.sprs-name').attr({'disabled':'true','placeholder':res.response.sprs_name});
+							// $('.sprs-designation').attr({'disabled':'true','placeholder':res.response.sprs_designation});
+							var i = 0; 
+							for (let i = 0; i <= 17; i++) {
+								var val = res.response[""+i+""];
+								$('input.t'+i).val('').attr({'placeholder':val,'disabled':true}).val(val);
+								console.log(val);
+							}
+							console.log(res.response);
+						}
+					});   
+				}, 500);
+			</script>
+		<?php } ?>
+		<script>
+		function minmax(value, min, max) 
+		{
+			if(parseInt(value) < min || isNaN(parseInt(value))) 
+				return min; 
+			else if(parseInt(value) > max) 
+				return max; 
+			else return value;
+		}
+		</script>
