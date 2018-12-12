@@ -255,6 +255,7 @@
          solid windowtext .5pt;mso-background-themecolor:background1;
          mso-background-themeshade:191;padding:0in 5.4pt 0in 5.4pt;height:23.25pt; text-align: center;background-color: #e0e0e0;'
          contenteditable="true">
+         <?php echo 200; ?>
       </td>
       <td class="td" width=191 style='width:140.9pt;border:solid windowtext 1.0pt;mso-border-alt:
          solid windowtext .5pt;mso-background-themecolor:background1;

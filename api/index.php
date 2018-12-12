@@ -120,24 +120,32 @@
     /***********************************
      * ADMIN FUNCTIONS API
      * *********************************/ 
-    // Add Personal Information
+    // Approve User (Employer & Applicant)
     $router->post(API_VERSION.'/admin/approved-user', function () {
         $admin = new Admin();
         $admin->approvedUser($_POST);
+    });
+    // Approve Job
+    $router->post(API_VERSION.'/admin/approved-job', function () {
+        $admin = new Admin();
+        $admin->approvedJob($_POST);
     });
     // Add SPRS
     $router->post(API_VERSION.'/admin/add-sprs', function () {
         $admin = new Admin();
         $admin->addSPRS($_POST['sql']);
     });
-    $router->post(API_VERSION.'/admin/approved-job', function () {
+    // Add SPES
+    $router->post(API_VERSION.'/admin/add-spes', function () {
         $admin = new Admin();
-        $admin->approvedJob($_POST);
+        $admin->addSPES($_POST);
+    });
+    // Add Reminders
+    $router->post(API_VERSION.'/admin/add-reminders', function () {
+        $admin = new Admin();
+        $admin->addReminders($_POST);
     });
     
-
-    
-
     // Run router
     $router->run();
 ?>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Dec 11, 2018 at 12:45 AM
+-- Generation Time: Dec 12, 2018 at 11:16 AM
 -- Server version: 5.7.23
 -- PHP Version: 7.2.8
 
@@ -43,6 +43,67 @@ CREATE TABLE `admin_lmi_report` (
   `input_4` varchar(5) NOT NULL,
   `input_5` varchar(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `admin_reminders`
+--
+
+CREATE TABLE `admin_reminders` (
+  `ID` bigint(20) UNSIGNED NOT NULL,
+  `title` varchar(100) NOT NULL,
+  `description` text NOT NULL,
+  `time` varchar(25) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `admin_reminders`
+--
+
+INSERT INTO `admin_reminders` (`ID`, `title`, `description`, `time`) VALUES
+(1, 'asdasd', '', '1212-12-12T14:02'),
+(2, 'asdasd', 'sdassad', '0122-03-12T12:31'),
+(3, 'asdas', 'asd', '12312-03-12T12:31'),
+(4, 'as123', 'adsas', '21123-03-13T12:31');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `admin_spes_report`
+--
+
+CREATE TABLE `admin_spes_report` (
+  `ID` bigint(20) UNSIGNED NOT NULL,
+  `fname` varchar(50) NOT NULL,
+  `mname` varchar(50) NOT NULL,
+  `lname` varchar(50) NOT NULL,
+  `age` varchar(3) NOT NULL,
+  `school` varchar(150) NOT NULL,
+  `brgy` varchar(20) NOT NULL,
+  `status` varchar(15) NOT NULL,
+  `year` varchar(2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `admin_spes_report`
+--
+
+INSERT INTO `admin_spes_report` (`ID`, `fname`, `mname`, `lname`, `age`, `school`, `brgy`, `status`, `year`) VALUES
+(2, 'as', 'asas', 'asa', '2', 'asdas', '3', '', ''),
+(3, 'as', 'asas', 'asa', '12', 'asdas', '3', '', ''),
+(4, 'asd', 'dsa', 'asd', '2', 'asdasd', '15', '', ''),
+(5, 'dsa', 'asd', 'ad', '12', 'asd', '12', 'asd', '4'),
+(6, 'asd', 'ads', 'asd', '12', '12', '12', '21', '2'),
+(7, 'asd', 'asd', 'ads', '1', '123', '1', 'asd', ''),
+(8, 'sd', 'asd', 'asd', '1', 'ads', '1', 'New', '4'),
+(9, 'ad', 'ads', 'a', '1', '1', '1', 'New', '1'),
+(10, 'ad', 'as', 'as', '1', 'fs', '1', 'Old', '6'),
+(11, 'ads', 'ads', 'asdad', '3', 'das', '3', 'Old', '4'),
+(12, 'd', 's', 'd', '2', 'ff', '32', '', ''),
+(13, 'd', 's', 'd', '2', 'ff', '32', 'Old', ''),
+(14, 'd', 's', 'd', '2', 'ff', '32', 'Old', '3'),
+(15, 'asd', 'asd', 'sd', '12', '12', '12', 'New', '1');
 
 -- --------------------------------------------------------
 
@@ -736,6 +797,18 @@ ALTER TABLE `admin_lmi_report`
   ADD UNIQUE KEY `ID` (`ID`);
 
 --
+-- Indexes for table `admin_reminders`
+--
+ALTER TABLE `admin_reminders`
+  ADD UNIQUE KEY `ID` (`ID`);
+
+--
+-- Indexes for table `admin_spes_report`
+--
+ALTER TABLE `admin_spes_report`
+  ADD UNIQUE KEY `ID` (`ID`);
+
+--
 -- Indexes for table `admin_sprs_report`
 --
 ALTER TABLE `admin_sprs_report`
@@ -834,6 +907,18 @@ ALTER TABLE `user_account`
 --
 ALTER TABLE `admin_lmi_report`
   MODIFY `ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `admin_reminders`
+--
+ALTER TABLE `admin_reminders`
+  MODIFY `ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `admin_spes_report`
+--
+ALTER TABLE `admin_spes_report`
+  MODIFY `ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `admin_sprs_report`

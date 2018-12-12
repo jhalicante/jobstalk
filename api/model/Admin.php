@@ -46,8 +46,35 @@
             if ($conn->query($sql) === TRUE) {
                 echo json_encode(array('errorCode'=>0, 'successMsg'=>'Successfully saved'));
             } else {
-                echo json_encode(array('errorCode'=>304, 'errorMsg'=>'Unable to approve saved'));
+                echo json_encode(array('errorCode'=>304, 'errorMsg'=>'Unable to saved'));
             }
         }
+
+        // Add SPES
+        public function addSPES($post)
+        {
+            global $conn; 
+            $sql = "INSERT INTO `admin_spes_report`(`ID`, `fname`, `mname`, `lname`, `age`, `school`, `brgy`, `status`, `year`)
+                    VALUES (null,'".$post["fname"]."','".$post["mname"]."','".$post["lname"]."','".$post["age"]."','".$post["school"]."','".$post["brgy"]."', '".$post["spes-status"]."', '".$post["spes-year"]."')";
+            if ($conn->query($sql) === TRUE) {
+                echo json_encode(array('errorCode'=>0, 'successMsg'=>'Successfully saved'));
+            } else {
+                echo json_encode(array('errorCode'=>304, 'errorMsg'=>'Unable to saved'));
+            }
+        }
+
+        // Add Reminders
+        public function addReminders($post)
+        {
+            global $conn;
+            $sql = "INSERT INTO `admin_reminders`(`ID`, `title`, `description`, `time`) 
+                    VALUES (null,'".$post["title"]."','".$post["description-content"]."','".$post["time"]."')";
+            if ($conn->query($sql) === TRUE) {
+                echo json_encode(array('errorCode'=>0, 'successMsg'=>'Successfully saved'));
+            } else {
+                echo json_encode(array('errorCode'=>304, 'errorMsg'=>'Unable to saved'));
+            }
+        }
+        
     }
 ?>

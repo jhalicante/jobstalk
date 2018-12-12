@@ -47,7 +47,7 @@
             /* (Admin Dashboard) route */
             $router->get('/account', function () {
                 include './lib/Include.php'; 
-                // include './lib/include-inc.php.php'; 
+                // include './pages/admin/reports/ReportsInclude.php'; 
                 include './pages/admin/dashboard.php';
             });
         }

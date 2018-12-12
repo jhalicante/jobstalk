@@ -27,10 +27,12 @@
 		<script src="<?php echo ASSET_URL;?>assets/js/jquery.magnific-popup.js"></script>
 		<!-- SweetAlert -->
 		<script src="<?php echo ASSET_URL;?>assets/js/sweetalert.min.js"></script>
+		<script src="<?php echo ASSET_URL;?>assets/js/notify.min.js"></script>
 		<!-- Scripts.js -->
 		<script src="<?php echo ASSET_URL;?>assets/js/scripts.js"></script>
 		<script src="<?php echo ASSET_URL;?>assets/js/functions.js"></script>
 		<script src="<?php echo ASSET_URL;?>assets/js/admin.js"></script>
+		
 		<?php if($fetch->getInformation('user_account', 'status') == 'pending') {?>
 			<script>
 				setTimeout(() => {
@@ -41,8 +43,10 @@
 		<script>
 			var api_url = '<?php echo API_URL; ?>';
 		</script>
-		<?php if(isset($_GET['active-tab'])) { ?>
-			<script> setTimeout(() => {
-				//$('.<?php echo $_GET['active-tab']; ?>').click();
-			}, 100);  </script>
+		<?php if(isset($_GET['spes-brgy'])) { ?>
+			<script> 
+				setTimeout(() => {
+					$('.spes-brgy').click();					
+				}, 10);
+			</script>
 		<?php } ?>

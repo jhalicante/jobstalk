@@ -12,7 +12,6 @@
                     }
                 ]
             } );
-
             $('#print-admin_sprs_report-table').DataTable( {
                 dom: 'lBfrtip',
                 buttons: [
@@ -22,7 +21,6 @@
                     }
                 ]
             } );
-
             $('#placement-report-table').DataTable( {
                 dom: 'lBfrtip',
                 buttons: [
@@ -32,7 +30,6 @@
                     }
                 ]
             } );
-
             $('#print-joblists-table').DataTable( {
                 dom: 'lBfrtip',
                 buttons: [
@@ -42,13 +39,15 @@
                     }
                 ]
             } );
-
-            
-
-            
-
-            
-
+            $('#print-spes-view-table').DataTable( {
+                dom: 'lBfrtip',
+                buttons: [
+                    {
+                        extend: 'print',
+                        messageTop: 'SPES list view'
+                    }
+                ]
+            } );
             $(document).on('click','.approved-employer', function(e){
                 var user_id = $(this).attr('user-id'),
                     status = $(this).attr('status');
@@ -69,7 +68,6 @@
                     }
                 });
             });
-
             $(document).on('click','.approved-job', function(e){
                 var job_id = $(this).attr('job-id'),
                     status = $(this).attr('status');
@@ -90,16 +88,75 @@
                     }
                 });
             });
-            
-
             $(document).on('click','.save-sprs', function(e) {
                 admin.saveSPRS();
             });
-
             // Print SPRS Table
             $(document).on('click', '.print-sprs-table', function(e){
                 admin.printDiv('sprs-div','STATISTICAL PERFORMANCE REPORTING SYSTEM (SPRS) Report');
             });
+            // Add New SPES
+            $("#spes-add-new-form").submit(function(e){
+                e.preventDefault();
+                var formData = new FormData($(this)[0]);
+                $.ajax({
+                    type : 'POST',
+                    url : api_url+'/admin/add-spes',
+                    data : formData,
+                    contentType : false,
+                    cache       : false,
+                    processData : false,
+                    success : function(res) {
+                        console.log('resss ',res);
+                        if(res.errorCode == 0) {
+                            // swal("Adding SPES", 'Successully saved', "success");
+                            location.reload();
+
+                        } else {
+                            swal("Adding SPES", res.errorMsg, "error");                            
+                        }
+                    }
+                });
+            });
+            // Add New Reminders
+            $("#reminders-add-form").submit(function(e){
+                e.preventDefault();
+                var formData = new FormData($(this)[0]);
+                $.ajax({
+                    type : 'POST',
+                    url : api_url+'/admin/add-reminders',
+                    data : formData,
+                    contentType : false,
+                    cache       : false,
+                    processData : false,
+                    success : function(res) {
+                        console.log('res ',res);
+                        if(res.errorCode == 0) {
+                            location.reload();
+                            // swal("Adding Reminders", res.errorMsg, "error");
+                        } else {
+                            swal("Adding Reminders", res.errorMsg, "error");                            
+                        }
+                    }
+                });
+            });
+
+            jQuery('.toast__close').click(function(e){
+                e.preventDefault();
+                var parent = $(this).parent('.toast');
+                parent.fadeOut("slow", function() { $(this).remove(); } );
+                // http://soundbible.com/1599-Store-Door-Chime.html
+            });
+            
+        },
+        // SPES Selected Barangy Onchange
+        spesSelectedBarangay : function(sel) {
+            var brgy = sel.value;
+            if(brgy !='') {
+                location.href="account?spes-brgy="+brgy;
+            } else {
+                location.href="account?spes-brgy=";
+            }
         },
         saveSPRS : function() {
             var fields = [],
