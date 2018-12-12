@@ -18,7 +18,11 @@ Tapos dun sa Home pre. Yung nasa baba ng search ng jobs. Dapat my nakagay don na
     - 1.1.4 Job seekers = combination ng applicant at spes
     - 1.2.2 Organizations (Gos/NGOs/Employers)	= all employers
 
-
+#LMI
+    - 
+###Employer 
+    - Candidate {Qualified and Not Qualified}
+    
 ###SPES 
     - Add Status and Year
 
