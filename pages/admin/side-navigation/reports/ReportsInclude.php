@@ -55,6 +55,19 @@
                 return null;
             }
         }
+        public function lmiJobsCount()
+        {
+            global $conn;
+            $sql = "SELECT count(`ID`) as job_count FROM `employer_job_posted` WHERE 1 ";
+            $result = $conn->query($sql);
+
+            if ($result->num_rows > 0) {
+                $row = $result->fetch_assoc();
+                return $row['job_count'];
+            } else {
+                return null;
+            }
+        }
     }
     $repInc = new ReportsInclude();
 ?>

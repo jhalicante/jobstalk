@@ -90,7 +90,7 @@
                         '".$post['years_experience']."',
                         '".$post['months_experience']."',
                         '".$post['job_desc']."',
-                        '".date('m/d/Y')."',
+                        '".date('Y-m-d')."',
                         'pending')";
 
             if ($conn->query($sql) === TRUE) 

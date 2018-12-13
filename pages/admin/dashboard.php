@@ -60,12 +60,17 @@
 								<li><a data-toggle="pill" class="kpi-tab" href="#kpi-tab">Key performance indicator</a></li>
 								<li><a data-toggle="pill" class="reports-list-tab" href="#reports-list-tab">General Reports</a></li>
 								<?php if(isset($_GET['admin-sprs-report-id'])) {  ?>
-									<li><a href="account" class="sprs-tab"> &nbsp;&nbsp;&nbsp; SPRS</a></li>
-									<li><a data-toggle="pill" href="#sprs-tab" class="sprs-tab hide"> &nbsp;&nbsp;&nbsp; SPRS</a></li>									
+									<li><a href="account" class="sprs-tab"> &nbsp;&nbsp;&nbsp; Add SPRS</a></li>
+									<li><a data-toggle="pill" href="#sprs-tab" class="sprs-tab hide"> &nbsp;&nbsp;&nbsp; Add SPRS</a></li>									
 								<?php } else {  ?>
-									<li><a data-toggle="pill" href="#sprs-tab" class="sprs-tab"> &nbsp;&nbsp;&nbsp; SPRS</a></li>								
+									<li><a data-toggle="pill" href="#sprs-tab" class="sprs-tab"> &nbsp;&nbsp;&nbsp; Add SPRS</a></li>								
 								<?php }  ?>
-								<li><a data-toggle="pill" href="#lmi-tab" class="lmi-tab"> &nbsp;&nbsp;&nbsp; LMI</a></li>
+								<?php if(isset($_GET['admin-lmi-report-id'])) {  ?>
+									<li><a href="account" class="lmi-tab"> &nbsp;&nbsp;&nbsp; Add LMI</a></li>
+									<li><a data-toggle="pill" href="#lmi-tab" class="lmi-tab hide"> &nbsp;&nbsp;&nbsp; Add LMI</a></li>
+								<?php } else {  ?>
+									<li><a data-toggle="pill" href="#lmi-tab" class="lmi-tab"> &nbsp;&nbsp;&nbsp; Add LMI</a></li>
+								<?php }  ?>
 								<li><a data-toggle="pill" href="#placement-report-tab"> &nbsp;&nbsp;&nbsp; Placement Report</a></li>
 								<li class="nav-divider"></li>
 								<li class="heading">Manage SPES</li>
@@ -247,17 +252,17 @@
 		</div> <!-- end .section -->
 		
 		<?php 
-			date_default_timezone_set('Asia/Manila');		
+			// date_default_timezone_set('Asia/Manila');		
 			$date = new DateTime('19:24:15 06/13/2013');
-			echo $date->format('h:i:s a m/d/Y').' - ' ;
-			echo date("Y/m/d").' - '.date("h:i:sa").' - '.date("A"); 
+			// echo $date->format('h:i:s a m/d/Y').' - ' ;
+			// echo date("Y/m/d").' - '.date("h:i:sa").' - '.date("A"); 
 			
 
 			global $conn;
 			$alrm = $conn->query("SELECT * FROM `admin_reminders` WHERE 1 ORDER BY ID DESC");
 			if ($alrm->num_rows > 0) {
 				while($alrow = $alrm->fetch_assoc()) {
-					echo '  = '.$alrow['date'] .' = '. date("Y-m-d");
+					// echo '  = '.$alrow['date'] .' = '. date("Y-m-d");
 				if( $alrow['date'] == date("Y-m-d")) { 
 					if(date("h") == $alrow['hour'] && date("A") == $alrow['am_pm']) {
 
