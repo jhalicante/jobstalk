@@ -10,6 +10,7 @@
     include './ValidateData.php';
         
     include './model/SignIn.php';
+    include './model/BPC.php';
     include './model/SignUp.php';
     include './model/Applicant.php';
     include './model/Employer.php';
@@ -57,11 +58,25 @@
         }
         
     });
+    // Sign In For BPC
+    $router->post(API_VERSION.'/bpc-signin', function () {
+        $bpc = new BPC();
+        $bpc->auth($_POST);
+    });
     // Check if email is exists route
     $router->get(API_VERSION.'/email-is-exists', function () {
         $validate = new ValidateData();
         $validate->emailIsExists( $_GET['email_address'] );
     });
+    /***********************************
+     * APPLICANT FUNCTIONS API
+     * *********************************/ 
+    // Sign In For BPC
+    $router->post(API_VERSION.'/bpc/delete-spes', function () {
+        $bpc = new BPC();
+        $bpc->deleteSpes($_POST);
+    });
+
 
     /***********************************
      * APPLICANT FUNCTIONS API
@@ -155,6 +170,12 @@
     $router->post(API_VERSION.'/admin/get-reminders', function () {
         $admin = new Admin();
         $admin->getReminders();
+    });
+    // Create BPC Account AND Employer
+    $router->post(API_VERSION.'/admin/create-account', function () {
+        $admin = new Admin();
+        $admin->createAccount($_POST);
+        // echo json_encode($_POST);
     });
     
     // Run router

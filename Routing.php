@@ -51,6 +51,13 @@
                 include './pages/admin/dashboard.php';
             });
         }
+
+        else if(USER_ROLE == 'bpc'){
+            /* (BPC Dashboard) route */
+            $router->get('/account', function () {
+                include './pages/bpc/dashboard.php';
+            });
+        }
     }
 
     /* (Find Job) route */ 

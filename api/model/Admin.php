@@ -105,6 +105,30 @@
                 echo json_encode(array('errorCode'=>304, 'errorMsg'=>'Unable to fetch'));                
             }
         }
+
+        // Create BPC Account AND Employer
+        public function createAccount($post)
+        {
+            global $conn;
+
+            if($post['type'] =='employer') {
+                $sql = "INSERT INTO `user_account`(`ID`, `user_id`, `email_address`, `password`, `role`, `status`) 
+                        VALUES (null,'".GEN_UID."','".$post['email']."','".$post['password']."','employer','approved')";
+            }
+            else if($post['type'] =='bpc') {
+                $sql = "INSERT INTO `bpc_account`(`ID`, `user_id`, `role`, `username`, `password`, `brgy`, `created_date`)
+                        VALUES (null,'".GEN_UID."','bpc','".$post['username']."','".$post['password']."','".$post['brgy']."','".date('m/dY')."')";
+            }
+
+            if ($conn->query($sql) === TRUE)
+            {
+                echo json_encode(array('errorCode'=>0, 'successMsg'=>'Successfully created'));                    
+            } 
+            else 
+            {
+                echo json_encode(array('errorCode'=>304, 'errorMsg'=>'Unable to create '.$sql));                    
+            } 
+        }
         
     }
 ?>

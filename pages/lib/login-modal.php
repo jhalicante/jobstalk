@@ -5,7 +5,8 @@
 	                <div class="popup-tabs">
 	                    <ul class="nav nav-tabs" id="myTab">
 	                        <li class="active"><a data-toggle="tab" href="#login">Sign In</a></li>
-	                        <li><a data-toggle="tab" href="#register">Sign Up</a></li>
+							<li><a data-toggle="tab" href="#register">Sign Up</a></li>
+	                        <li><a data-toggle="tab" href="#bpc">BPC</a></li>
 	                    </ul>
 	                </div> <!-- end .popup-tabs -->
 	                <div class="modal-body">
@@ -56,7 +57,26 @@
 									</div>
 									<button type="type" class="button">Sign Up</button>
 	                            </form> <!-- end .signup-form -->
-	                        </div> <!-- end signup-tab-content -->
+							</div> <!-- end signup-tab-content -->
+							
+							<div class="tab-pane fade in" id="bpc">
+	                            <form class="login-form">
+									<div class="form-group">
+										<p class="bpc-error-message text-danger"></p>
+									</div>
+									<div class="form-group">
+									    <label for="InputEmail1">Your Username *</label>
+									    <input type="email" class="form-control bpc-username" id="InputEmail1" placeholder="Username">
+									</div>
+
+									<div class="form-group">
+									    <label for="InputPassword1">Password *</label>
+									    <input type="password" class="form-control bpc-password" autocomplete="off" id="InputPassword1" placeholder="Password">
+									</div>
+									<button type="button" class="button btn-bpc">Sign In</button>
+	                            </form> <!-- end .login-form -->
+							</div> <!-- end login-tab-content -->
+							
 	                    </div> <!-- end .mytabcontent -->
 	                </div> <!-- end .modal-body -->
 	            </div> <!-- end .modal-content -->

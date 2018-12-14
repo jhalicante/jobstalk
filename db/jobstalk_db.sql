@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.7
+-- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Dec 12, 2018 at 10:49 PM
--- Server version: 5.6.38
--- PHP Version: 7.2.1
+-- Host: localhost:8889
+-- Generation Time: Dec 14, 2018 at 07:22 AM
+-- Server version: 5.7.23
+-- PHP Version: 7.2.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -102,15 +102,7 @@ INSERT INTO `admin_spes_report` (`ID`, `fname`, `mname`, `lname`, `age`, `school
 (4, 'asd', 'dsa', 'asd', '2', 'asdasd', '15', '', ''),
 (5, 'dsa', 'asd', 'ad', '12', 'asd', '12', 'asd', '4'),
 (6, 'asd', 'ads', 'asd', '12', '12', '12', '21', '2'),
-(7, 'asd', 'asd', 'ads', '1', '123', '1', 'asd', ''),
-(8, 'sd', 'asd', 'asd', '1', 'ads', '1', 'New', '4'),
-(9, 'ad', 'ads', 'a', '1', '1', '1', 'New', '1'),
-(10, 'ad', 'as', 'as', '1', 'fs', '1', 'Old', '6'),
-(11, 'ads', 'ads', 'asdad', '3', 'das', '3', 'Old', '4'),
-(12, 'd', 's', 'd', '2', 'ff', '32', '', ''),
-(13, 'd', 's', 'd', '2', 'ff', '32', 'Old', ''),
-(14, 'd', 's', 'd', '2', 'ff', '32', 'Old', '3'),
-(15, 'asd', 'asd', 'sd', '12', '12', '12', 'New', '1');
+(7, 'asd', 'asd', 'ads', '1', '123', '1', 'asd', '');
 
 -- --------------------------------------------------------
 
@@ -433,6 +425,29 @@ INSERT INTO `applied_job` (`ID`, `applicant_id`, `employer_id`, `job_id`, `appli
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `bpc_account`
+--
+
+CREATE TABLE `bpc_account` (
+  `ID` bigint(20) UNSIGNED NOT NULL,
+  `user_id` varchar(55) NOT NULL,
+  `role` varchar(20) NOT NULL,
+  `username` varchar(55) NOT NULL,
+  `password` varchar(55) NOT NULL,
+  `brgy` varchar(50) NOT NULL,
+  `created_date` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `bpc_account`
+--
+
+INSERT INTO `bpc_account` (`ID`, `user_id`, `role`, `username`, `password`, `brgy`, `created_date`) VALUES
+(2, '121420181544762611', 'bpc', '123', '123', '12312', '12/142018');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `course_lists`
 --
 
@@ -615,9 +630,10 @@ CREATE TABLE `employer_job_posted` (
 --
 
 INSERT INTO `employer_job_posted` (`ID`, `user_id`, `job_id`, `com_logo`, `com_name`, `com_address`, `position`, `job_type`, `course_id`, `industry_id`, `years_experience`, `months_experience`, `description`, `created_date`, `status`) VALUES
-(1, '120720181544166943', '120820181544270508', '120820181544270508.png', 'PAJO Corporation', '115 J.P. Rizal St, Maypajo, Caloocan, 1410 Metro Manila', 'Water Bender', 'part-time', '4', '5', '2', '7', 'Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Etiam eu velit cursus, tempor ipsum in, tempus lectus. Nullam tempus nisi id nisl luctus, non tempor justo molestie.', '12/08/2018', 'approved'),
+(1, '120720181544166943', '120820181544270508', '120820181544270508.png', 'PAJO Corporation', '115 J.P. Rizal St, Maypajo, Caloocan, 1410 Metro Manila', 'Water Bender', 'part-time', '4', '5', '2', '7', 'Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Etiam eu velit cursus, tempor ipsum in, tempus lectus. Nullam tempus nisi id nisl luctus, non tempor justo molestie.', '2018-12-12', 'approved'),
 (2, '120720181544166943', '120820181544281722', '120820181544281722.jpg', 'Test Inc', '234, 236 Tomas Morato Ave, Diliman, Quezon City, 1103 Metro Manila', 'Data Analyst', 'full-time', '2', '5', '3', '3', 'Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Etiam eu velit cursus, tempor ipsum in, tempus lectus. Nullam tempus nisi id nisl luctus, non tempor justo molestie.', '12/08/2018', 'approved'),
-(3, '120720181544166943', '121020181544432317', '121020181544432317.', 'as21', '3asda', '3123', 'internship', '11', '8', '2', '2', 'asdasd', '12/10/2018', 'approved');
+(3, '120720181544166943', '121020181544432317', '121020181544432317.', 'as21', '3asda', '3123', 'internship', '11', '8', '2', '2', 'asdasd', '12/10/2018', 'approved'),
+(4, '122018154389090890', '121420181544762428', '121420181544762428.png', 'testeewss', 'asd', 'asd', 'full-time', '1', '1', '2', '2', 'asasdas', '2018-12-14', 'pending');
 
 -- --------------------------------------------------------
 
@@ -790,7 +806,9 @@ INSERT INTO `user_account` (`ID`, `user_id`, `email_address`, `password`, `role`
 (7, '120720181544166943', 'employer@gmail.com', '123', 'employer', 'approved'),
 (12, '120920181544344118', 'emp@gmail.com', '123', 'employer', 'approved'),
 (13, '120920181544357586', 'test@gmail.com', '123', 'applicant', 'pending'),
-(14, '121120181544487753', 'ako@gmail.com', '123', 'applicant', 'pending');
+(14, '121120181544487753', 'ako@gmail.com', '123', 'applicant', 'pending'),
+(15, '121420181544761547', 'asda1231@gmail.com', '2312312', 'employer', 'approved'),
+(16, '121420181544762060', '123', '123123', 'employer', 'approved');
 
 --
 -- Indexes for dumped tables
@@ -860,6 +878,12 @@ ALTER TABLE `applicant_work_experience`
 -- Indexes for table `applied_job`
 --
 ALTER TABLE `applied_job`
+  ADD UNIQUE KEY `ID` (`ID`);
+
+--
+-- Indexes for table `bpc_account`
+--
+ALTER TABLE `bpc_account`
   ADD UNIQUE KEY `ID` (`ID`);
 
 --
@@ -966,13 +990,19 @@ ALTER TABLE `applicant_skills`
 -- AUTO_INCREMENT for table `applicant_work_experience`
 --
 ALTER TABLE `applicant_work_experience`
-  MODIFY `ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `applied_job`
 --
 ALTER TABLE `applied_job`
   MODIFY `ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `bpc_account`
+--
+ALTER TABLE `bpc_account`
+  MODIFY `ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `course_lists`
@@ -990,7 +1020,7 @@ ALTER TABLE `employer_information`
 -- AUTO_INCREMENT for table `employer_job_posted`
 --
 ALTER TABLE `employer_job_posted`
-  MODIFY `ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `employer_placement_report`
@@ -1014,4 +1044,4 @@ ALTER TABLE `region`
 -- AUTO_INCREMENT for table `user_account`
 --
 ALTER TABLE `user_account`
-  MODIFY `ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;

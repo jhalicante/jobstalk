@@ -2019,7 +2019,8 @@ select::-ms-expand {
     padding: 1px 1px 0;	
 }
 .login-signup-modal .nav-tabs>li {
-	width: 50%;
+	/* width: 50%; */
+	width: 33.3%;
 }
 .login-signup-modal .nav-tabs>li a {
     border: none;

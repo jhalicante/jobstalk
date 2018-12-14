@@ -42,6 +42,18 @@ var app = {
             });
         });
 
+        $(document).on('click', '.btn-bpc', function(e) {
+            var username = $('.bpc-username').val(),
+                password = $('.bpc-password').val();
+
+            if(username != '' && password != '') {
+                app.signinBPC(username, password);
+            } 
+            else {
+                $('.bpc-error-message').html('Some fields are empty');
+            }
+        });
+
         $(document).on('click','.signout', function(e) {
             auth.eraseCookie('user_id');
             auth.eraseCookie('role');
@@ -61,6 +73,27 @@ var app = {
                 if(res.errorCode ==0) {
                     auth.setCookie('user_id', res.response.user_id, 7);
                     auth.setCookie('role', res.response.role, 7);
+                    location.reload();
+                }
+                else {
+                    $('.signin-error-message').html(res.errorMsg);
+                }
+            }
+        });
+    },
+    signinBPC : function(username, password) {
+        $.ajax({
+            type : 'POST',
+            url : api_url+'/bpc-signin',
+            data : {
+                username : username,
+                password : password
+            },
+            success: function(res) {
+                console.log(res);
+                if(res.errorCode ==0) {
+                    auth.setCookie('user_id', res.response.user_id, 7);
+                    auth.setCookie('role', res.response.role, 7);
                     // location.href='account';
                     location.reload();
                 } 
@@ -69,7 +102,7 @@ var app = {
                 }
             }
         });
-    },
+    }
 }
 
 

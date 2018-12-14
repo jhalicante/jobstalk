@@ -49,8 +49,10 @@
 							<ul class="nav nav-pills nav-stacked">
 								<li class="heading">Manage All Jobs, Applicant & Employer </li>
 								<li class="active"><a data-toggle="pill" href="#joblists-tab">All Jobs</a></li>
+								<li class="active"><a data-toggle="pill" href="#post-a-job-tab">Post a Job</a></li>
 							    <li><a data-toggle="pill" href="#employer-tab">Employer List</a></li>
 								<li><a data-toggle="pill" href="#applicant-tab">Applicant List</a></li>
+								<li><a data-toggle="pill" href="#add-account-tab">Add Account</a></li>
 								<li class="nav-divider"></li>
 								<li class="heading">Manage Reminders</li>
 							    <li><a data-toggle="pill" href="#reminders-lists-tab">Remiders List</a></li>
@@ -85,6 +87,27 @@
 						
 						<div class="right-side-content">
 							<div class="tab-content employer-dashboard">
+
+								<div id="add-account-tab" class="tab-pane fade in">
+							    	<div class="profile-badge"><h6>Add Account</h6></div>
+							        <div class="profile-wrapper">
+										<select name="" id="account-type" class="form-control" onchange="admin.createAcountSelectedForm(this);">
+											<option selected>Select Account type</option>
+											<option value="bpc">BPC</option>
+											<option value="employer">Employer</option>
+										</select>
+										<?php include './pages/admin/side-navigation/add-account.php'; ?>
+							        </div>
+								</div>
+
+								<div id="post-a-job-tab" class="tab-pane fade in">
+							    	<div class="profile-badge"><h6>Post a Job</h6></div>
+							        <div class="profile-wrapper">
+										<?php include './pages/admin/side-navigation/post-a-job.php'; ?>
+							        </div>
+								</div>
+
+								
 
 							    <div id="employer-tab" class="tab-pane fade in active">
 							    	<div class="profile-badge"><h6>Employer List</h6></div>									
