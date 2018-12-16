@@ -3,12 +3,12 @@
 			<div class="container clearfix">
 				<div class="header-inner has-form flex space-between items-center">
 					<div class="left flex items-center no-column no-wrap">
-						<div class="logo"><a href=""><img src="<?php echo ASSET_URL;?>assets/images/logo.png" alt="JobPress" class="img-responsive"></a></div>	
+						<div class="logo"><a href="home"><img src="<?php echo ASSET_URL;?>assets/images/logo.png" alt="JobPress" class="img-responsive"></a></div>	
 						<div class="job-search-form form-header">						
 							<form class="form-inline flex no-column no-wrap" method="GET" action="find-job">
 								<div class="form-group">
 									<div class="form-group-inner">
-										<input type="text" class="form-control" name="query" id="input-field-1" placeholder="Keywords">
+										<input type="text" class="form-control" name="position" id="input-field-1" placeholder="Keywords">
 										<i class="ion-ios-briefcase-outline"></i>
 									</div> <!-- end .form-group-inner -->
 								</div> <!-- end .form-group-inner -->

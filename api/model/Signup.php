@@ -20,9 +20,13 @@
                 {
                     $row = $result->fetch_assoc();
 
-
                     $sql = "INSERT INTO `user_account`(`ID`, `user_id`, `email_address`, `password`, `role`, `status`) 
                             VALUES (null,'".GEN_UID."','".$post["email-address"]."','".$post["password"]."','".$post["role"]."','pending')";
+
+                    if( $post['role'] == 'applicant') {
+                        $sql = "INSERT INTO `user_account`(`ID`, `user_id`, `email_address`, `password`, `role`, `status`) 
+                        VALUES (null,'".GEN_UID."','".$post["email-address"]."','".$post["password"]."','".$post["role"]."','approved')";
+                    }
 
                     if ($conn->query($sql) === TRUE) 
                     {

@@ -142,7 +142,14 @@
                     processData : false,
                     success : function(res) {
                         if(res.errorCode == 0) {
-                            $('.next')[0].click();
+                            if($('.next').length >=1) {
+                                $('.next')[0].click();
+                            } else {
+                                swal("Update Information",'Information successfully updated', "success")
+                                .then((value) => {
+                                    location.reload();
+                                });
+                            }
                         } else {
                             swal("Profile Completion", res.errorMsg, "error");                            
                         }

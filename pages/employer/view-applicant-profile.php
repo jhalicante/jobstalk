@@ -125,7 +125,32 @@
             <p class="ultra-light"><?php echo $row['pri_ys']; ?> - <?php echo $row['sec_ye']; ?></p>
             <p class="ultra-light"><?php echo $row['pri_ad']; ?></p>
         </div> <!-- end .profile-education -->
+        <br/>
+
+        <?php if(!isset($_GET['mode'])) { ?>
+        <div class="divider"></div>
+        <br/>        
+        <div class="profile-education text-center">												
+            <h5 class="dark">Update Applicant Status</h5>
+            <br>
+            <select class="change-selected-status">
+                <option value="for-interview">For Interview</option>
+                <option value="rejected">Reject</option>
+                <option value="completed">Complete</option>
+                <option value="hired">Hired</option>
+                <option value="no-hired">No Hire</option>
+                <option value="awol">AWOL</option>
+                <option value="resigned">Resigned</option>
+                <option value="regularized">Regularize</option>
+                <option value="terminated">Terminate</option>
+            </select>
+            <br/>
+            <br/>
+            <button class="button update-applicant-status" applicant-id="<?php echo $row['user_id']; ?>">Submit</button>
+        </div> <!-- end .profile-education -->
+        <br/>
         <?php
+                }
             }
         }
         ?>

@@ -161,25 +161,31 @@
             // Add New SPES
             $("#spes-add-new-form").submit(function(e){
                 e.preventDefault();
-                var formData = new FormData($(this)[0]);
-                $.ajax({
-                    type : 'POST',
-                    url : api_url+'/admin/add-spes',
-                    data : formData,
-                    contentType : false,
-                    cache       : false,
-                    processData : false,
-                    success : function(res) {
-                        console.log('resss ',res);
-                        if(res.errorCode == 0) {
-                            // swal("Adding SPES", 'Successully saved', "success");
-                            location.reload();
+                var mobile_number = $('.mobile-number').val();
+                if(mobile_number.length == 11 && mobile_number.slice(0, 2).length == 2) {
+                    var formData = new FormData($(this)[0]);
+                    $.ajax({
+                        type : 'POST',
+                        url : api_url+'/admin/add-spes',
+                        data : formData,
+                        contentType : false,
+                        cache       : false,
+                        processData : false,
+                        success : function(res) {
+                            console.log('resss ',res);
+                            if(res.errorCode == 0) {
+                                // swal("Adding SPES", 'Successully saved', "success");
+                                location.reload();
 
-                        } else {
-                            swal("Adding SPES", res.errorMsg, "error");                            
+                            } else {
+                                swal("Adding SPES", res.errorMsg, "error");                            
+                            }
                         }
-                    }
-                });
+                    });
+                } 
+                else {
+                    swal("Adding SPES",'Invalid Mobile number. Please try again!', "error");                            
+                }
             });
             // Add New Reminders
             $("#reminders-add-form").submit(function(e){
@@ -225,6 +231,39 @@
                             });
                         } else {
                             swal("Adding Reminders", res.errorMsg, "error");                            
+                        }
+                    }
+                });
+            });
+
+
+            $(document).on('click','.jobinfo-show-modal', function(e){
+                var job_id = $(this).attr('job_id');
+                $('#employer-view-job-information').modal('show');
+                $('.employer-view-job-information-loading').css('display','block');
+                console.log('jobid ', job_id);
+                $.ajax({
+                    type : 'POST',
+                    url : api_url+'/employer/get-job-information',
+                    data : {job_id: job_id},
+                    success : function(res) {
+                        console.log('res ',res);                        
+                        $('.employer-view-job-information-loading').css('display','none');
+                        $('.employer-view-job-information-content').css('display','block');    
+                        if(res.errorCode == 0) {
+                            $('.view-logo').attr('src',asset_url+'assets/uploaded/'+res.response.com_logo);
+                            $('.view-company-name').val(res.response.com_name);
+                            $('.view-position').val(res.response.position);
+                            $('.view-req-course').val(res.response.course_name);
+                            $('.view-req-industry').val(res.response.job_industry);
+                            $('.view-years-experience').val(res.response.years_experience+' year(s)');
+                            $('.view-months-experience').val(res.response.months_experience+' month(s)');
+                            $('.view-job-type').val(res.response.job_type);
+                            $('.view-address').val(res.response.com_address);
+                            $('.view-job-desc').val(res.response.description);
+                        } 
+                        else {
+                            swal("Unable to fetch data", res.errorMsg, "error");
                         }
                     }
                 });
@@ -284,6 +323,13 @@
                 location.href="account?spes-brgy=";
             }
         },
+        // LMI Selected LMI Onchange
+        lmiSelectedMonth  : function(sel) {
+            var month = sel.value;
+            if(month !='') {
+                location.href="?lmi-month="+month;
+            }
+        },
         // Selected Form for the creation of account
         createAcountSelectedForm : function(sel) {
             var selected = sel.value;
@@ -300,7 +346,7 @@
         saveSPRS : function() {
             var fields = [],
                 d = new Date(),
-                date = d.getMonth()+'/'+d.getDate()+'/'+d.getFullYear(),
+                date = (d.getMonth() +1 )+'/'+d.getDate()+'/'+d.getFullYear(),
                 other_activities = $('.other-activities').val(),
                 sprs_name = $('.sprs-name').val(),
                 sprs_designation = $('.sprs-designation').val();
@@ -349,20 +395,18 @@
             
             var fields = [],
                 d = new Date(),
-                date = d.getMonth()+'/'+d.getDate()+'/'+d.getFullYear();
-            var sql ="INSERT INTO `admin_lmi_report`(`ID`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, `12`, `13`, `14`, `15`, `16`, `17`, `created_date`) VALUES (null,";
-            // [value-2],[value-3],[value-4],[value-5],[value-6],[value-7],[value-8],[value-9],[value-10],[value-11],[value-12],[value-13],[value-14],[value-15],[value-16],[value-17],[value-18],[value-19])";
+                date = (d.getMonth() +1 )+'/'+d.getDate()+'/'+d.getFullYear();
+            var sql ="INSERT INTO `admin_lmi_report`(`ID`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, `12`, `13`, `14`, `15`, `16`, `17`,`18`,`19`,`20`,`prepared_by`, `created_date`) VALUES (null,";
             $('.txt').each(function(e) {
                 var val = $(this).val();
                 if ( val.trim() != '' ){
-                    console.log(val);
                     var res = "'"+val.trim()+"',";
                     sql += res;
                 }
             });
             sql += "'"+date+"')";
             console.log(sql);
-            if($('.txt').length==17) {
+            if($('.txt').length==21) {
                 $.ajax({
                     type : 'POST',
                     url : api_url+'/admin/add-sprs',

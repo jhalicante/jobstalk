@@ -32,3 +32,27 @@
 		<script>
 			var api_url = '<?php echo API_URL; ?>';
 		</script>
+		<?php 
+			if( isset($_GET['action-tab']) ) {
+				$action_tab = $_GET['action-tab'];
+				if( $action_tab == 'edit-personal-information' ) {
+
+				}
+				if( $action_tab == 'edit-career-objective' ) {
+
+				}
+				if( $action_tab == 'add-education' ) {
+
+				}
+				if( $action_tab == 'edit-education' ) {
+
+				}
+				if( $action_tab == 'add-work-experience' ) {
+
+				}
+				if( $action_tab == 'edit-work-experience' ) {
+
+				}
+				
+			}
+		?>

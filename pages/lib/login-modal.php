@@ -46,6 +46,12 @@
 									    <label for="InputPassword2">Confirm Password *</label>
 									    <input type="password" class="form-control" name="confirm-password" autocomplete="off" placeholder="Enter Confirm-Password">
 									</div>
+
+									<div class="checkbox">
+										<input id="signup-checkbox" type="checkbox">
+										<label for="signup-checkbox">I agree with the <a href="privacy-policy" target="_blank">Privacy Policy</a></label>
+									</div> <!-- end .checkbox -->
+									
 									<div class="form-group">
 									    <label for="select1">Register as:</label>
 									    <div class="select-wrapper">

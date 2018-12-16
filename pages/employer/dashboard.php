@@ -54,9 +54,10 @@
 							    <li class="active"><a data-toggle="pill" href="#profile" class="myprofile-tab">My Profile</a></li>
 							    <li class="nav-divider"></li>
 							   	<li class="heading">Manage job</li>
-								<li><a data-toggle="pill" href="#applicant-profile-tab" class="applicant-profile-tab">View Applicant Profile</a></li>
-								<li><a data-toggle="pill" href="#post-jobs" class="postjob-tab">Post A Job</a></li>
+								<li><a data-toggle="pill" href="#applicant-profile-tab" class="applicant-profile-tab hide">View Applicant Profile</a></li>
+								<li><a data-toggle="pill" href="#post-a-new-jobs" class="postjob-tab">Post A Job</a></li>
 								<li><a data-toggle="pill" href="#jobslist" class="jobslist-tab">Jobs List</a></li>
+								<li><a data-toggle="pill" href="#hired-applicants" class="hired-applicants-tab">Hired Applicants</a></li>
 							    <li><a data-toggle="pill" href="#placement-report-tab" class="placement-report-tab">Placement Report</a></li>
 							    <li class="nav-divider"></li>
 							    <li><a href="#" class="signout">Sign Out</a></li>
@@ -69,193 +70,31 @@
 							    <div id="profile" class="tab-pane fade in active">
 							    	<div class="profile-badge"><h6>Profile</h6></div>
 							        <div class="profile-wrapper">
-
-										<div class="profile-info profile-section flex no-column no-wrap">
-											<div class="profile-picture">
-												<img src="<?php echo ASSET_URL;?>assets/uploaded/<?php echo $fetch->getInformation('employer_information', 'logo'); ?>" alt="company-logo" class="img-responsive" width="150" height="150">
-											</div> <!-- end .user-picture -->
-											<div class="profile-meta">
-												<h4 class="dark"><?php echo $fetch->getInformation('employer_information', 'name'); ?></h4>
-												<p><?php echo $fetch->getInformation('employer_information', 'address'); ?></p>
-												<div class="profile-contact flex items-center no-wrap no-column">													
-													<h6 class="contact-phone"><?php echo $fetch->getInformation('employer_information', 'contact_no'); ?></h6>
-													<h6 class="contact-email"><?php echo $fetch->getInformation('employer_information', 'email'); ?></h6>
-													<h6 class="contact-email"><?php echo '<a href="'.$fetch->getInformation('employer_information', 'website').'">Website</a>'; ?></h6>
-												</div> <!-- end .profile-contact -->
-												<span><?php echo $fetch->getInformation('employer_information', 'address'); ?></span>
-											</div> <!-- end .profile-meta -->
-										</div> <!-- end .profile-info -->
-
-										<div class="divider"></div>
-
-										<div class="profile-about profile-section">
-											<h3 class="dark profile-title">About company</h3>
-											<p><?php echo $fetch->getInformation('employer_information', 'about'); ?></p>
-										</div> <!-- end .profile-about -->
-
-										<div class="divider"></div>
-
+										<?php include './pages/employer/my-profile.php'; ?>																											
 							        </div> <!-- end .profile-wrapper -->						        
 								</div> <!-- end #profile-tab -->
 
-							    <div id="post-jobs" class="tab-pane fade in">	
-									<div class="profile-badge"><h6>Post a new Job</h6></div>
-									<br/>
-									<div class="password-form-wrapper">
-										<div class="posted-jobs-list-wrapper">
-											<div class="form-fields-wrapper">
-												<form method="post" enctype="multipart/form-data" id="post-a-new-job">
-
-													<div class="form-group-wrapper">
-														<div class="form-group upload-company-logo">
-															<p class="label">Choose Company Logo <span>(Maximum file size: 5MB)</span><sup>*</sup></p>
-															<label for="logo-picture" class="flex space-between items-center no-column no-wrap">
-																<span class="logo-picture-name">Upload logo</span>
-																<span><i class="ion-ios-folder-outline"></i>Browse Photo</span>								    	
-															</label>
-															<input type="file" name="com-logo" id="logo-picture" data-label-class="logo-picture-name" data-preview-img="logo-picture-preview"> 
-															<img src="<?php echo ASSET_URL; ?>assets/images/image-placeholder.jpg" class="img-circle logo-picture-preview" width="80px" height="80px" alt="" style="right:30px;position:absolute;top:0px;">
-														</div> <!-- end .form-group -->
-													</div> <!-- end .form-group-wrapper -->
-
-													<div class="form-group-wrapper flex space-between items-center">
-														<div class="form-group">
-															<p class="label">Company Name<sup>*</sup></p>
-															<input type="text" class="company-name" name="company-name" placeholder="" required="">
-														</div> <!-- end .form-group -->
-														<div class="form-group">
-															<p class="label">Position<sup>*</sup></p>
-															<input type="text" class="position" name="position" placeholder="" required="">
-														</div> <!-- end .form-group -->
-													</div> <!-- end .form-group-wrapper -->
-
-													<div class="form-group-wrapper flex space-between items-center">
-														<div class="form-group">
-															<p class="label">Required Course<sup>*</sup></p>
-															<select name="required_course" class="form-control" required="" data-live-search="true">
-																<?php 
-																	global $conn;
-																	$sql = "SELECT * FROM `course_lists`";
-																	$result = $conn->query($sql);
-																	if ($result->num_rows > 0) { while($row = $result->fetch_assoc()) { echo '<option value="'.$row['course_id'].'">'.$row['name'].'</option>'; } }
-																?>
-															</select>
-														</div> <!-- end .form-group -->
-														<div class="form-group">
-															<p class="label">Job Industry<sup>*</sup></p>
-															<select name="job_industry" class="form-control" required="" data-live-search="true">
-																<?php 
-																	global $conn;
-																	$sql = "SELECT * FROM `job_industry`";
-																	$result = $conn->query($sql);
-																	if ($result->num_rows > 0) { while($row = $result->fetch_assoc()) { echo '<option value="'.$row['ji_id'].'">'.$row['name'].'</option>'; } }
-																?>
-															</select>
-														</div> <!-- end .form-group -->
-													</div> <!-- end .form-group-wrapper -->
-
-													<div class="form-group-wrapper flex space-between items-center">
-														<div class="form-group">
-															<p class="label">Year(s) Experience Required<sup>*</sup></p>
-															<input type="number" class="company-title" name="years_experience" placeholder="" required="">
-														</div> <!-- end .form-group -->
-														<div class="form-group">
-															<p class="label">Month(s) Experience Required <span>(Optional)</span><sup>*</sup></p>
-															<input type="number" class="position" name="months_experience" placeholder="" required="">
-														</div> <!-- end .form-group -->
-													</div> <!-- end .form-group-wrapper -->
-
-													<div class="form-group-wrapper flex space-between items-center">
-														<div class="form-group">
-															<p class="label">Job Type<sup>*</sup></p>
-															<select name="job_type" class="form-control" required="" data-live-search="true">
-																<option value="part-time">Part Time</option>
-																<option value="full-time">Full Time</option>
-																<option value="internship">internship</option>
-															</select>
-														</div> <!-- end .form-group -->
-														<div class="form-group">
-															<p class="label">Address<sup>*</sup></p>
-															<input type="text" name="address" placeholder="" required="">
-														</div> <!-- end .form-group -->
-													</div> <!-- end .form-group-wrapper -->
-
-													<div class="form-group-wrapper">
-														<div class="form-group">
-															<p class="label">Job Description<sup>*</sup></p>
-															<textarea name="job_desc" class="job-desc" rows="2" Required=""></textarea>
-														</div> <!-- end .form-group -->
-													</div> <!-- end .form-group-wrapper -->
-												</div> <!-- end .form-fields-wrapper -->
-												<div class="button-wrapper text-center">
-													<input type="submit" class="button" value="Submit Now"/>
-												</div> <!-- end .button-wrapper -->	
-												<br/>										
-											</form>
-										</div>
+								<div id="post-a-new-jobs" class="tab-pane fade in">
+							    	<div class="profile-badge"><h6>Post a new Job</h6></div>									
+									<div class="profile-wrapper">
+										<?php include './pages/employer/post-a-job.php'; ?>
 									</div>
-								</div> <!-- end #change-password-tab --> 		
+								</div>
+
+								<div id="hired-applicants" class="tab-pane fade in">
+							    	<div class="profile-badge"><h6>Hired Applicants</h6></div>									
+									<div class="profile-wrapper">
+										<?php include './pages/employer/hired-applicants.php'; ?>
+									</div>
+								</div>
 														
 								<div id="jobslist" class="tab-pane fade in">
 							    	<div class="profile-badge"><h6>Jobs Lists</h6></div>									
 									<div class="profile-wrapper">
-										<table id="print-joblist-table" class="table table-condensed">
-											<thead>
-												<tr>
-													<th>No.</th>
-													<th>Company Name</th>
-													<th>Position</th>
-													<th>Date Posted</th>
-													<th>Candidates</th>
-													<th>Status</th>
-												</tr>
-											</thead>
-											<tbody>
-											<?php 
-												global $conn;
-												$pjsql = "SELECT
-															employer_job_posted.`job_id`,
-															employer_job_posted.`com_name`,
-															employer_job_posted.`com_address`,
-															employer_job_posted.`position`,
-															employer_job_posted.`status`,  
-															employer_job_posted.`years_experience`,
-															employer_job_posted.`months_experience`,
-															employer_job_posted.`created_date`,
-															COUNT(applied_job.`ID`) AS applicant_applied
-														FROM `employer_job_posted`
-														LEFT JOIN applied_job ON applied_job.`job_id` = employer_job_posted.`job_id`    
-														WHERE employer_job_posted.`user_id`='".$_COOKIE['user_id']."'
-														GROUP BY employer_job_posted.`ID`
-														ORDER BY employer_job_posted.`ID` DESC ";
-												$pjresult = $conn->query($pjsql);
-												if ($pjresult->num_rows > 0) {
-													$i = 1;
-													while($pjrow = $pjresult->fetch_assoc()) { ?>															
-												<tr>
-													<th><?php echo $i++; ?></th>
-													<td><a href="#" class="jobinfo-show-modal" job_id="<?php echo $pjrow['job_id']; ?>"><?php echo $pjrow['com_name']; ?></a></td>
-													<td><?php echo $pjrow['position']; ?></td>
-													<td><?php echo $pjrow['created_date']; ?></td>
-													<td><?php 
-														if( $pjrow['applicant_applied'] >= 1 ) {
-															echo '<a href="#" class="candidates-show-modal" years-exp="'.$pjrow['years_experience'].'" months-exp="'.$pjrow['months_experience'].'" job_id="'.$pjrow['job_id'].'"> <b>'.$pjrow['applicant_applied'].' Candidate(s)';
-														} 
-														else {
-															echo '0 Candidate';
-														}
-														?></td>
-													<td><?php echo ucfirst($pjrow['status']); ?></td>
-												</tr> 
-												<?php
-													} 
-												}
-											?>								
-											</tbody>
-										</table>
+										<?php include './pages/employer/joblists.php'; ?>
 									</div>
-								</div> <!-- end #manage-applications-tab -->
-
+								</div>
+								
 							    <div id="placement-report-tab" class="tab-pane fade in">
 									<div class="profile-badge"><h6>Placement Report</h6></div>
 									<div class="password-form-wrapper">
@@ -269,7 +108,7 @@
 														</div> <!-- end .form-group -->
 														<div class="form-group">
 															<p class="label">Company Name<sup>*</sup></p>
-															<input type="text" name="company-name" placeholder="Company Name" required>
+															<input type="text" name="company-name" placeholder="Company Name" required value="<?php echo $fetch->getInformation('employer_information', 'name'); ?>">
 														</div> <!-- end .form-group -->
 													</div> <!-- end .form-group-wrapper -->  
 
@@ -326,14 +165,11 @@
 											</tbody>
 										</table>
 									</div>
-
 								</div>
-
 								<div id="applicant-profile-tab" class="tab-pane fade in">
 							    	<div class="profile-badge"><h6>Applicant Profile Resume</h6></div>
 									<?php include './pages/employer/view-applicant-profile.php'; ?>
 								</div> <!-- end #resume-tab -->
-
 							</div> <!-- end .employer-dashboard -->
 						</div> <!-- end .right-side-content -->
 

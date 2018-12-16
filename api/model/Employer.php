@@ -92,6 +92,25 @@
                         '".$post['job_desc']."',
                         '".date('Y-m-d')."',
                         'pending')";
+                        
+            if(isset($post['employer-posting']) AND !empty($post['employer-posting']) ) {
+                $sql = "INSERT INTO `employer_job_posted`(`ID`, `user_id`, `job_id`, `com_logo`,`com_name`, `com_address`, `position`, `job_type`, `course_id`, `industry_id`, `years_experience`, `months_experience`, `description`, `created_date`, `status`) 
+                    VALUES (null,
+                        '".$_COOKIE['user_id']."',
+                        '".GEN_UID."',
+                        '".$post['com-logo']."',
+                        '".$post['company-name']."',
+                        '".$post['address']."',
+                        '".$post['position']."',
+                        '".$post['job_type']."',
+                        '".$post['required_course']."',
+                        '".$post['job_industry']."',
+                        '".$post['years_experience']."',
+                        '".$post['months_experience']."',
+                        '".$post['job_desc']."',
+                        '".date('Y-m-d')."',
+                        'pending')";
+            }
 
             if ($conn->query($sql) === TRUE) 
             {
@@ -218,6 +237,23 @@
             else 
             {
                 echo json_encode(array('errorCode'=>304, 'errorMsg'=>'Unable to create'));
+            } 
+        }
+
+
+        public function updateApplicantStatus($post)
+        {
+            global $conn; 
+            
+            $sql = "UPDATE `applied_job` SET `application_status`='".$post['status']."' WHERE `applicant_id`='".$post['applicant_id']."' ";
+
+            if ($conn->query($sql) === TRUE) 
+            {
+                echo json_encode(array('errorCode'=>0, 'successMsg'=>'Successfully updated'));
+            }
+            else 
+            {
+                echo json_encode(array('errorCode'=>304, 'errorMsg'=>'Unable to update'));
             } 
         }
         

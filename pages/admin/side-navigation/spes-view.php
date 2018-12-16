@@ -1,5 +1,5 @@
 <?php
-    $spesSql = "SELECT * FROM `admin_spes_report` ORDER BY ID ASC  ";
+    $spesSql = "SELECT * FROM `admin_spes_report` ORDER BY ID DESC  ";
     $selectedCurrentBrgy = 'Select Barangay';
     if(isset($_GET['spes-brgy'])) {
         if($_GET['spes-brgy'] !='all') {
@@ -27,14 +27,14 @@
     <thead>
         <tr>
         <th>No.</th>
-        <th>Firstname</th>
-        <th>Middlename</th>
-        <th>Lastname</th>
+        <th>Fullname</th>
         <th>Age</th>
         <th>School</th>
         <th>Barangy</th>
         <th>Status</th>
         <th>Year</th>
+        <th>Batch</th>
+        <th>Year Admitted</th>
         </tr>
     </thead>
     <tbody>
@@ -47,14 +47,14 @@
         ?>
         <tr>
             <td><?php echo $i; ?></td>
-            <td><?php echo $spesRow['fname']; ?></td>
-            <td><?php echo $spesRow['mname']; ?></td>
-            <td><?php echo $spesRow['lname']; ?></td>
+            <td><?php echo $spesRow['fname'].' '.$spesRow['mname'].' '.$spesRow['lname']; ?></td>
             <td><?php echo $spesRow['age']; ?></td>
             <td><?php echo $spesRow['school']; ?></td>													
             <td><?php echo $spesRow['brgy']; ?></td>													
             <td><?php echo $spesRow['status']; ?></td>													
             <td><?php echo $spesRow['year']; ?></td>													
+            <td>Batch <b><?php echo $spesRow['batch']; ?></b></td>													
+            <td><?php echo $spesRow['year_admitted']; ?></td>													
         </tr> 
         <?php }} ?>												
     </tbody>

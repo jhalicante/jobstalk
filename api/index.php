@@ -8,6 +8,7 @@
     include '../lib/Config.php';
     include '../lib/Cipher.php';
     include './ValidateData.php';
+    include './SmsHandler.php';
         
     include './model/SignIn.php';
     include './model/BPC.php';
@@ -131,6 +132,13 @@
         $employer->addPlacementReport($_POST);
         // echo json_encode($_POST);
     });
+    // Update Applicant Applied Status
+    $router->post(API_VERSION.'/employer/update-employer-status', function () {
+        $employer = new Employer();
+        $employer->updateApplicantStatus($_POST);
+    });
+
+    
 
     /***********************************
      * ADMIN FUNCTIONS API
@@ -148,6 +156,7 @@
     // Add SPRS
     $router->post(API_VERSION.'/admin/add-sprs', function () {
         $admin = new Admin();
+        $smsHandler = new SMSHandler();
         $admin->addSPRS($_POST['sql']);
     });
     // Get SPRS

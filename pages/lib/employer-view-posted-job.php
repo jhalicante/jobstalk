@@ -21,7 +21,7 @@
 													<span><i class="ion-ios-folder-outline"></i>Browse Photo</span>								    	
 												</label>
 												<input type="file" style="visibility:hidden;" name="logo" id="logo-picture" data-label-class="logo-picture-name" data-preview-img="logo-picture-preview"> 
-												<img src="<?php echo ASSET_URL; ?>assets/images/image-placeholder.jpg" class="img-circle view-logo" width="80px" height="80px" alt="" style="right:30px;position:absolute;top:0px;">
+												<img src="<?php echo ASSET_URL; ?>assets/images/image-placeholder.jpg" class="img-circle view-logo" width="80px" height="80px" alt="Company Logo" style="right:30px;position:absolute;top:0px;">
 											</div> <!-- end .form-group -->
 										</div> <!-- end .form-group-wrapper -->
 
@@ -39,12 +39,12 @@
 										<div class="form-group-wrapper flex space-between items-center">
 											<div class="form-group">
 												<p class="label">Course<sup>*</sup></p>
-												<input type="text" class="view-req-course" value="Testing" disabled>
+												<input type="text" class="view-req-course" disabled>
 												
 											</div> <!-- end .form-group -->
 											<div class="form-group">
 												<p class="label">Job Industry<sup>*</sup></p>
-												<input type="text" class="view-req-industry" value="Testing" disabled>												
+												<input type="text" class="view-req-industry" disabled>												
 											</div> <!-- end .form-group -->
 										</div> <!-- end .form-group-wrapper -->
 
@@ -62,7 +62,7 @@
 										<div class="form-group-wrapper flex space-between items-center">
 											<div class="form-group">
 												<p class="label">Job Type<sup>*</sup></p>
-												<input type="text" class="view-job-type" value="Testing" disabled>												
+												<input type="text" class="view-job-type" disabled>												
 											</div> <!-- end .form-group -->
 											<div class="form-group">
 												<p class="label">Address<sup>*</sup></p>
@@ -73,15 +73,10 @@
 										<div class="form-group-wrapper">
 											<div class="form-group">
 												<p class="label">Job Description<sup>*</sup></p>
-												<textarea class="view-job-desc" rows="2" disabled></textarea>
+												<textarea class="view-job-desc" rows="3" disabled></textarea>
 											</div> <!-- end .form-group -->
 										</div> <!-- end .form-group-wrapper -->
 									</div> <!-- end .form-fields-wrapper -->
-									<br/>
-									<div class="button-wrapper text-center">
-										<button type="submit" class="button" data-dismiss="modal">Close</button>
-									</div> <!-- end .button-wrapper -->	
-									<br/>										
 								</form>
 							</div>
 						</div>

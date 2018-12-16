@@ -51,6 +51,29 @@
                         ?>
                     </select>
                 </div> <!-- end .form-group -->
+            </div> <!-- end .form-group-wrapper -->		
+            <div class="form-group-wrapper flex space-between items-center">
+                <div class="form-group">
+                    <p class="label">Batch<sup>*</sup></p>
+                    <input type="number" name="batch" placeholder="" required="">                    
+                </div> <!-- end .form-group -->
+                <div class="form-group">
+                    <p class="label">Year Admitted<sup>*</sup></p>
+                    <?php $years = range(strftime("%Y", time()), 1900); ?>
+                    <select name="year-admitted" class="form-control" required="">
+                        <?php foreach($years as $year) : ?>
+                            <option value="<?php echo $year; ?>"><?php echo $year; ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                </div> <!-- end .form-group -->
+            </div> <!-- end .form-group-wrapper -->	
+            <div class="form-group-wrapper flex space-between items-center">
+                <div class="form-group">
+                    <p class="label">Mobile Number <span>(Eg: 09278977590)</span> <sup>*</sup></p>
+                    <input type="number" name="mobile-number" class="mobile-number" placeholder="" required="">                    
+                </div> <!-- end .form-group -->
+                <div class="form-group"> 
+                </div> <!-- end .form-group -->
             </div> <!-- end .form-group-wrapper -->				
         </div>
         <br/>

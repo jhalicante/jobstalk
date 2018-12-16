@@ -170,7 +170,7 @@
 														global $conn;
 														$sql = "SELECT * FROM `course_lists`";
 														$result = $conn->query($sql);
-														if ($result->num_rows > 0) { while($row = $result->fetch_assoc()) { echo '<option value="'.$row['course_id'].'">'.$row['name'].'</option>'; } }
+														if ($result->num_rows > 0) { while($row = $result->fetch_assoc()) { echo '<option value="'.$row['name'].'">'.$row['name'].'</option>'; } }
 													?>
 												</select>
 											</div> <!-- end .form-group -->

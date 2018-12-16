@@ -42,6 +42,7 @@
 		<?php } ?>
 		<script>
 			var api_url = '<?php echo API_URL; ?>';
+			var asset_url = '<?php echo ASSET_URL; ?>';
 		</script>
 		<?php if(isset($_GET['spes-brgy'])) { ?>
 			<script> 
@@ -113,3 +114,20 @@
 			else return value;
 		}
 		</script>
+		<?php if(isset($_GET['applicant-profile'])) { ?>
+			<script> setTimeout(() => {
+				$('.applicant-profile-tab').click();
+			}, 100);  </script>
+		<?php } ?>
+
+		<?php if(isset($_GET['employer-profile'])) { ?>
+			<script> setTimeout(() => {
+				$('.employer-profile-tab').click();
+			}, 100);  </script>
+		<?php } ?>
+
+		<?php if(isset($_GET['lmi-month'])) { ?>
+			<script> setTimeout(() => {
+				$('.lmi-tab').click();
+			}, 100);  </script>
+		<?php } ?>

@@ -25,8 +25,7 @@
          solid windowtext .5pt;mso-background-themecolor:background1;
          mso-background-themeshade:191;padding:0in 5.4pt 0in 5.4pt;height:23.25pt; text-align: center;font-size: 14px'>
          <center>
-         <b>
-         2018/12/10<br></b>
+         <b><?php echo date('Y/m/d'); ?><br></b>
          <center>
          <b>
             <center>Reference</center>

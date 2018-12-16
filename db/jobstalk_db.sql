@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 4.7.7
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:8889
--- Generation Time: Dec 14, 2018 at 07:22 AM
--- Server version: 5.7.23
--- PHP Version: 7.2.8
+-- Host: localhost
+-- Generation Time: Dec 16, 2018 at 11:32 AM
+-- Server version: 5.6.38
+-- PHP Version: 7.2.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -39,6 +39,10 @@ CREATE TABLE `admin_lmi_report` (
   `15` varchar(20) NOT NULL,
   `16` varchar(20) NOT NULL,
   `17` varchar(30) NOT NULL,
+  `18` varchar(20) NOT NULL,
+  `19` varchar(20) NOT NULL,
+  `20` varchar(20) NOT NULL,
+  `prepared_by` varchar(100) NOT NULL,
   `created_date` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -46,10 +50,8 @@ CREATE TABLE `admin_lmi_report` (
 -- Dumping data for table `admin_lmi_report`
 --
 
-INSERT INTO `admin_lmi_report` (`ID`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, `12`, `13`, `14`, `15`, `16`, `17`, `created_date`) VALUES
-(1, '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', 'admin', '11/13/2018'),
-(2, '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', 'admin', '11/13/2018'),
-(3, '33', '1', '34', '23', '3', '3', '6', '32', '23', '23', '46', '32', '23', '23', '46', '23', 'alicante', '11/13/2018');
+INSERT INTO `admin_lmi_report` (`ID`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, `12`, `13`, `14`, `15`, `16`, `17`, `18`, `19`, `20`, `prepared_by`, `created_date`) VALUES
+(4, '2', '2', '2', '2', '4', '1', '2', '2', '2', '2', '4', '1', '1', '1', '2', '1', '1', '1', '2', '1', 'markss', '12/16/2018');
 
 -- --------------------------------------------------------
 
@@ -89,20 +91,34 @@ CREATE TABLE `admin_spes_report` (
   `school` varchar(150) NOT NULL,
   `brgy` varchar(20) NOT NULL,
   `status` varchar(15) NOT NULL,
-  `year` varchar(2) NOT NULL
+  `year` varchar(2) NOT NULL,
+  `batch` varchar(5) NOT NULL,
+  `year_admitted` varchar(10) NOT NULL,
+  `mobile_ number` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `admin_spes_report`
 --
 
-INSERT INTO `admin_spes_report` (`ID`, `fname`, `mname`, `lname`, `age`, `school`, `brgy`, `status`, `year`) VALUES
-(2, 'as', 'asas', 'asa', '2', 'asdas', '3', '', ''),
-(3, 'as', 'asas', 'asa', '12', 'asdas', '3', '', ''),
-(4, 'asd', 'dsa', 'asd', '2', 'asdasd', '15', '', ''),
-(5, 'dsa', 'asd', 'ad', '12', 'asd', '12', 'asd', '4'),
-(6, 'asd', 'ads', 'asd', '12', '12', '12', '21', '2'),
-(7, 'asd', 'asd', 'ads', '1', '123', '1', 'asd', '');
+INSERT INTO `admin_spes_report` (`ID`, `fname`, `mname`, `lname`, `age`, `school`, `brgy`, `status`, `year`, `batch`, `year_admitted`, `mobile_ number`) VALUES
+(2, 'as', 'asas', 'asa', '2', 'asdas', '3', '', '', '', '', ''),
+(3, 'as', 'asas', 'asa', '12', 'asdas', '3', '', '', '', '', ''),
+(4, 'asd', 'dsa', 'asd', '2', 'asdasd', '15', '', '', '', '', ''),
+(5, 'dsa', 'asd', 'ad', '12', 'asd', '12', 'asd', '4', '10', '2018', ''),
+(6, 'asd', 'ads', 'asd', '12', '12', '12', '21', '2', '', '', ''),
+(7, 'asd', 'asd', 'ads', '1', '123', '1', 'asd', '', '', '', ''),
+(8, 'sd', 'asd', 'asd', '1', 'ads', '1', 'New', '4', '', '', ''),
+(9, 'ad', 'ads', 'a', '1', '1', '1', 'New', '1', '', '', ''),
+(10, 'ad', 'as', 'as', '1', 'fs', '1', 'Old', '6', '', '', ''),
+(11, 'ads', 'ads', 'asdad', '3', 'das', '3', 'Old', '4', '', '', ''),
+(12, 'd', 's', 'd', '2', 'ff', '32', '', '', '', '', ''),
+(13, 'd', 's', 'd', '2', 'ff', '32', 'Old', '', '', '', ''),
+(14, 'd', 's', 'd', '2', 'ff', '32', 'Old', '3', '', '', ''),
+(15, 'asd', 'asd', 'sd', '12', '12', '12', 'New', '1', '', '', ''),
+(16, 'das', 'asd', 'asda', '12', '1asdasd', '12', 'New', '3', '123', '2015', ''),
+(17, '12', '12', '12', '12', '12', '12', 'New', '1', '1', '2018', ''),
+(18, '123', '123', '123', '123', '123', '123', 'New', '12', '123', '1999', '');
 
 -- --------------------------------------------------------
 
@@ -254,7 +270,9 @@ CREATE TABLE `admin_sprs_report` (
 
 INSERT INTO `admin_sprs_report` (`ID`, `_1_`, `_2_`, `_3_`, `_4_`, `_5_`, `_6_`, `_7_`, `_8_`, `_9_`, `_10_`, `_11_`, `_12_`, `_13_`, `_14_`, `_15_`, `_16_`, `_17_`, `_18_`, `_19_`, `_20_`, `_21_`, `_22_`, `_23_`, `_24_`, `_25_`, `_26_`, `_27_`, `_28_`, `_29_`, `_30_`, `_31_`, `_32_`, `_33_`, `_34_`, `_35_`, `_36_`, `_37_`, `_38_`, `_39_`, `_40_`, `_41_`, `_42_`, `_43_`, `_44_`, `_45_`, `_46_`, `_47_`, `_48_`, `_49_`, `_50_`, `_51_`, `_52_`, `_53_`, `_54_`, `_55_`, `_56_`, `_57_`, `_58_`, `_59_`, `_60_`, `_61_`, `_62_`, `_63_`, `_64_`, `_65_`, `_66_`, `_67_`, `_68_`, `_69_`, `_70_`, `_71_`, `_72_`, `_73_`, `_74_`, `_75_`, `_76_`, `_77_`, `_78_`, `_79_`, `_80_`, `_81_`, `_82_`, `_83_`, `_84_`, `_85_`, `_86_`, `_87_`, `_88_`, `_89_`, `_90_`, `_91_`, `_92_`, `_93_`, `_94_`, `_95_`, `_96_`, `_97_`, `_98_`, `_99_`, `_100_`, `_101_`, `_102_`, `_103_`, `_104_`, `_105_`, `_106_`, `_107_`, `_108_`, `_109_`, `_110_`, `_111_`, `_112_`, `_113_`, `_114_`, `_115_`, `_116_`, `_117_`, `_118_`, `_119_`, `_120_`, `_121_`, `_122_`, `_123_`, `_124_`, `_125_`, `_126_`, `_127_`, `_128_`, `_129_`, `_130_`, `other_activities`, `sprs_name`, `sprs_designation`, `created_date`) VALUES
 (7, 'first', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', 'l', 'l', 'l', 'l', 'l', 'l', 'l', 'l', 'l', 'l', 'l', 'l', 'l', 'l', 'l', 'l', 'l', 'l', 'l', 'l', 'l', 'l', 'l', 'l', 'l', 'l', 'l', 'l', 'l', '1', 'l', 'l', 'l', 'l', 'l', 'l', 'l', 'l', 'l', 'l', 'l', 'l', 'l', 'l', 'l', 'l', 'l', 'l', 'l', 'l', 'l', 'l', 'l', 'l', 'l', 'l', 'l', 'l', 'l', 'l', 'l', 'l', 'l', 'l', 'l', 'l', 'l', 'l', 'l', 'l', 'l', 'l', 'l', 'l', '1', 'l', 'l', 'l', 'l', 'l', 'l', 'l', 'l', 'l', '1', 'l', 'l', 'll', 'll', '1', 'l', 'l', 'l', 'l', 'l', 'l', 'l', 'l', 'l', 'll', 'l', 'l', 'l', 'l', 'l', 'l', 'll', 'l', 'l', 'l', 'l', 'l', 'l', 'l', 'l', '1', 'l', 'l', 'last', 'adsasd', 'Marky', 'dis', '11/11/2018'),
-(8, '1', '3', '1', '1', '1', '1', '1', '1', '1', '1', '1', '11', '1', '1', '1', '14', '14', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '14', '1', '1', '1', '1', '1', '17', '1', '1', '1', '116', '1', '1', '1', '1', '1', '3', '1', '31', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '11', '1', '1', '1', '1', '1', '1', '1', '1', '3', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '11', '3', '1', '1', '1', '1', '1', '1', '1', '3', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '2', '1', '1', '1', '1', '1', '2', 'asd', 'asd', 'aasdasd', '11/13/2018');
+(8, '1', '3', '1', '1', '1', '1', '1', '1', '1', '1', '1', '11', '1', '1', '1', '14', '14', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '14', '1', '1', '1', '1', '1', '17', '1', '1', '1', '116', '1', '1', '1', '1', '1', '3', '1', '31', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '11', '1', '1', '1', '1', '1', '1', '1', '1', '3', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '11', '3', '1', '1', '1', '1', '1', '1', '1', '3', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '2', '1', '1', '1', '1', '1', '2', 'asd', 'asd', 'aasdasd', '11/13/2018'),
+(9, '1', '3', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '17', '17', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '17', '1', '1', '1', '1', '1', '20', '1', '1', '1', '19', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '11', '1', '1', '1', '1', '1', '1', '1', '1', '11', '1', '1', '11', '11', '1', '11', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '11', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '11', 'haha', 'Aljohn', 'wow', '12/15/2018'),
+(10, '1', '3', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '17', '17', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '17', '1', '1', '1', '1', '1', '20', '1', '1', '1', '19', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '11', '1', '1', '1', '1', '1', '1', '1', '1', '11', '1', '1', '11', '11', '1', '11', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '11', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '11', 'haha', 'Aljohn', 'wow', '12/15/2018');
 
 -- --------------------------------------------------------
 
@@ -328,7 +346,7 @@ CREATE TABLE `applicant_education` (
 --
 
 INSERT INTO `applicant_education` (`ID`, `user_id`, `ter_sname`, `ter_course`, `ter_ys`, `ter_ye`, `ter_ad`, `sec_sname`, `sec_ys`, `sec_ye`, `sec_ad`, `pri_sname`, `pri_ys`, `pri_ye`, `pri_ad`) VALUES
-(1, '120420181543890908', 'University of Caloocan City', 'Bachelor of Science in Computer Science', '2017-06-06', '1996-06-06', 'Biglang awa st Caloocan City', 'Navotas National High School', '1996-06-06', '1996-06-06', 'Taliba st Navotas City', 'Awayon Elementary School', '1996-06-06', '1996-06-01', 'Mercedes National High School'),
+(1, '120420181543890908', 'University of Caloocan City', 'Bachelor of Science in Computer Science (BSCS)', '2017-06-06', '1996-06-06', 'Biglang awa st Caloocan City', 'Navotas National High School', '1996-06-06', '1996-06-06', 'Taliba st Navotas City', 'Awayon Elementary School', '1996-06-06', '1996-06-01', 'Mercedes National High School'),
 (10, '121120181544487753', 'asdasdasd', '1', '0311-03-12', '0123-03-12', 'asdasd', 'sdas', '1212-11-12', '1212-12-12', 'asdd', 'df', '0001-02-12', '0012-12-12', 'fdfd');
 
 -- --------------------------------------------------------
@@ -356,7 +374,7 @@ CREATE TABLE `applicant_personal_information` (
 --
 
 INSERT INTO `applicant_personal_information` (`ID`, `user_id`, `fname`, `mname`, `lname`, `bday`, `gender`, `nationality`, `civil_status`, `language`, `profile_picture`) VALUES
-(1, '120420181543890908', 'Johnmark', 'Yugo', 'Alicante', '1996-06-06', 'male', 'Filipino', 'Single', 'Filipino,English', '120620181544119464.jpg'),
+(1, '120420181543890908', 'as', 'asd', 'as', '0023-12-31', 'male', '123', 'asd', 'Tagalog', '121620181544945718.png'),
 (2, '121120181544487753', 'Ako', 'Ako', 'Ako', '0012-12-12', 'male', 'FilAm', 'Single', 'tagalog', '121120181544487808.png');
 
 -- --------------------------------------------------------
@@ -410,7 +428,7 @@ CREATE TABLE `applied_job` (
   `applicant_id` varchar(55) NOT NULL,
   `employer_id` varchar(55) NOT NULL,
   `job_id` varchar(55) NOT NULL,
-  `application_status` enum('for-interview','in-process','rejected','completed','hired') NOT NULL,
+  `application_status` enum('for-interview','in-process','rejected','completed','hired','hired','no-hired','awol','resigned','regularized','terminated') NOT NULL,
   `date_applied` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -419,8 +437,8 @@ CREATE TABLE `applied_job` (
 --
 
 INSERT INTO `applied_job` (`ID`, `applicant_id`, `employer_id`, `job_id`, `application_status`, `date_applied`) VALUES
-(2, '120420181543890908', '120720181544166943', '120820181544281722', 'in-process', '2018-12-09'),
-(8, '121120181544487753', '120720181544166943', '120820181544270508', 'in-process', '12-11-2018');
+(2, '120420181543890908', '120720181544166943', '120820181544281722', 'hired', '2018-12-09'),
+(8, '121120181544487753', '120720181544166943', '120820181544270508', 'awol', '12-11-2018');
 
 -- --------------------------------------------------------
 
@@ -443,7 +461,8 @@ CREATE TABLE `bpc_account` (
 --
 
 INSERT INTO `bpc_account` (`ID`, `user_id`, `role`, `username`, `password`, `brgy`, `created_date`) VALUES
-(2, '121420181544762611', 'bpc', '123', '123', '12312', '12/142018');
+(1, '121420181544762611', 'bpc', '123', '123', '12312', '12/142018'),
+(2, '121620181544953932', 'bpc', 'test', 'test', '1', '12/162018');
 
 -- --------------------------------------------------------
 
@@ -630,10 +649,10 @@ CREATE TABLE `employer_job_posted` (
 --
 
 INSERT INTO `employer_job_posted` (`ID`, `user_id`, `job_id`, `com_logo`, `com_name`, `com_address`, `position`, `job_type`, `course_id`, `industry_id`, `years_experience`, `months_experience`, `description`, `created_date`, `status`) VALUES
-(1, '120720181544166943', '120820181544270508', '120820181544270508.png', 'PAJO Corporation', '115 J.P. Rizal St, Maypajo, Caloocan, 1410 Metro Manila', 'Water Bender', 'part-time', '4', '5', '2', '7', 'Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Etiam eu velit cursus, tempor ipsum in, tempus lectus. Nullam tempus nisi id nisl luctus, non tempor justo molestie.', '2018-12-12', 'approved'),
-(2, '120720181544166943', '120820181544281722', '120820181544281722.jpg', 'Test Inc', '234, 236 Tomas Morato Ave, Diliman, Quezon City, 1103 Metro Manila', 'Data Analyst', 'full-time', '2', '5', '3', '3', 'Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Etiam eu velit cursus, tempor ipsum in, tempus lectus. Nullam tempus nisi id nisl luctus, non tempor justo molestie.', '12/08/2018', 'approved'),
-(3, '120720181544166943', '121020181544432317', '121020181544432317.', 'as21', '3asda', '3123', 'internship', '11', '8', '2', '2', 'asdasd', '12/10/2018', 'approved'),
-(4, '122018154389090890', '121420181544762428', '121420181544762428.png', 'testeewss', 'asd', 'asd', 'full-time', '1', '1', '2', '2', 'asasdas', '2018-12-14', 'pending');
+(1, '120720181544166943', '120820181544270508', '120820181544270508.png', 'PAJO Corporation', '115 J.P. Rizal St, Maypajo, Caloocan, 1410 Metro Manila', 'Water Bender', 'part-time', '30', '5', '2', '7', 'Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Etiam eu velit cursus, tempor ipsum in, tempus lectus. Nullam tempus nisi id nisl luctus, non tempor justo molestie.', '2018-12-16', 'approved'),
+(2, '120720181544166943', '120820181544281722', '120820181544281722.jpg', 'Test Inc', '234, 236 Tomas Morato Ave, Diliman, Quezon City, 1103 Metro Manila', 'Data Analyst', 'full-time', '2', '5', '3', '3', 'Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Etiam eu velit cursus, tempor ipsum in, tempus lectus. Nullam tempus nisi id nisl luctus, non tempor justo molestie.', '2018-01-16', 'approved'),
+(3, '120720181544166943', '121020181544432317', '121020181544432317.', 'as21', '3asda', '3123', 'internship', '11', '8', '2', '2', 'asdasd', '2018-06-16', 'approved'),
+(4, '120720181544166943', '121620181544925891', '120720181544171097.png', 'Test Com Incorporation', '1', 'g', 'part-time', '30', '1', '1', '1', '1', '2018-01-16', 'pending');
 
 -- --------------------------------------------------------
 
@@ -660,7 +679,12 @@ INSERT INTO `employer_placement_report` (`ID`, `user_id`, `job_title`, `company_
 (2, '120720181544166943', 'assss', '123123', '2321-12-31', '12312', '12-09-2018'),
 (4, '120920181544344118', 'Web developer', 'IBM Corp', '2018-02-01', 'Caloocan City', '12-09-2018'),
 (5, '120920181544344118', 'JS Developer', 'test', '0021-12-12', 'test', '12-09-2018'),
-(6, '120720181544166943', 'sdd', 'sdsd', '0003-03-31', 'asdasd', '12-12-2018');
+(6, '120720181544166943', 'sdd', 'sdsd', '0003-03-31', 'asdasd', '12-12-2018'),
+(7, '120720181544166943', '123', '', '0023-12-31', '123', '12-16-2018'),
+(8, '120720181544166943', '123', '', '0023-12-31', '123', '12-16-2018'),
+(9, '120720181544166943', '123', '', '0023-12-31', '123', '12-16-2018'),
+(10, '120720181544166943', '123', '', '0023-12-31', '123', '12-16-2018'),
+(11, '120720181544166943', '12', 'Test Com Incorporation', '0012-12-12', '12', '12-16-2018');
 
 -- --------------------------------------------------------
 
@@ -751,6 +775,44 @@ INSERT INTO `job_industry` (`ji_id`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `ozekimessagein`
+--
+
+CREATE TABLE `ozekimessagein` (
+  `id` int(11) NOT NULL,
+  `sender` varchar(30) DEFAULT NULL,
+  `receiver` varchar(30) DEFAULT NULL,
+  `msg` text,
+  `senttime` varchar(100) DEFAULT NULL,
+  `receivedtime` varchar(100) DEFAULT NULL,
+  `operator` varchar(100) DEFAULT NULL,
+  `msgtype` varchar(160) DEFAULT NULL,
+  `reference` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ozekimessageout`
+--
+
+CREATE TABLE `ozekimessageout` (
+  `id` int(11) NOT NULL,
+  `sender` varchar(30) DEFAULT NULL,
+  `receiver` varchar(30) DEFAULT NULL,
+  `msg` text,
+  `senttime` varchar(100) DEFAULT NULL,
+  `receivedtime` varchar(100) DEFAULT NULL,
+  `reference` varchar(100) DEFAULT NULL,
+  `status` varchar(20) DEFAULT NULL,
+  `msgtype` varchar(160) DEFAULT NULL,
+  `operator` varchar(100) DEFAULT NULL,
+  `errormsg` varchar(250) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `region`
 --
 
@@ -806,9 +868,7 @@ INSERT INTO `user_account` (`ID`, `user_id`, `email_address`, `password`, `role`
 (7, '120720181544166943', 'employer@gmail.com', '123', 'employer', 'approved'),
 (12, '120920181544344118', 'emp@gmail.com', '123', 'employer', 'approved'),
 (13, '120920181544357586', 'test@gmail.com', '123', 'applicant', 'pending'),
-(14, '121120181544487753', 'ako@gmail.com', '123', 'applicant', 'pending'),
-(15, '121420181544761547', 'asda1231@gmail.com', '2312312', 'employer', 'approved'),
-(16, '121420181544762060', '123', '123123', 'employer', 'approved');
+(14, '121120181544487753', 'ako@gmail.com', '123', 'applicant', 'pending');
 
 --
 -- Indexes for dumped tables
@@ -917,6 +977,20 @@ ALTER TABLE `job_industry`
   ADD UNIQUE KEY `ji_id` (`ji_id`);
 
 --
+-- Indexes for table `ozekimessagein`
+--
+ALTER TABLE `ozekimessagein`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id` (`id`);
+
+--
+-- Indexes for table `ozekimessageout`
+--
+ALTER TABLE `ozekimessageout`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id` (`id`);
+
+--
 -- Indexes for table `region`
 --
 ALTER TABLE `region`
@@ -936,7 +1010,7 @@ ALTER TABLE `user_account`
 -- AUTO_INCREMENT for table `admin_lmi_report`
 --
 ALTER TABLE `admin_lmi_report`
-  MODIFY `ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `admin_reminders`
@@ -948,13 +1022,13 @@ ALTER TABLE `admin_reminders`
 -- AUTO_INCREMENT for table `admin_spes_report`
 --
 ALTER TABLE `admin_spes_report`
-  MODIFY `ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `admin_sprs_report`
 --
 ALTER TABLE `admin_sprs_report`
-  MODIFY `ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `applicant_career_objective`
@@ -1026,13 +1100,25 @@ ALTER TABLE `employer_job_posted`
 -- AUTO_INCREMENT for table `employer_placement_report`
 --
 ALTER TABLE `employer_placement_report`
-  MODIFY `ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `job_industry`
 --
 ALTER TABLE `job_industry`
   MODIFY `ji_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
+
+--
+-- AUTO_INCREMENT for table `ozekimessagein`
+--
+ALTER TABLE `ozekimessagein`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `ozekimessageout`
+--
+ALTER TABLE `ozekimessageout`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `region`
@@ -1044,4 +1130,4 @@ ALTER TABLE `region`
 -- AUTO_INCREMENT for table `user_account`
 --
 ALTER TABLE `user_account`
-  MODIFY `ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;

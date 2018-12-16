@@ -70,8 +70,17 @@
         include './pages/job-details.php';
     });
 
+    /* (Job Details) route */ 
+    $router->get('/privacy-policy', function () {
+        include './pages/privacy-policy.php';
+    });
+
+    
+
     /* (Homepage) route */ 
     $router->get('/', function () {
+        include './lib/Include.php';
+        include './pages/admin/side-navigation/reports/ReportsInclude.php';         
         include './pages/home-page.php';
     });
 ?>

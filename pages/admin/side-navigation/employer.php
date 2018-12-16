@@ -25,7 +25,7 @@
         ?>
         <tr>
             <th><?php echo $i; ?></th>
-            <td><?php echo $row1['name']; ?></td>
+            <td> <a href="?employer-profile=<?php echo $row1['user_id']; ?>" > <?php echo $row1['name']; ?> </a> </td>
             <td><?php echo $row1['address']; ?></td>
             <td><?php echo $row1['email']; ?></td>
             <td><?php  

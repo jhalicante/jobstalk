@@ -21,7 +21,7 @@
 		?>
 		<tr>
 			<th><?php echo $i; ?></th>
-			<td><?php echo $jpRow['com_name']; ?></td>
+			<td><a href="#" class="jobinfo-show-modal" job_id="<?php echo $jpRow['job_id']; ?>"><?php echo $jpRow['com_name']; ?></a></td>
 			<td><?php echo $jpRow['job_type']; ?></td>
 			<td><?php echo $jpRow['status']; ?></td>
 			<td><?php  

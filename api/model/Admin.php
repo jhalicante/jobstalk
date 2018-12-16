@@ -44,6 +44,9 @@
         {
             global $conn; 
             if ($conn->query($sql) === TRUE) {
+                // if($smsHandler['mobile-number']) {
+
+                // }
                 echo json_encode(array('errorCode'=>0, 'successMsg'=>'Successfully saved'));
             } else {
                 echo json_encode(array('errorCode'=>304, 'errorMsg'=>'Unable to saved'));
@@ -54,8 +57,18 @@
         public function addSPES($post)
         {
             global $conn; 
-            $sql = "INSERT INTO `admin_spes_report`(`ID`, `fname`, `mname`, `lname`, `age`, `school`, `brgy`, `status`, `year`)
-                    VALUES (null,'".$post["fname"]."','".$post["mname"]."','".$post["lname"]."','".$post["age"]."','".$post["school"]."','".$post["brgy"]."', '".$post["spes-status"]."', '".$post["spes-year"]."')";
+            $sql = "INSERT INTO `admin_spes_report`(`ID`, `fname`, `mname`, `lname`, `age`, `school`, `brgy`, `status`, `year`, `batch`, `year_admitted`)
+                    VALUES (null,
+                        '".$post["fname"]."',
+                        '".$post["mname"]."',
+                        '".$post["lname"]."',
+                        '".$post["age"]."',
+                        '".$post["school"]."',
+                        '".$post["brgy"]."', 
+                        '".$post["spes-status"]."', 
+                        '".$post["spes-year"]."',
+                        '".$post["batch"]."',
+                        '".$post["year-admitted"]."')";
             if ($conn->query($sql) === TRUE) {
                 echo json_encode(array('errorCode'=>0, 'successMsg'=>'Successfully saved'));
             } else {

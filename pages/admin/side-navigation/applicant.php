@@ -7,7 +7,7 @@
         <th>Phone No.</th>
         <th>Gender</th>
         <th>Civil Status</th>
-        <th>Status</th>
+        <th>Action</th>
         </tr>
     </thead>
     <tbody>
@@ -26,6 +26,7 @@
                             applicant_contact_information.phone_no,
                             applicant_personal_information.gender,
                             applicant_personal_information.civil_status,
+                            user_account.user_id,
                             user_account.status
                         FROM applicant_personal_information
                         INNER JOIN applicant_contact_information ON applicant_contact_information.user_id = applicant_personal_information.user_id
@@ -37,7 +38,7 @@
         ?>
         <tr>
             <th><?php echo $i; ?></th>
-            <td><?php echo $row1['fullname']; ?></td>
+			<td><a href="?applicant-profile=<?php echo $row1['user_id']; ?>&mode=view" ><?php echo $row1['fullname']; ?></a></td>
             <td><?php echo $row1['address']; ?></td>
             <td><?php echo $row1['phone_no']; ?></td>
             <td><?php echo $row1['gender']; ?></td>

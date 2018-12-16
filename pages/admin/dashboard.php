@@ -30,7 +30,8 @@
 	<body>
 
 		<?php include './pages/admin/header.php'; ?>
-		<?php //include './pages/admin/include-inc.php'; ?>
+		<?php include './pages/lib/employer-view-posted-job.php'; ?>
+		
 		
 		<!-- Responsive Menu -->
 		<div class="responsive-menu">
@@ -48,18 +49,19 @@
 						<div class="left-sidebar-menu">							
 							<ul class="nav nav-pills nav-stacked">
 								<li class="heading">Manage All Jobs, Applicant & Employer </li>
-								<li class="active"><a data-toggle="pill" href="#joblists-tab">All Jobs</a></li>
-								<li class="active"><a data-toggle="pill" href="#post-a-job-tab">Post a Job</a></li>
-							    <li><a data-toggle="pill" href="#employer-tab">Employer List</a></li>
+								<li class="active"><a data-toggle="pill" href="#employer-tab">Employer List</a></li>
+								<li><a data-toggle="pill" href="#employer-profile-tab" class="employer-profile-tab hide">View Employer Profile</a></li>								
 								<li><a data-toggle="pill" href="#applicant-tab">Applicant List</a></li>
+								<li><a data-toggle="pill" href="#applicant-profile-tab" class="applicant-profile-tab hide">View Applicant Profile</a></li>								
 								<li><a data-toggle="pill" href="#add-account-tab">Add Account</a></li>
+								<li><a data-toggle="pill" href="#joblists-tab">All Jobs</a></li>
+								<li><a data-toggle="pill" href="#post-a-job-tab">Post a Job</a></li>
 								<li class="nav-divider"></li>
 								<li class="heading">Manage Reminders</li>
 							    <li><a data-toggle="pill" href="#reminders-lists-tab">Remiders List</a></li>
 							    <li><a data-toggle="pill" href="#reminders-add-tab"> &nbsp;&nbsp;&nbsp; Add Remiders</a></li>
 								<li class="nav-divider"></li>
 								<li class="heading">Manage Reports</li>								
-								<li><a data-toggle="pill" class="kpi-tab" href="#kpi-tab">Key performance indicator</a></li>
 								<li><a data-toggle="pill" class="reports-list-tab" href="#reports-list-tab">General Reports</a></li>
 								<?php if(isset($_GET['admin-sprs-report-id'])) {  ?>
 									<li><a href="account" class="sprs-tab"> &nbsp;&nbsp;&nbsp; Add SPRS</a></li>
@@ -107,8 +109,6 @@
 							        </div>
 								</div>
 
-								
-
 							    <div id="employer-tab" class="tab-pane fade in active">
 							    	<div class="profile-badge"><h6>Employer List</h6></div>									
 							        <div class="profile-wrapper">
@@ -127,13 +127,6 @@
 							    	<div class="profile-badge"><h6>Applicant List</h6></div>									
 							        <div class="profile-wrapper">
 										<?php include './pages/admin/side-navigation/applicant.php'; ?>
-							        </div>						        
-								</div>
-
-								<div id="kpi-tab" class="tab-pane fade in">
-							    	<div class="profile-badge"><h6>Key performance indicator</h6></div>									
-							        <div class="profile-wrapper">
-										<?php include './pages/admin/side-navigation/kpi.php'; ?>										
 							        </div>						        
 								</div>
 								
@@ -158,7 +151,7 @@
 											<tbody>
 												<?php
 													global $conn;
-													$sql = "SELECT * FROM `admin_sprs_report` WHERE 1 ORDER BY ID ASC  ";
+													$sql = "SELECT * FROM `admin_sprs_report` WHERE 1 ORDER BY ID DESC  ";
 													$result = $conn->query($sql);
 													$i = 0;
 													if ($result->num_rows > 0) {
@@ -176,7 +169,7 @@
 												} 
 												?>
 												<?php
-													$lmisql = "SELECT * FROM `admin_lmi_report` WHERE 1 ORDER BY ID ASC  ";
+													$lmisql = "SELECT * FROM `admin_lmi_report` WHERE 1 ORDER BY ID DESC  ";
 													$lmiresult = $conn->query($lmisql);
 													if ($lmiresult->num_rows > 0) {
 														while($lmirRow = $lmiresult->fetch_assoc()) {
@@ -186,7 +179,7 @@
 														<th><?php echo $i; ?></th>
 														<td> <a href="account?admin-lmi-report-id=<?php echo $lmirRow['ID']; ?>"> Labor Market Information Analysis</td>
 														<td><?php echo $lmirRow['created_date']; ?></td>
-														<td><?php echo $lmirRow['17']; ?></td>
+														<td><?php echo $lmirRow['prepared_by']; ?></td>
 													</tr> 
 												<?php 
 													}
@@ -267,6 +260,19 @@
 										<?php include './pages/admin/side-navigation/reminders-add.php'; ?>
 						        	</div>
 							    </div>
+
+								<div id="applicant-profile-tab" class="tab-pane fade in">
+							    	<div class="profile-badge"><h6>Applicant Profile Resume</h6></div>
+									<?php include './pages/employer/view-applicant-profile.php'; ?>
+								</div> <!-- end #resume-tab -->
+								
+								<div id="employer-profile-tab" class="tab-pane fade in active">
+							    	<div class="profile-badge"><h6>Employer View Profile</h6></div>
+							        <div class="profile-wrapper">
+										<?php include './pages/admin/side-navigation/view-employer-profile.php'; ?>																											
+							        </div> <!-- end .profile-wrapper -->						        
+								</div> <!-- end #profile-tab -->
+
 							</div>
 						</div>
 					</div> <!-- end .employer-dashboard-wrapper -->
