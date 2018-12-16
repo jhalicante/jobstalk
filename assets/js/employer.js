@@ -99,23 +99,6 @@ var employer = {
                                  } catch (error) {
                                     break;
                                  }
-
-                                // var fromDate = '2010-01-01';
-                                // var toDate = '2018-01-01';
-                                // try {
-                                
-                                //     var result = employer.getDateDifference(new Date(fromDate), new Date(toDate));
-                                //     console.log('results ', result);
-                                
-                                //     if (result && !isNaN(result.years)) {
-                                //         experience_count =
-                                //             result.years + ' year' + (result.years == 1 ? ' ' : 's ') +
-                                //             result.months + ' month' + (result.months == 1 ? ' ' : 's ') + 'and ' +
-                                //             result.days + ' day' + (result.days == 1 ? '' : 's');
-                                //     }
-                                // } catch (e) {
-                                //     console.error(e);
-                                // }
                                 
                             }
                             var markup = '<tr>';

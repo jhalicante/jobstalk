@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Dec 16, 2018 at 11:32 AM
+-- Generation Time: Dec 16, 2018 at 05:56 PM
 -- Server version: 5.6.38
 -- PHP Version: 7.2.1
 
@@ -94,14 +94,14 @@ CREATE TABLE `admin_spes_report` (
   `year` varchar(2) NOT NULL,
   `batch` varchar(5) NOT NULL,
   `year_admitted` varchar(10) NOT NULL,
-  `mobile_ number` varchar(15) NOT NULL
+  `mobile_number` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `admin_spes_report`
 --
 
-INSERT INTO `admin_spes_report` (`ID`, `fname`, `mname`, `lname`, `age`, `school`, `brgy`, `status`, `year`, `batch`, `year_admitted`, `mobile_ number`) VALUES
+INSERT INTO `admin_spes_report` (`ID`, `fname`, `mname`, `lname`, `age`, `school`, `brgy`, `status`, `year`, `batch`, `year_admitted`, `mobile_number`) VALUES
 (2, 'as', 'asas', 'asa', '2', 'asdas', '3', '', '', '', '', ''),
 (3, 'as', 'asas', 'asa', '12', 'asdas', '3', '', '', '', '', ''),
 (4, 'asd', 'dsa', 'asd', '2', 'asdasd', '15', '', '', '', '', ''),
@@ -118,7 +118,9 @@ INSERT INTO `admin_spes_report` (`ID`, `fname`, `mname`, `lname`, `age`, `school
 (15, 'asd', 'asd', 'sd', '12', '12', '12', 'New', '1', '', '', ''),
 (16, 'das', 'asd', 'asda', '12', '1asdasd', '12', 'New', '3', '123', '2015', ''),
 (17, '12', '12', '12', '12', '12', '12', 'New', '1', '1', '2018', ''),
-(18, '123', '123', '123', '123', '123', '123', 'New', '12', '123', '1999', '');
+(18, '123', '123', '123', '123', '123', '123', 'New', '12', '123', '1999', ''),
+(19, 'Ricky', 'Oliva', 'a', '1', '1', '1', 'New', '1', '1', '2015', '09278977591'),
+(20, 'gaga', 'aga', 'agag', '11', '11', '11', 'New', '1', '22', '2011', '09278977591');
 
 -- --------------------------------------------------------
 
@@ -810,6 +812,17 @@ CREATE TABLE `ozekimessageout` (
   `errormsg` varchar(250) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `ozekimessageout`
+--
+
+INSERT INTO `ozekimessageout` (`id`, `sender`, `receiver`, `msg`, `senttime`, `receivedtime`, `reference`, `status`, `msgtype`, `operator`, `errormsg`) VALUES
+(1, '09278977591', 'aw', 'aw', NULL, NULL, NULL, 'send', NULL, NULL, NULL),
+(2, '09278977592', '09278977593', '', '', '', '', 'send', '', '', ''),
+(3, '09278977592', '09278977591', '', '', '', '', 'send', '', '', ''),
+(4, '09278977592', '09278977591', 'testing', '', '', '', 'send', '', '', ''),
+(5, '09278977592', '09278977591', 'This is message', '', '', '', 'send', '', '', '');
+
 -- --------------------------------------------------------
 
 --
@@ -1022,7 +1035,7 @@ ALTER TABLE `admin_reminders`
 -- AUTO_INCREMENT for table `admin_spes_report`
 --
 ALTER TABLE `admin_spes_report`
-  MODIFY `ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `admin_sprs_report`
@@ -1118,7 +1131,7 @@ ALTER TABLE `ozekimessagein`
 -- AUTO_INCREMENT for table `ozekimessageout`
 --
 ALTER TABLE `ozekimessageout`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `region`

@@ -57,7 +57,11 @@
         public function addSPES($post)
         {
             global $conn; 
-            $sql = "INSERT INTO `admin_spes_report`(`ID`, `fname`, `mname`, `lname`, `age`, `school`, `brgy`, `status`, `year`, `batch`, `year_admitted`)
+
+            // SMS Text 
+            $message = 'This is message';
+
+            $sql = "INSERT INTO `admin_spes_report`(`ID`, `fname`, `mname`, `lname`, `age`, `school`, `brgy`, `status`, `year`, `batch`, `year_admitted`,`mobile_number`)
                     VALUES (null,
                         '".$post["fname"]."',
                         '".$post["mname"]."',
@@ -68,11 +72,16 @@
                         '".$post["spes-status"]."', 
                         '".$post["spes-year"]."',
                         '".$post["batch"]."',
-                        '".$post["year-admitted"]."')";
-            if ($conn->query($sql) === TRUE) {
+                        '".$post["year-admitted"]."',
+                        '".$post["mobile-number"]."'); ";
+
+            $sql .= "INSERT INTO `ozekimessageout`(`id`, `sender`, `receiver`, `msg`, `senttime`, `receivedtime`, `reference`, `status`, `msgtype`, `operator`, `errormsg`) 
+                    VALUES (null,'09278977592','".$post['mobile-number']."','".$message."','','','','send','','',''); ";
+            
+            if ($conn->multi_query($sql) === TRUE) {
                 echo json_encode(array('errorCode'=>0, 'successMsg'=>'Successfully saved'));
             } else {
-                echo json_encode(array('errorCode'=>304, 'errorMsg'=>'Unable to saved'));
+                echo json_encode(array('errorCode'=>304, 'errorMsg'=>'Unable to saved '.$sql));
             }
         }
 

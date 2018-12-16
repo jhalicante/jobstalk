@@ -174,8 +174,10 @@
                         success : function(res) {
                             console.log('resss ',res);
                             if(res.errorCode == 0) {
-                                // swal("Adding SPES", 'Successully saved', "success");
-                                location.reload();
+                                swal("Adding SPES", res.successMsg, "success")
+                                .then((value) => {
+                                    location.reload();
+                                });
 
                             } else {
                                 swal("Adding SPES", res.errorMsg, "error");                            

@@ -131,7 +131,7 @@
 											<img src="<?php echo ASSET_URL;?>assets/uploaded/<?php echo $row['com_logo'];?>" alt="company-logo" class="img-responsive" width="100px">
 										</div> <!-- end .left-side-inner -->
 										<div class="job-post-top-right">
-											<h4 class="dark">Front-end developer needed</h4>
+											<h4 class="dark"><?php echo $row['position']; ?></h4>
 											<h5><b>Job Type:</b> <?php echo $row['job_type'];?> <br/> <b>Date posted:</b> <?php echo $row['created_date'];?></h5>
 											<div class="job-post-meta flex items-center no-column no-wrap">
 												<div class="bookmarked-job-meta flex items-center no-wrap no-column">
@@ -168,6 +168,8 @@
 									</div> <!-- end .job-post-company-info -->
                                     <?php 
                                         if(isset($_COOKIE['user_id'])) {
+											if(isset($_COOKIE['role'])) {
+											
                                             if($_COOKIE['role'] == 'applicant') {
                                     ?>
                                         <div class="system-login text-center">
@@ -182,7 +184,7 @@
                                         <h6>Submit your application by clicking the button below</h6>
                                         <button type="button" class="button send-resume" employer-id="<?php echo $row['user_id']; ?>" job-id="<?php echo $row['job_id']; ?>">Submit your resume</button>
                                     </div>
-                                    <?php } ?>
+                                    <?php } }?>
 
                                     
 								</div> <!-- end .right-side-inner -->
