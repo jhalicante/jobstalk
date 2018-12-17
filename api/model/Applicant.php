@@ -183,13 +183,13 @@
             move_uploaded_file($filetmp, $uploaded_url);
 
             $sql = "UPDATE `applicant_work_experience` 
-                    SET `company_logo`=[value-3],
-                        `company_name`=[value-4],
-                        `position`=[value-5],
-                        `job_start`=[value-6],
-                        `job_end`=[value-7],
-                        `description`=[value-8],
-                        `location`=[value-9]
+                    SET `company_logo`='".$filepath."',
+                        `company_name`='".$post['c']."',
+                        `position`='',
+                        `job_start`='',
+                        `job_end`='',
+                        `description`='',
+                        `location`=''
                     WHERE `user_id`='".$_COOKIE['user_id']."' ";
 
             if ($conn->query($sql) === TRUE) 
@@ -253,5 +253,6 @@
                 }
             }
         }
+
     }
 ?>

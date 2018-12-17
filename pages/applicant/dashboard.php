@@ -43,6 +43,8 @@
 								<li class="heading">Manage account</li>
 							    <li class="active"><a data-toggle="pill" href="#resume">My Resume</a></li>
 							    <li><a data-toggle="pill" href="#edit-personal-information">Edit Personal Information</a></li>
+							    <li><a data-toggle="pill" href="#add-work-experience" class="add-work-experience">Add Work Experience</a></li>
+							    <li><a data-toggle="pill" href="#edit-work-experience" class="edit-work-experience">Edit Work Experience</a></li>
 							    <!-- <li><a data-toggle="pill" href="#edit-career-objective">Edit Career Objective</a></li>
 							    <li><a data-toggle="pill" href="#add-work-experience">Add Work experience</a></li> -->
 							    <li class="nav-divider"></li>
@@ -67,6 +69,20 @@
 							    	<div class="profile-badge"><h6>Edit Personal Information</h6></div>
 							        <div class="profile-wrapper">
 										<?php include './pages/applicant/include/edit-personal-information.php'; ?>
+							        </div> <!-- end .profile-wrapper -->						        
+								</div> <!-- end #resume-tab -->
+
+								<div id="edit-work-experience" class="tab-pane fade in">
+							    	<div class="profile-badge"><h6>Edit Work Experience</h6></div>
+							        <div class="profile-wrapper">
+										<?php include './pages/applicant/include/edit-work-experience.php'; ?>
+							        </div> <!-- end .profile-wrapper -->						        
+								</div> <!-- end #resume-tab -->
+
+								<div id="add-work-experience" class="tab-pane fade in">
+							    	<div class="profile-badge"><h6>Add Work Experience</h6></div>
+							        <div class="profile-wrapper">
+										<?php include './pages/applicant/include/add-work-experience.php'; ?>
 							        </div> <!-- end .profile-wrapper -->						        
 								</div> <!-- end #resume-tab -->
 								

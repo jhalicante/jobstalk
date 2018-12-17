@@ -56,7 +56,7 @@
                 <p class="small ultra-light"><?php echo $row['job_start']; ?> - <?php echo $row['job_end']; ?> (<?php echo $interval->format('%y year %m months');?>)</p>
                 <p class="small ultra-light"><i class="ion-location" style="font-size:13px;"></i> <?php echo $row['location']; ?></p>
                 <p><?php echo $row['description']; ?></p>
-                <!-- <h6 class="text-info show-new-experience-view">Edit &nbsp; [ <span><i class="ion-edit"></i></span> ]</h6> -->
+                <a href="?active-tab=edit-work-experience&work-exp-id=<?php echo $row['ID']; ?>"><h6 class="text-info show-new-experience-view">Edit &nbsp; [ <span><i class="ion-edit"></i></span> ]</h6></a>
                 <!-- projects-count -->
             </div> <!-- end .profile-experience-left -->
             <div class="profile-experience-right">

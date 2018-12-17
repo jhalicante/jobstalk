@@ -33,6 +33,7 @@
 			var api_url = '<?php echo API_URL; ?>';
 		</script>
 		<?php 
+			echo $_GET['action-tab'];
 			if( isset($_GET['action-tab']) ) {
 				$action_tab = $_GET['action-tab'];
 				if( $action_tab == 'edit-personal-information' ) {
@@ -51,7 +52,7 @@
 
 				}
 				if( $action_tab == 'edit-work-experience' ) {
-
+					echo "<script> setTimeout(() => { $('.edit-work-experience').click(); }, 100);  </script>";
 				}
 				
 			}

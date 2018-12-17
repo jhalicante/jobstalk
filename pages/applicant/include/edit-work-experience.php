@@ -1,6 +1,17 @@
-<form method="post" enctype="multipart/form-data" id="add-work-experience-form">
+<form method="post" enctype="multipart/form-data" id="edit-work-experience-form">
     <div class="form-inner">
         <div class="form-fields-wrapper">
+            <h4 class="form-fields-title dark">Career Objective Details</h4>
+
+            <div class="form-group-wrapper">
+                <div class="form-group">
+                    <p class="label">Career Objective<sup>*</sup></p>
+                    <textarea name="career-objective" cols="30" rows="2" style="resize:none;"><?php echo $fetch->getInformation('applicant_career_objective', 'objective_content'); ?></textarea>
+                </div> <!-- end .form-group -->
+            </div> <!-- end .form-group-wrapper --> 
+            
+            <div class="divider"></div>
+            <h4 class="form-fields-title dark">Company Information</h4>
             <div class="form-group-wrapper">
                 <div class="form-group upload-company-logo">
                     <p class="label">Choose Logo<span>(Maximum file size: 5MB)</span><sup>*</sup></p>
