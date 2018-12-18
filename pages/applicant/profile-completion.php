@@ -46,7 +46,7 @@
 			<div class="inner">
 				<div class="container">
 					<div id="job-post-form" class="job-post-form multisteps-form">				
-						<fieldset>
+						<fieldset id="personal-information">
 							<form method="post" enctype="multipart/form-data" id="personal-information-form">						  
 
 								<h2 class="form-title text-center dark">Complete your profile</h2>
@@ -138,7 +138,7 @@
 							</form>						
 						</fieldset>
 
-						<fieldset>
+						<fieldset id="educational-background">
 							<form method="post" enctype="multipart/form-data" id="educational-background-form">						  						
 								<h2 class="form-title text-center dark">Complete your profile</h2>
 								<h3 class="step-title text-center dark">Step 2: Complete your Educational Background</h2>
@@ -178,7 +178,7 @@
 										<div class="form-group-wrapper flex space-between items-center">
 											<div class="form-group">
 												<p class="label">Year Started<sup>*</sup></p>
-												<input type="date" name="ter_ys" placeholder="" required="">
+												<input type="text" maxlength="4" onkeyup='if(!(/^\d+$/).test(this.value)){this.value=this.value.replace(/[^\d]*/gi,"");}' name="ter_ys" placeholder="" required="">
 											</div> <!-- end .form-group -->
 											<div class="form-group">
 												<p class="label">Year Ended<sup>*</sup></p>
@@ -208,7 +208,7 @@
 										<div class="form-group-wrapper flex space-between items-center">
 											<div class="form-group">
 												<p class="label">Year Started<sup>*</sup></p>
-												<input type="date" name="sec_ys" placeholder="" required="">
+												<input type="text" maxlength="4" onkeyup='if(!(/^\d+$/).test(this.value)){this.value=this.value.replace(/[^\d]*/gi,"");}' name="sec_ys" placeholder="" required="">
 											</div> <!-- end .form-group -->
 											<div class="form-group">
 												<p class="label">Year Ended<sup>*</sup></p>
@@ -233,7 +233,7 @@
 										<div class="form-group-wrapper flex space-between items-center">
 											<div class="form-group">
 												<p class="label">Year Started<sup>*</sup></p>
-												<input type="date" name="pri_ys" placeholder="" required="">
+												<input type="text" maxlength="4" onkeyup='if(!(/^\d+$/).test(this.value)){this.value=this.value.replace(/[^\d]*/gi,"");}' name="pri_ys" placeholder="" required="">
 											</div> <!-- end .form-group -->
 											<div class="form-group">
 												<p class="label">Year Ended<sup>*</sup></p>
@@ -251,7 +251,7 @@
 							</form>
 						</fieldset>
 
-						<fieldset>
+						<fieldset id="work-experience">
 							<form method="post" enctype="multipart/form-data" id="work-experience-form">
 								<h2 class="form-title text-center dark">Complete your profile</h2>
 								<h3 class="step-title text-center dark">Step 3: Complete your Work Experience</h2>
@@ -307,7 +307,7 @@
 												<input type="date" name="com_js" placeholder="" required="">
 											</div> <!-- end .form-group -->
 											<div class="form-group">
-												<p class="label">Job Ended<sup>*</sup></p>
+												<p class="label">Job Ended<sup>*</sup> <span class="pull-right"><input type="checkbox" id="if-present"/> <label for="if-present">If Present</label></span> </p>
 												<input type="date" name="com_je" placeholder="" required="">
 											</div> <!-- end .form-group -->
 										</div> <!-- end .form-group-wrapper -->
@@ -338,7 +338,7 @@
 							</form>
 						</fieldset>
 
-						<fieldset>
+						<fieldset id="contact-details">
 							<form method="post" enctype="multipart/form-data" id="contact-details-form">						
 								<h2 class="form-title text-center dark">Complete your profile</h2>
 								<h3 class="step-title text-center dark">Step 4: Complete your Contact Details</h2>
@@ -388,7 +388,7 @@
 							</form>
 						</fieldset>
 
-						<fieldset>
+						<fieldset id="success">
 							<h2 class="form-title text-center dark">Profile Completed</h2>
 							<h3 class="step-title text-center dark">You've successfully posted a job</h2>
 

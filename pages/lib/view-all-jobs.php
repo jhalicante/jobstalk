@@ -10,7 +10,7 @@
     <?php 
     global $conn;
 
-    $ljSql = "SELECT * FROM `employer_job_posted` WHERE 1 ORDER BY ID DESC ";
+    $ljSql = "SELECT * FROM `employer_job_posted` WHERE `status`='approved' ORDER BY ID DESC ";
 
     $ljresult = $conn->query($ljSql);
 

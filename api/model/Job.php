@@ -26,7 +26,9 @@
                     FROM `employer_job_posted`
                     LEFT JOIN course_lists ON course_lists.course_id = employer_job_posted.course_id
                     WHERE (employer_job_posted.`com_address` LIKE '%".$post['location']."%' OR employer_job_posted.`position` LIKE '%".$post['position']."%')
-                        AND employer_job_posted.`status`='approved' ";
+                        AND employer_job_posted.`status`='approved'  
+                        GROUP BY employer_job_posted.`ID` 
+                        ORDER BY employer_job_posted.`ID` DESC";
             $result = $conn->query($sql);
 
             if ($result->num_rows > 0) {
