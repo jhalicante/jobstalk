@@ -38,7 +38,11 @@
             <td><?php echo $pjrow['created_date']; ?></td>
             <td><?php 
                 if( $pjrow['applicant_applied'] >= 1 ) {
-                    echo '<a href="#" class="candidates-show-modal" years-exp="'.$pjrow['years_experience'].'" months-exp="'.$pjrow['months_experience'].'" job_id="'.$pjrow['job_id'].'"> <b>'.$pjrow['applicant_applied'].' Candidate(s)';
+                    if($pjrow['status'] == 'completed') {
+                        echo '<b><mark>'.$pjrow['applicant_applied'].' Candidate(s)</mark></b>';
+                    } else {
+                        echo '<a href="#" class="candidates-show-modal" years-exp="'.$pjrow['years_experience'].'" months-exp="'.$pjrow['months_experience'].'" job_id="'.$pjrow['job_id'].'"> <b>'.$pjrow['applicant_applied'].' Candidate(s)</b>';
+                    }
                 } 
                 else {
                     echo '0 Candidate';

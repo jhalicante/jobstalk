@@ -49,7 +49,6 @@
 						
 						<div class="right-side-content">
 							<div class="tab-content candidate-dashboard">
- 
 							    <div id="spes-list" class="tab-pane fade in active">
 									<div class="profile-badge"><h6>SPES List</h6></div> 
 									<div class="profile-wrapper">
@@ -63,7 +62,7 @@
 													<th>Barangay</th>
 													<th>Status</th>
 													<th>Year</th>
-													<th>Action</th>
+													<!-- <th>Action</th> -->
 												</tr>
 											</thead>
 											<tbody>
@@ -84,7 +83,7 @@
 													<td><?php echo $rowAJ['brgy']; ?></td>
 													<td><?php echo ucfirst($rowAJ['status']); ?></td>
 													<td><?php echo ucfirst($rowAJ['year']); ?></td>
-													<td><button class="delete-spes" id="<?php echo $rowAJ['ID']; ?>">Delete</button></td>
+													<!-- <td><button class="delete-spes" id="<?php echo $rowAJ['ID']; ?>">Delete</button></td> -->
 												</tr> 
 												<?php
 													} 
@@ -94,7 +93,6 @@
 										</table>
 									</div>     
 							    </div> <!-- end #manage-applications-tab -->
-
 							</div> <!-- end .candidate-dashboard -->
 						</div> <!-- end .right-side-content -->
 					</div> <!-- end .candidate-dashboard-wrapper -->

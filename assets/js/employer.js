@@ -104,7 +104,7 @@ var employer = {
                             var markup = '<tr>';
                                     markup += '<td>'+(i+1)+'</td>';                                
                                     markup += '<td>'+res[i].fname+' '+res[i].mname+' '+res[i].lname+'</td>';
-                                    markup += '<td>'+res[i].date_applied+'</td>';
+                                    markup += '<td>'+res[i].gender+'</td>';
                                     markup += '<td>'+year_count+'yrs & '+month_count+'mons</td>';
                                     markup += '<td>'+res[i].date_applied+'</td>';
                                     if(years_exp <  year_count) {
@@ -113,7 +113,7 @@ var employer = {
                                         markup += '<td><mark>Not Qualified</mark></td>';
                                     }
                                     markup += '<td>'+res[i].application_status+'</td>';
-                                    markup += '<td><a href="?applicant-profile='+res[i].user_id+'">View Profile</a></td>';
+                                    markup += '<td><a href="?applicant-profile='+res[i].user_id+'&job-id='+job_id+'">View Profile</a></td>';
                                 markup += '</tr>';
                                 year_count=0;
                                 month_count=0;
@@ -256,17 +256,23 @@ var employer = {
         $(document).on('click','.update-applicant-status', function(e){
             var change_selected_status = $('.change-selected-status option:selected').val(),
                 applicant_id = $(this).attr('applicant-id');
+                job_id = $(this).attr('job-id');
             $.ajax({
                 type : 'POST',
                 url : api_url+'/employer/update-employer-status',
                 data : {
                     status : change_selected_status,
-                    applicant_id : applicant_id
+                    applicant_id : applicant_id,
+                    job_id : job_id,
                 },
                 success : function(res) {
                     console.log('res ',res);
                     if(res.errorCode == 0) {
-                        location.href="account";
+                        // location.href="account";
+                        swal("Add Work Experience",'Successfully saved', "success")
+                            .then((value) => {
+                                location.reload();
+                            });
                     } else {
                         swal("Updating Status", res.errorMsg, "error");                            
                     }

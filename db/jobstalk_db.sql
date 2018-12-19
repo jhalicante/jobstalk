@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Dec 16, 2018 at 05:56 PM
+-- Generation Time: Dec 19, 2018 at 07:06 PM
 -- Server version: 5.6.38
 -- PHP Version: 7.2.1
 
@@ -51,7 +51,8 @@ CREATE TABLE `admin_lmi_report` (
 --
 
 INSERT INTO `admin_lmi_report` (`ID`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, `12`, `13`, `14`, `15`, `16`, `17`, `18`, `19`, `20`, `prepared_by`, `created_date`) VALUES
-(4, '2', '2', '2', '2', '4', '1', '2', '2', '2', '2', '4', '1', '1', '1', '2', '1', '1', '1', '2', '1', 'markss', '12/16/2018');
+(4, '2', '2', '2', '2', '4', '1', '2', '2', '2', '2', '4', '1', '1', '1', '2', '1', '1', '1', '2', '1', 'markss', '12/16/2018'),
+(5, '10', '1', '10', '1', '22', '0', '10', '1', '10', '1', '22', '0', '10', '10', '20', '0', '10', '10', '20', '0', 'markyugo', '12/20/2018');
 
 -- --------------------------------------------------------
 
@@ -102,20 +103,7 @@ CREATE TABLE `admin_spes_report` (
 --
 
 INSERT INTO `admin_spes_report` (`ID`, `fname`, `mname`, `lname`, `age`, `school`, `brgy`, `status`, `year`, `batch`, `year_admitted`, `mobile_number`) VALUES
-(2, 'as', 'asas', 'asa', '2', 'asdas', '3', '', '', '', '', ''),
-(3, 'as', 'asas', 'asa', '12', 'asdas', '3', '', '', '', '', ''),
-(4, 'asd', 'dsa', 'asd', '2', 'asdasd', '15', '', '', '', '', ''),
 (5, 'dsa', 'asd', 'ad', '12', 'asd', '12', 'asd', '4', '10', '2018', ''),
-(6, 'asd', 'ads', 'asd', '12', '12', '12', '21', '2', '', '', ''),
-(7, 'asd', 'asd', 'ads', '1', '123', '1', 'asd', '', '', '', ''),
-(8, 'sd', 'asd', 'asd', '1', 'ads', '1', 'New', '4', '', '', ''),
-(9, 'ad', 'ads', 'a', '1', '1', '1', 'New', '1', '', '', ''),
-(10, 'ad', 'as', 'as', '1', 'fs', '1', 'Old', '6', '', '', ''),
-(11, 'ads', 'ads', 'asdad', '3', 'das', '3', 'Old', '4', '', '', ''),
-(12, 'd', 's', 'd', '2', 'ff', '32', '', '', '', '', ''),
-(13, 'd', 's', 'd', '2', 'ff', '32', 'Old', '', '', '', ''),
-(14, 'd', 's', 'd', '2', 'ff', '32', 'Old', '3', '', '', ''),
-(15, 'asd', 'asd', 'sd', '12', '12', '12', 'New', '1', '', '', ''),
 (16, 'das', 'asd', 'asda', '12', '1asdasd', '12', 'New', '3', '123', '2015', ''),
 (17, '12', '12', '12', '12', '12', '12', 'New', '1', '1', '2018', ''),
 (18, '123', '123', '123', '123', '123', '123', 'New', '12', '123', '1999', ''),
@@ -294,7 +282,8 @@ CREATE TABLE `applicant_career_objective` (
 
 INSERT INTO `applicant_career_objective` (`ID`, `user_id`, `objective_content`) VALUES
 (1, '120420181543890908', 'To build a long-term career in [specific industry] with opportunities for career growth.\r\nTo enhance my educational and professional skills in a stable and dynamic workplace.\r\nTo solve problems in a creative and effective manner in a challenging position.'),
-(2, '121120181544487753', 'adasasd');
+(2, '121120181544487753', 'adasasd'),
+(3, '121820181545146716', '12312');
 
 -- --------------------------------------------------------
 
@@ -317,7 +306,8 @@ CREATE TABLE `applicant_contact_information` (
 
 INSERT INTO `applicant_contact_information` (`ID`, `user_id`, `email_address`, `phone_no`, `municipality`, `brgy`) VALUES
 (1, '120420181543890908', 'jma.itsprogrammer@gmail.com', '09278977591', 'Caloocan City', '28'),
-(2, '121120181544487753', 'ako@gmail.com', '09278977591', 'asdas', 'ad');
+(2, '121120181544487753', 'ako@gmail.com', '09278977591', 'asdas', 'ad'),
+(3, '121820181545146716', 'samsam@gmail.com', '1234567890', 'caloocan city', '28');
 
 -- --------------------------------------------------------
 
@@ -349,7 +339,8 @@ CREATE TABLE `applicant_education` (
 
 INSERT INTO `applicant_education` (`ID`, `user_id`, `ter_sname`, `ter_course`, `ter_ys`, `ter_ye`, `ter_ad`, `sec_sname`, `sec_ys`, `sec_ye`, `sec_ad`, `pri_sname`, `pri_ys`, `pri_ye`, `pri_ad`) VALUES
 (1, '120420181543890908', 'University of Caloocan City', 'Bachelor of Science in Computer Science (BSCS)', '2017-06-06', '1996-06-06', 'Biglang awa st Caloocan City', 'Navotas National High School', '1996-06-06', '1996-06-06', 'Taliba st Navotas City', 'Awayon Elementary School', '1996-06-06', '1996-06-01', 'Mercedes National High School'),
-(10, '121120181544487753', 'asdasdasd', '1', '0311-03-12', '0123-03-12', 'asdasd', 'sdas', '1212-11-12', '1212-12-12', 'asdd', 'df', '0001-02-12', '0012-12-12', 'fdfd');
+(10, '121120181544487753', 'asdasdasd', '1', '0311-03-12', '0123-03-12', 'asdasd', 'sdas', '1212-11-12', '1212-12-12', 'asdd', 'df', '0001-02-12', '0012-12-12', 'fdfd'),
+(11, '121820181545146716', 'bs', 'Bachelor of Arts in History (AB History)', '2323', '23123-12-3', '12312312', '312', '1231', '2018-12-20', '3123', '12312', '1231', '3123-03-12', '1233');
 
 -- --------------------------------------------------------
 
@@ -377,7 +368,8 @@ CREATE TABLE `applicant_personal_information` (
 
 INSERT INTO `applicant_personal_information` (`ID`, `user_id`, `fname`, `mname`, `lname`, `bday`, `gender`, `nationality`, `civil_status`, `language`, `profile_picture`) VALUES
 (1, '120420181543890908', 'as', 'asd', 'as', '0023-12-31', 'male', '123', 'asd', 'Tagalog', '121620181544945718.png'),
-(2, '121120181544487753', 'Ako', 'Ako', 'Ako', '0012-12-12', 'male', 'FilAm', 'Single', 'tagalog', '121120181544487808.png');
+(2, '121120181544487753', 'Ako', 'Ako', 'Ako', '0012-12-12', 'male', 'FilAm', 'Single', 'tagalog', '121120181544487808.png'),
+(3, '121820181545146716', 'Sam', 'Sam', 'Sam', '2017-11-14', 'male', 'Filipino', 'Single', 'Tagalog', '121920181545233316.png');
 
 -- --------------------------------------------------------
 
@@ -406,6 +398,7 @@ CREATE TABLE `applicant_work_experience` (
   `position` varchar(150) NOT NULL,
   `job_start` varchar(30) NOT NULL,
   `job_end` varchar(30) NOT NULL,
+  `is_present` enum('false','true') NOT NULL,
   `description` text NOT NULL,
   `location` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -414,10 +407,15 @@ CREATE TABLE `applicant_work_experience` (
 -- Dumping data for table `applicant_work_experience`
 --
 
-INSERT INTO `applicant_work_experience` (`ID`, `user_id`, `company_logo`, `company_name`, `position`, `job_start`, `job_end`, `description`, `location`) VALUES
-(1, '120420181543890908', '120620181544119770.jpg', 'ABS-CBN Corporation', 'Frontend Developer', '2009-12-01', '2018-12-12', 'tasdadas', 'Mother Ignacia '),
-(2, '120420181543890908', '120620181544119770.jpg', 'CodeEric Corporation', 'Fullstack Developer', '2010-01-01', '2025-01-01', 'tasdadas', 'Mother Ignacia '),
-(3, '121120181544487753', '121120181544488607.', 'adsasd', 'asdasd', '2018-02-12', '2019-12-12', 'asdasdsa', 'sdfasd');
+INSERT INTO `applicant_work_experience` (`ID`, `user_id`, `company_logo`, `company_name`, `position`, `job_start`, `job_end`, `is_present`, `description`, `location`) VALUES
+(1, '120420181543890908', '120620181544119770.jpg', 'ABS-CBN Corporation', 'Frontend Developer', '2009-12-01', '2018-12-12', 'false', 'tasdadas', 'Mother Ignacia '),
+(2, '120420181543890908', '120620181544119770.jpg', 'CodeEric Corporation', 'Fullstack Developer', '2010-01-01', '2025-01-01', 'false', 'tasdadas', 'Mother Ignacia '),
+(3, '121120181544487753', '121120181544488607.', 'adsasd', 'asdasd', '2018-02-12', '2019-12-12', 'false', 'asdasdsa', 'sdfasd'),
+(11, '121820181545146716', '121920181545237878.png', '234', '234', '2008-12-31', '2010-12-12', 'false', 'an it job', 'caloocan city'),
+(12, '121820181545146716', '121920181545237989.', 'aw', 'aw', '2018-12-12', '2018-12-19', 'false', 'dwaawawdawdaw', 'dwa'),
+(13, '121820181545146716', '121920181545238048.', 'test', 'test', '2010-02-11', '2018-12-19', 'false', 'test', 'test'),
+(14, '121820181545146716', '121920181545238441.', 'ss', 'ss', '2010-12-12', '2018-12-19', 'false', 'ee', 'ee'),
+(15, '121820181545146716', '121920181545238530.', 'dd', 'dd', '2010-12-12', '2018-12-19', 'true', 'dd', 'dd');
 
 -- --------------------------------------------------------
 
@@ -651,10 +649,10 @@ CREATE TABLE `employer_job_posted` (
 --
 
 INSERT INTO `employer_job_posted` (`ID`, `user_id`, `job_id`, `com_logo`, `com_name`, `com_address`, `position`, `job_type`, `course_id`, `industry_id`, `years_experience`, `months_experience`, `description`, `created_date`, `status`) VALUES
-(1, '120720181544166943', '120820181544270508', '120820181544270508.png', 'PAJO Corporation', '115 J.P. Rizal St, Maypajo, Caloocan, 1410 Metro Manila', 'Water Bender', 'part-time', '30', '5', '2', '7', 'Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Etiam eu velit cursus, tempor ipsum in, tempus lectus. Nullam tempus nisi id nisl luctus, non tempor justo molestie.', '2018-12-16', 'approved'),
-(2, '120720181544166943', '120820181544281722', '120820181544281722.jpg', 'Test Inc', '234, 236 Tomas Morato Ave, Diliman, Quezon City, 1103 Metro Manila', 'Data Analyst', 'full-time', '2', '5', '3', '3', 'Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Etiam eu velit cursus, tempor ipsum in, tempus lectus. Nullam tempus nisi id nisl luctus, non tempor justo molestie.', '2018-01-16', 'approved'),
+(1, '120720181544166943', '120820181544270508', '120820181544270508.png', 'PAJO Corporation', '115 J.P. Rizal St, Maypajo, Caloocan, 1410 Metro Manila', 'Water Bender', 'part-time', '30', '5', '2', '7', 'Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Etiam eu velit cursus, tempor ipsum in, tempus lectus. Nullam tempus nisi id nisl luctus, non tempor justo molestie.', '2018-12-16', 'canceled'),
+(2, '120720181544166943', '120820181544281722', '120820181544281722.jpg', 'Test Inc', '234, 236 Tomas Morato Ave, Diliman, Quezon City, 1103 Metro Manila', 'Data Analyst', 'full-time', '2', '5', '3', '3', 'Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Etiam eu velit cursus, tempor ipsum in, tempus lectus. Nullam tempus nisi id nisl luctus, non tempor justo molestie.', '2018-01-16', 'completed'),
 (3, '120720181544166943', '121020181544432317', '121020181544432317.', 'as21', '3asda', '3123', 'internship', '11', '8', '2', '2', 'asdasd', '2018-06-16', 'approved'),
-(4, '120720181544166943', '121620181544925891', '120720181544171097.png', 'Test Com Incorporation', '1', 'g', 'part-time', '30', '1', '1', '1', '1', '2018-01-16', 'pending');
+(4, '120720181544166943', '121620181544925891', '120720181544171097.png', 'Test Com Incorporation', '1', 'g', 'part-time', '30', '1', '1', '1', '1', '2018-01-16', 'approved');
 
 -- --------------------------------------------------------
 
@@ -881,7 +879,8 @@ INSERT INTO `user_account` (`ID`, `user_id`, `email_address`, `password`, `role`
 (7, '120720181544166943', 'employer@gmail.com', '123', 'employer', 'approved'),
 (12, '120920181544344118', 'emp@gmail.com', '123', 'employer', 'approved'),
 (13, '120920181544357586', 'test@gmail.com', '123', 'applicant', 'pending'),
-(14, '121120181544487753', 'ako@gmail.com', '123', 'applicant', 'pending');
+(14, '121120181544487753', 'ako@gmail.com', '123', 'applicant', 'pending'),
+(15, '121820181545146716', 'sam@gmail.com', 'sam', 'applicant', 'approved');
 
 --
 -- Indexes for dumped tables
@@ -1023,7 +1022,7 @@ ALTER TABLE `user_account`
 -- AUTO_INCREMENT for table `admin_lmi_report`
 --
 ALTER TABLE `admin_lmi_report`
-  MODIFY `ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `admin_reminders`
@@ -1047,25 +1046,25 @@ ALTER TABLE `admin_sprs_report`
 -- AUTO_INCREMENT for table `applicant_career_objective`
 --
 ALTER TABLE `applicant_career_objective`
-  MODIFY `ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `applicant_contact_information`
 --
 ALTER TABLE `applicant_contact_information`
-  MODIFY `ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `applicant_education`
 --
 ALTER TABLE `applicant_education`
-  MODIFY `ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `applicant_personal_information`
 --
 ALTER TABLE `applicant_personal_information`
-  MODIFY `ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `applicant_skills`
@@ -1077,7 +1076,7 @@ ALTER TABLE `applicant_skills`
 -- AUTO_INCREMENT for table `applicant_work_experience`
 --
 ALTER TABLE `applicant_work_experience`
-  MODIFY `ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `applied_job`
@@ -1143,4 +1142,4 @@ ALTER TABLE `region`
 -- AUTO_INCREMENT for table `user_account`
 --
 ALTER TABLE `user_account`
-  MODIFY `ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;

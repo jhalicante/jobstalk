@@ -38,7 +38,7 @@
     </h3>
     <?php 
         global $conn;											
-        $sql = "SELECT * FROM `applicant_work_experience` WHERE `user_id`='".$_COOKIE['user_id']."'";
+        $sql = "SELECT * FROM `applicant_work_experience` WHERE `user_id`='".$_COOKIE['user_id']."' ORDER BY ID DESC ";
         $result = $conn->query($sql);
         
         if ($result->num_rows > 0) {
@@ -47,16 +47,30 @@
                 date_default_timezone_set('Asia/Manila');
                 $datetime1 = new DateTime($row['job_start']);
                 $datetime2 = new DateTime($row['job_end']);
+
+                $job_ended = $row['job_end'];
+
+                if($row['is_present'] == 'true') {
+                    $datetime2 = new DateTime(date('Y-m-d'));
+                    $job_ended = 'Present';
+                }
+
                 $interval = $datetime1->diff($datetime2);
     ?>
         <div class="profile-experience flex space-between no-wrap no-column">
             <div class="profile-experience-left">
                 <h5 class="profile-designation dark"><?php echo $row['company_name']; ?></h5>
                 <p class="profile-company dark"><?php echo $row['position']; ?></p>
-                <p class="small ultra-light"><?php echo $row['job_start']; ?> - <?php echo $row['job_end']; ?> (<?php echo $interval->format('%y year %m months');?>)</p>
+                <p class="small ultra-light">
+                    <?php echo $row['job_start']; ?> - 
+                    <?php echo $job_ended; ?> &nbsp;
+                    (<?php  
+                        echo $interval->format('%y year\'s &nbsp; %m month\'s');
+                    ?>)
+                </p>
                 <p class="small ultra-light"><i class="ion-location" style="font-size:13px;"></i> <?php echo $row['location']; ?></p>
                 <p><?php echo $row['description']; ?></p>
-                <a href="?active-tab=edit-work-experience&work-exp-id=<?php echo $row['ID']; ?>"><h6 class="text-info show-new-experience-view">Edit &nbsp; [ <span><i class="ion-edit"></i></span> ]</h6></a>
+                <!-- <a href="?active-tab=edit-work-experience&work-exp-id=<?php echo $row['ID']; ?>"><h6 class="text-info show-new-experience-view">Edit &nbsp; [ <span><i class="ion-edit"></i></span> ]</h6></a> -->
                 <!-- projects-count -->
             </div> <!-- end .profile-experience-left -->
             <div class="profile-experience-right">

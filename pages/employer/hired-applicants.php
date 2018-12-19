@@ -32,7 +32,7 @@
             while($harow = $haresult->fetch_assoc()) { ?>															
         <tr>
             <th><?php echo $i++; ?></th>
-            <td><?php echo $harow['fname']; ?></td>
+            <td><?php echo $harow['fname'].' '.$harow['mname'].' '.$harow['lname']; ?></td>
             <td><?php echo $harow['com_name']; ?></td>
             <td><?php echo $harow['position']; ?></td>
             <td><?php echo ucfirst($harow['application_status']); ?></td>

@@ -164,6 +164,4 @@
             include './pages/employer/footer.php'; // Applicant Footer 
         ?>
 	</body>
-
-<!-- Mirrored from jobpress.icookcode.net/dev/post-job-form.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 02 Dec 2018 14:59:28 GMT -->
 </html>

@@ -102,6 +102,11 @@
         $applicant = new Applicant();
         $applicant->addContactDetails($_POST);
     });
+    // Account Add Work Experience
+    $router->post(API_VERSION.'/applicant-account-add-work-experience', function () {
+        $applicant = new Applicant();
+        $applicant->accountAddWorkExperience($_POST, $_FILES);
+    });
 
     /***********************************
      * EMPLOYER FUNCTIONS API

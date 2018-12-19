@@ -140,15 +140,25 @@
             $uploaded_url = '../assets/uploaded/'.$filepath;
             $filetmp = $files['company-logo-image']['tmp_name'];
             move_uploaded_file($filetmp, $uploaded_url);
+            
+            $ispresent = 'false';
+            $job_end = '';
+            if( isset($post['is-present']) ) {
+                $ispresent = 'true';
+                $job_end = date('Y-m-d');
+            } else {
+                $job_end = $post['com_je'];
+            }
 
-            $sql = "INSERT INTO `applicant_work_experience`(`ID`, `user_id`, `company_logo`, `company_name`, `position`, `job_start`, `job_end`, `description`, `location`) 
+            $sql = "INSERT INTO `applicant_work_experience`(`ID`, `user_id`, `company_logo`, `company_name`, `position`, `job_start`, `job_end`, `is_present`, `description`, `location`) 
                     VALUES (null,
                         '".$_COOKIE['user_id']."',
                         '".$filepath."',
                         '".$post['com_name']."',
                         '".$post['com_position']."',
                         '".$post['com_js']."',
-                        '".$post['com_je']."',
+                        '".$job_end."',
+                        '".$ispresent."',
                         '".$post['com_desc']."',
                         '".$post['com_location']."');";
 
@@ -161,6 +171,57 @@
                     '".$_COOKIE['user_id']."',
                     '".$post['career-objective']."');";
             }
+
+            if ($conn->multi_query($sql) === TRUE) {
+                echo json_encode(array('errorCode'=>0, 'successMsg'=>'Successfully created'));
+            } else {
+                echo json_encode(array('errorCode'=>304, 'errorMsg'=>'Unable to create'));                    
+            }
+
+        }
+        /* Account Add Work Experience */         
+        public function accountAddWorkExperience($post, $files)
+        { 
+            global $conn;
+
+            $path = $files['account-add-company-logo-image']['name'];
+            $ext = pathinfo($path, PATHINFO_EXTENSION);
+
+            $filepath = GEN_UID.".".$ext;
+            $uploaded_url = '../assets/uploaded/'.$filepath;
+            $filetmp = $files['account-add-company-logo-image']['tmp_name'];
+
+            move_uploaded_file($filetmp, $uploaded_url);
+            
+            $ispresent = 'false';
+            $job_end = '';
+            if( isset($post['is-present']) ) {
+                $ispresent = 'true';
+                $job_end = date('Y-m-d');
+
+                $sql = "UPDATE `applicant_work_experience` SET `is_present`='false' WHERE `user_id`='".$_COOKIE['user_id']."' ";
+
+                if ($conn->multi_query($sql) === TRUE) {
+                    // echo json_encode(array('errorCode'=>0, 'successMsg'=>'Successfully created'));
+                } else {
+                    // echo json_encode(array('errorCode'=>304, 'errorMsg'=>'Unable to create'));                    
+                }
+
+            } else {
+                $job_end = $post['com_je'];
+            }
+
+            $sql = "INSERT INTO `applicant_work_experience`(`ID`, `user_id`, `company_logo`, `company_name`, `position`, `job_start`, `job_end`, `is_present`, `description`, `location`) 
+                    VALUES (null,
+                        '".$_COOKIE['user_id']."',
+                        '".$filepath."',
+                        '".$post['com_name']."',
+                        '".$post['com_position']."',
+                        '".$post['com_js']."',
+                        '".$job_end."',
+                        '".$ispresent."',
+                        '".$post['com_desc']."',
+                        '".$post['com_location']."');";
 
             if ($conn->multi_query($sql) === TRUE) {
                 echo json_encode(array('errorCode'=>0, 'successMsg'=>'Successfully created'));

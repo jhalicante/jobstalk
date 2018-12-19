@@ -307,8 +307,8 @@
 												<input type="date" name="com_js" placeholder="" required="">
 											</div> <!-- end .form-group -->
 											<div class="form-group">
-												<p class="label">Job Ended<sup>*</sup> <span class="pull-right"><input type="checkbox" id="if-present"/> <label for="if-present">If Present</label></span> </p>
-												<input type="date" name="com_je" placeholder="" required="">
+												<p class="label">Job Ended<sup>*</sup> <span class="pull-right"><input type="checkbox" id="if-present" value="true" name="is-present"/> <label for="if-present">If Present</label></span> </p>
+												<input type="date" name="com_je" placeholder="">
 											</div> <!-- end .form-group -->
 										</div> <!-- end .form-group-wrapper -->
 
@@ -421,6 +421,4 @@
             include './pages/applicant/footer.php'; // Applicant Footer 
         ?>
 	</body>
-
-<!-- Mirrored from jobpress.icookcode.net/dev/post-job-form.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 02 Dec 2018 14:59:28 GMT -->
 </html>

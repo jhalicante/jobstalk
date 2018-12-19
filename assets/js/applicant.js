@@ -176,27 +176,7 @@
                         }
                     }
                 });
-            });
-
-            // $("#educational-background-form").submit(function(e){
-            //     e.preventDefault();
-            //     var formData = new FormData($(this)[0]);                
-            //     $.ajax({
-            //         type : 'POST',
-            //         url : api_url+'/add-educational-background',
-            //         data : formData,
-            //         contentType : false,
-            //         cache       : false,
-            //         processData : false,
-            //         success : function(res) {
-            //             if(res.errorCode == 0) {
-            //                 $('.next')[1].click();
-            //             } else {
-            //                 swal("Profile Completion", res.errorMsg, "error");                            
-            //             }
-            //         }
-            //     });
-            // });
+            }); 
 
             $("#work-experience-form").submit(function(e){
                 e.preventDefault();
@@ -213,7 +193,31 @@
                         if(res.errorCode == 0) {
                             $('.next')[2].click();
                         } else {
-                            swal("Profile Completion", res.errorMsg, "error");                            
+                            swal("Add Work Experience", res.errorMsg, "error");                            
+                        }
+                    }
+                });
+            });
+
+            $("#account-add-work-experience-form").submit(function(e){
+                e.preventDefault();
+                var formData = new FormData($(this)[0]);      
+                $.ajax({
+                    type : 'POST',
+                    url : api_url+'/applicant-account-add-work-experience',
+                    data : formData,
+                    contentType : false,
+                    cache       : false,
+                    processData : false,
+                    success : function(res) {
+                        console.log(res);
+                        if(res.errorCode == 0) {
+                            swal("Add Work Experience",'Successfully saved', "success")
+                            .then((value) => {
+                                location.reload();
+                            });
+                        } else {
+                            swal("Add Work Experience", res.errorMsg, "error");                            
                         }
                     }
                 });

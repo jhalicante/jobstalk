@@ -104,12 +104,23 @@
             });
 
             $(document).on('keyup','.txt', function(e){
-                console.log('123');
                 var _this = $(this);
-                $('.txt-total1').val( parseInt($('.txt1').val()) + parseInt($('.txt2').val()) );
-                $('.txt-total2').val( parseInt($('.txt3').val()) + parseInt($('.txt4').val()) );
-                $('.txt-total3').val( parseInt($('.txt5').val()) + parseInt($('.txt6').val()) );
-                $('.txt-total4').val( parseInt($('.txt7').val()) + parseInt($('.txt8').val()) );
+                console.log(_this);
+                var total1 = parseInt($('.t1').val()) + parseInt($('.t2').val());
+                var total11 = parseInt($('.t3').val()) + parseInt($('.t4').val());
+                $('.t5').val( (total1 + total11)  != 'NaN' ? (total1 + total11) : 0 );
+
+
+                var total2 = parseInt($('.t7').val()) + parseInt($('.t8').val());
+                var total22 = parseInt($('.t9').val()) + parseInt($('.t10').val());
+                $('.t11').val( (total2 + total22) != 'NaN' ? (total2 + total22) : 0 );
+
+
+                var total3 = parseInt($('.t13').val()) + parseInt($('.t14').val());
+                $('.t15').val( total3 != 'NaN' ? total3 : 0 );
+
+                var total4 = parseInt($('.t17').val()) + parseInt($('.t18').val());
+                $('.t19').val( total4 != 'NaN' ? total4 : 0 );
             });
 
             /* Post a new Job */
@@ -277,9 +288,48 @@
                 parent.fadeOut("slow", function() { $(this).remove(); } );
             });
             
-            // setInterval( function(){
-            //     admin.getReminders();
-            // }, 2000);
+            $(document).on('click','.delete-spes',function(e){
+                e.preventDefault();
+                var id = $(this).attr('id');
+                swal({
+                    title: "Are you sure?",
+                    text: "Delete this spes record",
+                    icon: "warning",
+                    buttons: [
+                        'No, cancel it!',
+                        'Yes, I am sure!'
+                    ],
+                    dangerMode: true,
+                })
+                .then((value) => {
+                    if(value){
+                        $.ajax({
+                            type : 'POST',
+                            url : api_url+'/bpc/delete-spes',
+                            data : { id : id },
+                            success: function(res) {
+                                console.log(res);
+                                if(res.errorCode == 0) {
+                                    swal({
+                                        title: 'Deletion!',
+                                        text: 'Successfully deleted!',
+                                        icon: 'success'
+                                      }).then(function() {
+                                        location.reload();
+                                      });
+                                } else {
+                                    swal("Delete Spes", res.errorMsg, "error");                            
+                                }
+                            }
+                        });
+                    } 
+                    else {
+                        swal("Cancelled", "This record is safe :)", "error");
+                    }
+                });
+
+                
+            });
         },
         // getReminders: function(){
         //     $.ajax({
@@ -328,6 +378,7 @@
         // LMI Selected LMI Onchange
         lmiSelectedMonth  : function(sel) {
             var month = sel.value;
+            console.log(month);
             if(month !='') {
                 location.href="?lmi-month="+month;
             }

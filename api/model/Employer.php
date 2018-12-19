@@ -245,11 +245,22 @@
         {
             global $conn; 
             
+            if($post['status'] = 'hired') {
+                $sql = "UPDATE `employer_job_posted` SET `status`='completed' WHERE `job_id`='".$post['job_id']."' ";
+                if ($conn->query($sql) === TRUE) 
+                {
+                    // echo json_encode(array('errorCode'=>0, 'successMsg'=>'Successfully updated'));
+                }
+                else 
+                {
+                    // echo json_encode(array('errorCode'=>304, 'errorMsg'=>'Unable to update'));
+                } 
+            }
             $sql = "UPDATE `applied_job` SET `application_status`='".$post['status']."' WHERE `applicant_id`='".$post['applicant_id']."' ";
 
             if ($conn->query($sql) === TRUE) 
             {
-                echo json_encode(array('errorCode'=>0, 'successMsg'=>'Successfully updated'));
+                echo json_encode(array('errorCode'=>0, 'successMsg'=>'Successfully updated',$post));
             }
             else 
             {

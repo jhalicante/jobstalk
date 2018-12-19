@@ -35,6 +35,7 @@
         <th>Year</th>
         <th>Batch</th>
         <th>Year Admitted</th>
+        <th>Action</th>
         </tr>
     </thead>
     <tbody>
@@ -54,7 +55,8 @@
             <td><?php echo $spesRow['status']; ?></td>													
             <td><?php echo $spesRow['year']; ?></td>													
             <td>Batch <b><?php echo $spesRow['batch']; ?></b></td>													
-            <td><?php echo $spesRow['year_admitted']; ?></td>													
+            <td><?php echo $spesRow['year_admitted']; ?></td>	
+            <td><button class="btn btn-xs btn-danger delete-spes" id="<?php echo $spesRow['ID']; ?>">Delete</button></td>            												
         </tr> 
         <?php }} ?>												
     </tbody>

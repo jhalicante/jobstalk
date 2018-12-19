@@ -146,7 +146,7 @@
             </select>
             <br/>
             <br/>
-            <button class="button update-applicant-status" applicant-id="<?php echo $row['user_id']; ?>">Submit</button>
+            <button class="button update-applicant-status" applicant-id="<?php echo $row['user_id']; ?>" job-id="<?php echo $_GET['job-id']; ?>">Submit</button>
         </div> <!-- end .profile-education -->
         <br/>
         <?php

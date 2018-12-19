@@ -52,11 +52,11 @@
     <div class="form-group-wrapper flex space-between items-center">
         <div class="form-group">
             <p class="label">Year(s) Experience Required<sup>*</sup></p>
-            <input type="number" class="company-title" name="years_experience" placeholder="" required="">
+            <input type="number" class="company-title" name="years_experience" value="0" placeholder="" required="">
         </div> <!-- end .form-group -->
         <div class="form-group">
             <p class="label">Month(s) Experience Required <span>(Optional)</span><sup>*</sup></p>
-            <input type="number" class="position" name="months_experience" placeholder="" required="">
+            <input type="number" class="position" name="months_experience" value="0" placeholder="" required="">
         </div> <!-- end .form-group -->
     </div> <!-- end .form-group-wrapper -->
 
